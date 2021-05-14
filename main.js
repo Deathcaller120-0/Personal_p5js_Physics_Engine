@@ -6,6 +6,8 @@ var stats = {prevTicks:[]};
 
 function setup(){
   createCanvas(500, 500);
+  
+  physObj.push(new CircleShape(width/2, height/2, 10, 10));
 }
 
 function draw(){
