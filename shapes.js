@@ -11,9 +11,13 @@ class Shape {
     this.bounce = bounceLoss;
     
     this.type = shapeType;
+    
+    window.alert("created shape of type:" + this.type);
   }
   
   update(){
+    window.alert("updating shape");
+    
     this.vel.y += phys.gravity;
     if(!rectRect(this.pos.x-this.size.x/2, this.pos.y-this.size.y/2, this.size.x/2, this.size.y/2, 0, 0, width, height)){
       // its outside the canvas bounds
@@ -76,6 +80,7 @@ class Shape {
 class CircleShape extends Shape {
   constructor(x, y, vx, vy, w, h, _color, bounceLoss = 0.9){
     super(x, y, vx, vy, w, h, _color, "circle", bounceLoss);
+    window.alert("circle created");
   }
   
   update(){
@@ -83,6 +88,7 @@ class CircleShape extends Shape {
   }
   
   render(){
+    window.alert("circle rendered");
     push()
     rotate(super.rot.x);
     translate(super.pos.x, super.pos.y);
