@@ -1,6 +1,6 @@
 var physObj = [];
 
-var physTickTimeout = 1000/2;
+var physTickTimeout = 1000;
 
 var stats = {prevTicks:[1]};
 
@@ -10,6 +10,8 @@ function setup(){
   physObj.push(new CircleShape(width/2, height/2, random(-10, 10), random(-10, 10), 10, 10));
   
   physPreTick();
+  
+  window.alert("Finished Setup!")
 }
 
 function draw(){
@@ -34,6 +36,8 @@ function physicTick(){
   for (let i = 0; i < physObj.length; i++){
     physObj[i].update();
   }
+  
+  window.alert("physicTick");
 }
 
 function physPreTick(){
@@ -45,5 +49,8 @@ function physPreTick(){
   if (stats.prevTicks.length > 20){
     stats.prevTicks.shift();
   }
+  
+  window.alert("physPreTick");
+  
   setTimeout(physPreTick, physTickTimeout);
 }
