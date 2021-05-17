@@ -34,30 +34,30 @@ class Shape {
       //window.alert("Setting x,y to pos.x, pos.y");
       
       // direct pos editing
-      if (this.pos.y + this.vel.y > height - this.size.y){
+      if (this.pos.y + this.vel.y > height - this.size.y/2){
         window.alert("bottom collsion");
         this.invertVel(0)
-        while (this.pos.y > height - this.size.y){
+        while (this.pos.y > height - this.size.y/2){
           this.pos.y -= 1;
         }
-      } else if (this.pos.y + this.vel.y < 0 + this.size.y){
+      } else if (this.pos.y + this.vel.y < 0 + this.size.y/2){
         window.alert("top collsion");
         this.invertVel(0);
-        while (this.pos.y < 0 + this.size.y){
+        while (this.pos.y < 0 + this.size.y/2){
           this.pos.y += 1;
         }
       }
       
-      if (this.pos.x + this.vel.x > width - this.size.x){
+      if (this.pos.x + this.vel.x > width - this.size.x/2){
         window.alert("right collsion");
         this.invertVel(1);
-        while (this.pos.x > width - this.size.x){
+        while (this.pos.x > width - this.size.x/2){
           this.pos.x -= 1;
         }
-      } else if (this.pos.x + this.vel.x < 0 + this.size.x){
+      } else if (this.pos.x + this.vel.x < 0 + this.size.x/2){
         window.alert("left collsion");
         this.invertVel(1);
-        while (this.pos.x < 0 + this.size.x){
+        while (this.pos.x < 0 + this.size.x/2){
           this.pos.x += 1;
         }
         
