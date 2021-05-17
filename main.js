@@ -13,7 +13,7 @@ function setup(){
   
   physPreTick();
   
-  window.alert("Finished Setup!")
+  //window.alert("Finished Setup!")
 }
 
 function draw(){
@@ -39,7 +39,7 @@ function physicTick(){
     physObj[i].update();
   }
   
-  window.alert("physicTick");
+  //window.alert("physicTick");
 }
 
 function physPreTick(){
@@ -52,7 +52,7 @@ function physPreTick(){
     stats.prevTicks.shift();
   }
   
-  window.alert("physPreTick");
+  //window.alert("physPreTick");
   
   setTimeout(physPreTick, physTickTimeout);
 }
