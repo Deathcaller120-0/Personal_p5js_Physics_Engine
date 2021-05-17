@@ -33,11 +33,11 @@ class Shape {
       //window.alert("vars set");
       
       // if it has enough velocity to escape the bounds, don't let it
-      if (y+sy > height || y-sy < 0){
+      if (y > height - sy || y < 0 + sy){
         this.invertVel(0);
       }
       
-      if (x+sx > width || x-sx < 0){
+      if (x > width - sx || x < 0 + sx){
         this.invertVel(1);
       }
       
@@ -47,26 +47,26 @@ class Shape {
       x = this.pos.x;
       y = this.pos.y;
       
-      if (y+sy > height){
+      if (y > height - sy){
         window.alert("bottom collsion");
-        while (this.pos.y+sy > height){
+        while (this.pos.y > height - sy){
           this.pos.y -= 1;
         }
-      } else if (y-sy < 0){
+      } else if (y < 0 + sy){
         window.alert("top collsion");
-        while (this.pos.y-sy < 0){
+        while (this.pos.y < 0 + sy){
           this.pos.y += 1;
         }
       }
       
-      if (x+sx > width){
+      if (x > width - sx){
         window.alert("right collsion");
-        while (this.pos.x+sx > width){
+        while (this.pos.x > width - sx){
           this.pos.x -= 1;
         }
-      } else if (x-sx < 0){
+      } else if (x < 0 + sx){
         window.alert("left collsion")
-        while (this.pos.x-sx < 0){
+        while (this.pos.x < 0 + sx){
           this.pos.x += 1;
         }
       }
