@@ -80,7 +80,7 @@ class Shape {
   }
   
   invertVel(isX){
-    window.alert("inverted vel for:" + (isX ? "x" : "y"));
+    window.alert("inverted vel for: " + (isX ? "x" : "y"));
     if (isX){
       this.vel.x += (-this.vel.x) * this.bounce;
       this.vel.x *= -1;
@@ -111,7 +111,7 @@ class CircleShape extends Shape {
     circle(0, 0, this.size.x);
     
     stroke(0);
-    line(0,0,this.size.x,this.size.x);
+    line(0,0,this.size.x/2,0);
     
     stroke(255,255,0)
     line(0,0,this.vel.x,this.vel.y);
