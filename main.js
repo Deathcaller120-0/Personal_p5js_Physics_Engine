@@ -5,8 +5,8 @@ var physTickTimeout = 1000/5;
 var stats = {prevTicks:[1]};
 
 var phys = {
-  gravity:0.01, 
-  drag:0.01
+  gravity:0.1, 
+  drag:0.1
 };
 
 function setup(){
