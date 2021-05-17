@@ -9,7 +9,7 @@ var phys = {gravity:0.01};
 function setup(){
   createCanvas(500, 500);
   
-  physObj.push(new CircleShape(width/2, height/2, random(-10, 10), 10, 10));
+  physObj.push(new CircleShape(width/2, height/2, random(-10, 10), random(-10, 10), 50));
   
   physPreTick();
   
