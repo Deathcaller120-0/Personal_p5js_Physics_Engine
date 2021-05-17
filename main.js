@@ -51,7 +51,11 @@ async function physicTick(){
 
 async function physPreTick(){
   let t0 = performance.now();
+  try{
   await physicTick();
+  } catch(error){
+    window.alert(error);
+  }
   let t1 = performance.now();
   
   stats.prevTicks.push(t1-t0);
