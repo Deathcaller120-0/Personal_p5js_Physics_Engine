@@ -35,13 +35,11 @@ class Shape {
       
       // direct pos editing
       if (this.pos.y + this.vel.y > height - this.size.y/2){
-        window.alert("bottom collsion");
         this.invertVel(0)
         while (this.pos.y > height - this.size.y/2){
           this.pos.y -= 1;
         }
       } else if (this.pos.y + this.vel.y < 0 + this.size.y/2){
-        window.alert("top collsion");
         this.invertVel(0);
         while (this.pos.y < 0 + this.size.y/2){
           this.pos.y += 1;
@@ -49,13 +47,11 @@ class Shape {
       }
       
       if (this.pos.x + this.vel.x > width - this.size.x/2){
-        window.alert("right collsion");
         this.invertVel(1);
         while (this.pos.x > width - this.size.x/2){
           this.pos.x -= 1;
         }
       } else if (this.pos.x + this.vel.x < 0 + this.size.x/2){
-        window.alert("left collsion");
         this.invertVel(1);
         while (this.pos.x < 0 + this.size.x/2){
           this.pos.x += 1;
@@ -73,7 +69,7 @@ class Shape {
   }
   
   invertVel(isX){
-    window.alert("inverted vel for: " + (isX ? "x" : "y"));
+    //window.alert("inverted vel for: " + (isX ? "x" : "y"));
     if (isX){
       this.vel.x += (-this.vel.x) * this.bounce;
       this.vel.x *= -1;
