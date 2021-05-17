@@ -87,6 +87,47 @@ class CircleShape extends Shape {
   }
   
   update(){
+    for (let i = 0; i < physObj.length; i++){
+      if (typeof physObj[i] != Object) continue;
+      if (physObj[i] == this) continue;
+      
+      let other = physObj[i];
+      
+      if (rectRect(other.pos.x - other.size.x - 10, 
+                   other.pos.y-other.size.y - 10, 
+                   other.size.x*2 + 10, 
+                   other.size.y*2 + 10, 
+                   this.pos.x-this.size.x+10, 
+                   this.pos.y-this.size.y+10, 
+                   this.size.x*2+10, 
+                   this.size.y*2+10)){
+        if (type0 == "circle" || type1 == "circle"){
+          if (type0 == type1) {
+            if (circleCircle(this.pos.x-this.size.x, this.pos.y-this.size.y, this.size.x*2, other.pos.x-other.size.x, other.pos.y-other.size.y, other.size.x*2)){
+              other.vel.add(-other.vel.mult(other.bounce));
+              this.vel.add(-this.vel.mult(this.bounce));
+              
+              other.vel.mult(-1);
+              this.vel.mult(-1);
+            }
+          }/*
+          if (type0 == "rect" || type1 == "rect"){
+            if (rectCircle()){
+              other.vel.add(-other.vel.mult(other.bounce));
+              this.vel.add(-this.vel.mult(this.bounce));
+              
+              other.vel.mult(-1);
+              this.vel.mult(-1);
+            }
+          }
+        }
+        if (type0 == "rect" || type1 == "rect"){
+          if (type0 == type1){
+            return "rectRect";
+          }
+        }*/
+      }
+    }
     this.subUpdate();
   }
   
