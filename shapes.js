@@ -23,8 +23,11 @@ class Shape {
     this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
     
     //window.alert(this.vel.y);
-    if(!rectRect(0, 0, width, height, this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x*2, this.size.y*2)){
-      //window.alert("Out of bounds, Calculating");
+    
+    // removed to check performance
+    //if(!rectRect(0, 0, width, height, this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x*2, this.size.y*2)){
+      
+    //window.alert("Out of bounds, Calculating");
       
       // shape is outside the canvas bounds
       
@@ -57,7 +60,9 @@ class Shape {
         while (this.pos.x < 0 + this.size.x){
           this.pos.x += 1;
         }
-      }
+        
+      //}
+        
       //window.alert("Exiting collsion checker");
     }
     this.pos.add(this.vel);
