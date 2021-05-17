@@ -1,4 +1,4 @@
-var physObj = [];
+//var physObj = [];
 
 var physTickTimeout = 1000/20;
 
