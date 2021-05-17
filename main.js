@@ -71,6 +71,7 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+/*
 var spawn = {prex:0, prey:0, endx:0, endy:0};
 function mousePressed(){
   if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
@@ -90,7 +91,7 @@ function mouseDragged(){
     spawn.endx = mouseX;
     spawn.endy = mouseY;
   }
-}
+}*/
 
 function mouseReleased(){
    if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
