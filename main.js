@@ -4,7 +4,7 @@ var physTickTimeout = 1000;
 
 var stats = {prevTicks:[1]};
 
-var phys = {gravity:0.1};
+var phys = {gravity:0.01};
 
 function setup(){
   createCanvas(500, 500);
