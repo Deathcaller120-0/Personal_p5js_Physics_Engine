@@ -1,6 +1,6 @@
 var physObj = [];
 
-var physTickTimeout = 1000/2;
+var physTickTimeout = 1000/5;
 
 var stats = {prevTicks:[1]};
 
