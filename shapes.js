@@ -50,24 +50,24 @@ class Shape {
       if (y+sy > height){
         window.alert("bottom collsion");
         while (this.pos.y+sy > height){
-          this.pos.y += -0.1;
+          this.pos.y -= ;
         }
       } else if (y-sy < 0){
         window.alert("top collsion");
         while (this.pos.y-sy < 0){
-          this.pos.y += 0.1;
+          this.pos.y += 1;
         }
       }
       
       if (x+sx > width){
         window.alert("right collsion");
-        while (this.pos.x+sy > width){
-          this.pos.x += -0.1;
+        while (this.pos.x+sx > width){
+          this.pos.x -= 1;
         }
       } else if (x-sx < 0){
         window.alert("left collsion")
         while (this.pos.x-sx < 0){
-          this.pos.x += 0.1;
+          this.pos.x += 1;
         }
       }
       //window.alert("Exiting collsion checker");
@@ -108,9 +108,10 @@ class CircleShape extends Shape {
     translate(this.pos.x, this.pos.y);
     fill(this.color);
     circle(0, 0, this.size.x);
+    line(0,0,this.size.x,this.size.x);
     
     stroke(255,255,0,256/4)
-    strokeWeight(this.size.x/2);
+    strokeWeight(this.size.x);
     line(0,0,this.vel.x,this.vel.y);
     pop()
   }
