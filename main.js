@@ -19,6 +19,10 @@ function setup(){
 function draw(){
   background(20);
   
+  for(let i = 0; i < physObj.length; i++){
+    physObj[i].render();
+  }
+  
   push();
   fill(255)
   text(Math.round(frameRate()) + " Render FPS", 1, 10);
