@@ -4,12 +4,12 @@ var physTickTimeout = 1000;
 
 var stats = {prevTicks:[1]};
 
-var phys = {gravity:1};
+var phys = {gravity:0.1};
 
 function setup(){
   createCanvas(500, 500);
   
-  physObj.push(new CircleShape(width/2, height/2, random(-10, 10), random(-10, 10), 10, 10));
+  physObj.push(new CircleShape(width/2, height/2, random(-10, 10), 10, 10));
   
   physPreTick();
   
