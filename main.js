@@ -31,7 +31,7 @@ function draw(){
   for (let i = 0; i < stats.prevTicks.length; i++){
     avgTick += stats.prevTicks[i];
   }
-  avgTick *= 1;
+  avgTick *= 10;
   avgTick /= stats.prevTicks.length;
   
   text(Math.round(avgTick) + " Physics Ticks", 1, 22);
