@@ -88,8 +88,8 @@ class CircleShape extends Shape {
   
   update(){
     for (let i = 0; i < physObj.length; i++){
-      if (typeof physObj[i] != Object) continue;
-      if (physObj[i] == this) continue;
+      if (typeof physObj[i] != Object) {continue;}
+      if (physObj[i] == this) {continue;}
       
       let other = physObj[i];
       
@@ -104,10 +104,12 @@ class CircleShape extends Shape {
         if (type0 == "circle" || type1 == "circle"){
           if (type0 == type1) {
             if (circleCircle(this.pos.x-this.size.x, this.pos.y-this.size.y, this.size.x*2, other.pos.x-other.size.x, other.pos.y-other.size.y, other.size.x*2)){
-              other.vel.add(-other.vel.mult(other.bounce));
-              this.vel.add(-this.vel.mult(this.bounce));
-              
+              other.vel.x += (-other.vel.x) * other.bounce;
+              other.vel.y += (-other.vel.y) * other.bounce;
               other.vel.mult(-1);
+              
+              this.vel.x += (-this.vel.x) * this.bounce;
+              this.vel.y += (-this.vel.y) * this.bounce;
               this.vel.mult(-1);
             }
           }/*
