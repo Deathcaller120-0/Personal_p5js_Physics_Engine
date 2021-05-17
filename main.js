@@ -91,10 +91,10 @@ function mouseDragged(){
     spawn.endx = mouseX;
     spawn.endy = mouseY;
   }
-}*/
+}
 
 function mouseReleased(){
    if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
     physObj.push(new Circle(mouseX, mouseY, random(-20, 20), random(-20, 20), random(10, 50)));
    }
-}
+}*/
