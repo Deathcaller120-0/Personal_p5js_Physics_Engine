@@ -20,6 +20,8 @@ class Shape {
     window.alert("updating shape");
     
     this.vel.y += phys.gravity;
+    
+    window.alert(this.vel.y);
     if(!rectRect(this.pos.x-this.size.x/2, this.pos.y-this.size.y/2, this.size.x/2, this.size.y/2, 0, 0, width, height)){
       window.alert("Out of bounds, Calculating");
       // its outside the canvas bounds
