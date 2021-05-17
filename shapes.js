@@ -49,24 +49,24 @@ class Shape {
       
       if (y+sy > height){
         window.alert("bottom collsion");
-        while (y+sy > height){
+        while (this.pos.y+sy > height){
           this.pos.y += -0.1;
         }
       } else if (y-sy < 0){
         window.alert("top collsion");
-        while (y-sy < 0){
+        while (this.pos.y-sy < 0){
           this.pos.y += 0.1;
         }
       }
       
       if (x+sx > width){
         window.alert("right collsion");
-        while (y+sy > width){
+        while (this.pos.x+sy > width){
           this.pos.x += -0.1;
         }
       } else if (x-sx < 0){
         window.alert("left collsion")
-        while (x-sx < 0){
+        while (this.pos.x-sx < 0){
           this.pos.x += 0.1;
         }
       }
@@ -92,8 +92,8 @@ class Shape {
 }
 
 class CircleShape extends Shape {
-  constructor(x, y, vx, vy, w, h, _color, bounceLoss = 0.9){
-    super(x, y, vx, vy, w, h, _color, "circle", bounceLoss);
+  constructor(x, y, vx, vy, w, _color, bounceLoss = 0.9){
+    super(x, y, vx, vy, w, w, _color, "circle", bounceLoss);
     //window.alert("circle created");
   }
   
@@ -108,6 +108,10 @@ class CircleShape extends Shape {
     translate(this.pos.x, this.pos.y);
     fill(this.color);
     circle(0, 0, this.size.x);
+    
+    stroke(255,255,0,256/4)
+    strokeWeight(this.size.x/2);
+    line(0,0,this.vel.x,this.vel.y);
     pop()
   }
 }
