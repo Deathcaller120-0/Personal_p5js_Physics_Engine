@@ -23,17 +23,17 @@ class Shape {
     this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
     
     //window.alert(this.vel.y);
-    if(!rectRect(0,0,width, height, this.pos.x - this.size.x/2, this.pos.y - this.size.y/2, this.size.x, this.size.y)){
+    if(!rectRect(0,0,width, height, this.pos.x - this.size.x/2, this.pos.y - this.size.y/2, this.size.x/2, this.size.y/2)){
       //window.alert("Out of bounds, Calculating");
       
       // shape is outside the canvas bounds
       
       // if it has enough velocity to escape the bounds, bounce off
-      if (this.pos.y + this.vel.y > height - this.size.y || this.pos.y + this.vel.y < 0 + this.size.y){
+      if (this.pos.y + this.vel.y > height + this.size.y || this.pos.y + this.vel.y < 0 - this.size.y){
         this.invertVel(0);
       }
       
-      if (this.pos.x + this.vel.x > width - sx || this.pos.x + this.vel.x < 0 + this.size.x){
+      if (this.pos.x + this.vel.x > width + this.size.x || this.pos.x + this.vel.x < 0 - this.size.x){
         this.invertVel(1);
       }
       
