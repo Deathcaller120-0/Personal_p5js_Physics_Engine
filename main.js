@@ -94,6 +94,6 @@ function mouseDragged(){
 
 function mouseReleased(){
    if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
-    physObjects.push(new Circle(spawn.prex, spawn.prey, spawn.endx, spawn.endy, random(10, 50)));
+    physObjects.push(new Circle(mouseX, mouseY, random(-20, 20), spawn(-20, 20), random(10, 50)));
    }
 }
