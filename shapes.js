@@ -23,7 +23,7 @@ class Shape {
     this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
     
     //window.alert(this.vel.y);
-    if(!rectRect(0,0,width, height, this.pos.x - this.size.x/2, this.pos.y - this.size.y/2, this.size.x/2, this.size.y/2)){
+    if(!rectRect(0, 0, width, height, this.pos.x - this.size.x/2, this.pos.y - this.size.y/2, this.size.x*2, this.size.y*2)){
       //window.alert("Out of bounds, Calculating");
       
       // shape is outside the canvas bounds
@@ -31,13 +31,13 @@ class Shape {
       //window.alert("Setting x,y to pos.x, pos.y");
       
       // direct pos editing
-      if (this.pos.y > height - this.size.y){
+      if (this.pos.y + this.vel.y > height - this.size.y){
         window.alert("bottom collsion");
         this.invertVel(0)
         while (this.pos.y > height - this.size.y){
           this.pos.y -= 1;
         }
-      } else if (this.pos.y < 0 + this.size.y){
+      } else if (this.pos.y + this.vel.y < 0 + this.size.y){
         window.alert("top collsion");
         this.invertVel(0);
         while (this.pos.y < 0 + this.size.y){
@@ -45,13 +45,13 @@ class Shape {
         }
       }
       
-      if (this.pos.x > width - this.size.x){
+      if (this.pos.x + this.vel.x > width - this.size.x){
         window.alert("right collsion");
         this.invertVel(1);
         while (this.pos.x > width - this.size.x){
           this.pos.x -= 1;
         }
-      } else if (this.pos.x < 0 + this.size.x){
+      } else if (this.pos.x + this.vel.x < 0 + this.size.x){
         window.alert("left collsion");
         this.invertVel(1);
         while (this.pos.x < 0 + this.size.x){
