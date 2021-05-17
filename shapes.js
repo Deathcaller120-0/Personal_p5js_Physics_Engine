@@ -80,12 +80,12 @@ class Shape {
   }
   
   invertVel(isX){
-    //window.alert("inverted vel for:" + (isX ? "x" : "y"));
+    window.alert("inverted vel for:" + (isX ? "x" : "y"));
     if (isX){
-      this.vel.x += -this.vel.x * this.bounce;
+      this.vel.x += (-this.vel.x) * this.bounce;
       this.vel.x *= -1;
     } else {
-      this.vel.y += -this.vel.y * this.bounce;
+      this.vel.y += (-this.vel.y) * this.bounce;
       this.vel.y *= -1;
     }
   }
@@ -104,14 +104,16 @@ class CircleShape extends Shape {
   render(){
     //window.alert("circle rendered");
     push()
+    noStroke();
     rotate(this.rot.x);
     translate(this.pos.x, this.pos.y);
     fill(this.color);
     circle(0, 0, this.size.x);
+    
+    stroke(0);
     line(0,0,this.size.x,this.size.x);
     
-    stroke(255,255,0,256/4)
-    strokeWeight(this.size.x);
+    stroke(255,255,0)
     line(0,0,this.vel.x,this.vel.y);
     pop()
   }
