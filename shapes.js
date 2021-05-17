@@ -28,25 +28,18 @@ class Shape {
       
       // shape is outside the canvas bounds
       
-      // if it has enough velocity to escape the bounds, bounce off
-      if (this.pos.y + this.vel.y > height + this.size.y || this.pos.y + this.vel.y < 0 - this.size.y){
-        this.invertVel(0);
-      }
-      
-      if (this.pos.x + this.vel.x > width + this.size.x || this.pos.x + this.vel.x < 0 - this.size.x){
-        this.invertVel(1);
-      }
-      
       //window.alert("Setting x,y to pos.x, pos.y");
       
       // direct pos editing
       if (this.pos.y > height - this.size.y){
         window.alert("bottom collsion");
+        this.invertVel(0)
         while (this.pos.y > height - this.size.y){
           this.pos.y -= 1;
         }
       } else if (this.pos.y < 0 + this.size.y){
         window.alert("top collsion");
+        this.invertVel(0);
         while (this.pos.y < 0 + this.size.y){
           this.pos.y += 1;
         }
@@ -54,11 +47,13 @@ class Shape {
       
       if (this.pos.x > width - this.size.x){
         window.alert("right collsion");
+        this.invertVel(1);
         while (this.pos.x > width - this.size.x){
           this.pos.x -= 1;
         }
       } else if (this.pos.x < 0 + this.size.x){
-        window.alert("left collsion")
+        window.alert("left collsion");
+        this.invertVel(1);
         while (this.pos.x < 0 + this.size.x){
           this.pos.x += 1;
         }
