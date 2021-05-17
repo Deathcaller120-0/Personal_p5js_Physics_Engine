@@ -41,7 +41,7 @@ function draw(){
   pop();
 }
 
-async function physicTick(){
+function physicTick(){
   for (let i = 0; i < physObj.length; i++){
     physObj[i].update();
   }
@@ -49,10 +49,10 @@ async function physicTick(){
   //window.alert("physicTick");
 }
 
-async function physPreTick(){
+function physPreTick(){
   let t0 = performance.now();
   try{
-  await physicTick();
+    physicTick();
   } catch(error){
     window.alert(error);
   }
@@ -63,10 +63,8 @@ async function physPreTick(){
     stats.prevTicks.shift();
   }
   
-  //window.alert("physPreTick");
-  
-  await sleep(physTickTimeout);
-  physPreTick()
+  //await sleep(physTickTimeout);
+  setTimeout(physPreTick,physTickTimeout);
 }
 
 function sleep(ms) {
