@@ -20,14 +20,13 @@ class Shape {
     //window.alert("updating shape");
     
     this.vel.y += phys.gravity;
+    this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
     
     //window.alert(this.vel.y);
-    if(!rectRect(this.pos.x-this.size.x/2, this.pos.y-this.size.y/2, this.size.x, this.size.y, 0, 0, width, height)){
+    if(!rectRect(0,0,width, height, this.pos.x - this.size.x/2, this.pos.y - this.size.y/2, this.size.x, this.size.y)){
       //window.alert("Out of bounds, Calculating");
       
       // shape is outside the canvas bounds
-      
-      //window.alert("vars set");
       
       // if it has enough velocity to escape the bounds, bounce off
       if (this.pos.y + this.vel.y > height - this.size.y || this.pos.y + this.vel.y < 0 + this.size.y){
