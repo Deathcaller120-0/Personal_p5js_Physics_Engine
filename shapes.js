@@ -50,24 +50,24 @@ class Shape {
       if (y+sy > height){
         window.alert("bottom collsion");
         while (y+sy > height){
-          this.pos.y += -1e-2;
+          this.pos.y += -0.1;
         }
       } else if (y-sy < 0){
         window.alert("top collsion");
         while (y-sy < 0){
-          this.pos.y += 1e-2;
+          this.pos.y += 0.1;
         }
       }
       
       if (x+sx > width){
         window.alert("right collsion");
         while (y+sy > width){
-          this.pos.x += -1e-2;
+          this.pos.x += -0.1;
         }
       } else if (x-sx < 0){
         window.alert("left collsion")
         while (x-sx < 0){
-          this.pos.x += 1e-2;
+          this.pos.x += 0.1;
         }
       }
       //window.alert("Exiting collsion checker");
