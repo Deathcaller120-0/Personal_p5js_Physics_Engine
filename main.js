@@ -70,3 +70,30 @@ function physPreTick(){
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+var spawn = {prex:0, prey:0, endx:0, endy:0};
+function mousePressed(){
+  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+    spawn.prex = mouseX;
+    spawn.prey = mouseY;
+  }
+}
+
+function mouseDragged(){
+  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+    push()
+    stroke(255,255,0,127);
+    strokeWeight(3);
+    line(spawn.prex, spawn.prey, mouseX, mouseY);
+    pop();
+    
+    spawn.endx = mouseX;
+    spawn.endy = mouseY;
+  }
+}
+
+function mouseReleased(){
+   if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+    physObjects.push(new Circle(spawn.prex, spawn.prey, spawn.endx, spawn.endy, random(10, 50)));
+   }
+}
