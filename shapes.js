@@ -50,7 +50,7 @@ class Shape {
       if (y+sy > height){
         window.alert("bottom collsion");
         while (this.pos.y+sy > height){
-          this.pos.y -= ;
+          this.pos.y -= 1;
         }
       } else if (y-sy < 0){
         window.alert("top collsion");
