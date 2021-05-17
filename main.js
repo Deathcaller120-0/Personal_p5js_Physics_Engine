@@ -1,10 +1,13 @@
 var physObj = [];
 
-var physTickTimeout = 1000;
+var physTickTimeout = 1000/2;
 
 var stats = {prevTicks:[1]};
 
-var phys = {gravity:0.01};
+var phys = {
+  gravity:0.01, 
+  drag:0.01
+};
 
 function setup(){
   createCanvas(500, 500);
