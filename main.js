@@ -6,7 +6,7 @@ var stats = {prevTicks:[1]};
 
 var phys = {
   gravity:0.1, 
-  drag:0.1
+  drag:0.05
 };
 
 function setup(){
