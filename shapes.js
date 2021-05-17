@@ -12,25 +12,25 @@ class Shape {
     
     this.type = shapeType;
     
-    window.alert("created shape of type:" + this.type);
-    window.alert("pos:" + this.pos.x + ", " + this.pos.y);
+    //window.alert("created shape of type:" + this.type);
+    //window.alert("pos:" + this.pos.x + ", " + this.pos.y);
   }
   
   subUpdate(){
-    window.alert("updating shape");
+    //window.alert("updating shape");
     
     this.vel.y += phys.gravity;
     
-    window.alert(this.vel.y);
+    //window.alert(this.vel.y);
     if(!rectRect(this.pos.x-this.size.x/2, this.pos.y-this.size.y/2, this.size.x/2, this.size.y/2, 0, 0, width, height)){
-      window.alert("Out of bounds, Calculating");
+      //window.alert("Out of bounds, Calculating");
       // its outside the canvas bounds
       let x = this.vel.x;
       let y = this.vel.y;
       let sx = this.size.x/2; 
       let sy = this.size.y/2;
       
-      window.alert("vars set");
+      //window.alert("vars set");
       
       // if it has enough velocity to escape the bounds, don't let it
       if (y+sy > height || y-sy < 0){
@@ -41,7 +41,7 @@ class Shape {
         this.invertVel(1);
       }
       
-      window.alert("Setting x,y to pos.x, pos.y");
+      //window.alert("Setting x,y to pos.x, pos.y");
       
       // set x, y to shapes position
       x = this.pos.x;
@@ -70,7 +70,7 @@ class Shape {
           this.pos.x += 1e-2;
         }
       }
-      window.alert("Exiting collsion checker");
+      //window.alert("Exiting collsion checker");
     }
     this.pos.add(this.vel);
   }
@@ -80,7 +80,7 @@ class Shape {
   }
   
   invertVel(isX){
-    window.alert("inverted vel for:" + (isX ? "x" : "y"));
+    //window.alert("inverted vel for:" + (isX ? "x" : "y"));
     if (isX){
       this.vel.x += -this.vel.x * this.bounce;
       this.vel.x *= -1;
@@ -94,7 +94,7 @@ class Shape {
 class CircleShape extends Shape {
   constructor(x, y, vx, vy, w, h, _color, bounceLoss = 0.9){
     super(x, y, vx, vy, w, h, _color, "circle", bounceLoss);
-    window.alert("circle created");
+    //window.alert("circle created");
   }
   
   update(){
@@ -102,7 +102,7 @@ class CircleShape extends Shape {
   }
   
   render(){
-    window.alert("circle rendered");
+    //window.alert("circle rendered");
     push()
     rotate(this.rot.x);
     translate(this.pos.x, this.pos.y);
