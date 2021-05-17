@@ -31,14 +31,14 @@ function draw(){
   for (let i = 0; i < stats.prevTicks.length; i++){
     avgTick += stats.prevTicks[i];
   }
-  avgTick *= physTickTimeout;
+  avgTick *= 1;
   avgTick /= stats.prevTicks.length;
   
   text(Math.round(avgTick) + " Physics Ticks", 1, 22);
   pop();
 }
 
-function physicTick(){
+async function physicTick(){
   for (let i = 0; i < physObj.length; i++){
     physObj[i].update();
   }
@@ -46,9 +46,9 @@ function physicTick(){
   //window.alert("physicTick");
 }
 
-function physPreTick(){
+async function physPreTick(){
   let t0 = performance.now();
-  physicTick();
+  await physicTick();
   let t1 = performance.now();
   
   stats.prevTicks.push(t1-t0);
@@ -58,5 +58,10 @@ function physPreTick(){
   
   //window.alert("physPreTick");
   
-  setTimeout(physPreTick, physTickTimeout);
+  await sleep(physTickTimeout);
+  physPreTick()
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
