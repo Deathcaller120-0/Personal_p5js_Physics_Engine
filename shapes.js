@@ -22,51 +22,45 @@ class Shape {
     this.vel.y += phys.gravity;
     
     //window.alert(this.vel.y);
-    if(!rectRect(this.pos.x-this.size.x/2, this.pos.y-this.size.y/2, this.size.x/2, this.size.y/2, 0, 0, width, height)){
+    if(!rectRect(this.pos.x-this.size.x/2, this.pos.y-this.size.y/2, this.size.x, this.size.y, 0, 0, width, height)){
       //window.alert("Out of bounds, Calculating");
-      // its outside the canvas bounds
-      let x = this.vel.x;
-      let y = this.vel.y;
-      let sx = this.size.x/2; 
-      let sy = this.size.y/2;
+      
+      // shape is outside the canvas bounds
       
       //window.alert("vars set");
       
-      // if it has enough velocity to escape the bounds, don't let it
-      if (this.pos.y + y > height - sy || this.pos.y + y < 0 + sy){
+      // if it has enough velocity to escape the bounds, bounce off
+      if (this.pos.y + this.vel.y > height - this.size.y || this.pos.y + this.vel.y < 0 + this.size.y){
         this.invertVel(0);
       }
       
-      if (this.pos.x + x > width - sx || this.pos.x + x < 0 + sx){
+      if (this.pos.x + this.vel.x > width - sx || this.pos.x + this.vel.x < 0 + this.size.x){
         this.invertVel(1);
       }
       
       //window.alert("Setting x,y to pos.x, pos.y");
       
-      // set x, y to shapes position
-      x = this.pos.x;
-      y = this.pos.y;
-      
-      if (y > height - sy){
+      // direct pos editing
+      if (this.pos.y > height - this.size.y){
         window.alert("bottom collsion");
-        while (this.pos.y > height - sy){
+        while (this.pos.y > height - this.size.y){
           this.pos.y -= 1;
         }
-      } else if (y < 0 + sy){
+      } else if (this.pos.y < 0 + this.size.y){
         window.alert("top collsion");
-        while (this.pos.y < 0 + sy){
+        while (this.pos.y < 0 + this.size.y){
           this.pos.y += 1;
         }
       }
       
-      if (x > width - sx){
+      if (this.pos.x > width - this.size.x){
         window.alert("right collsion");
-        while (this.pos.x > width - sx){
+        while (this.pos.x > width - this.size.x){
           this.pos.x -= 1;
         }
-      } else if (x < 0 + sx){
+      } else if (this.pos.x < 0 + this.size.x){
         window.alert("left collsion")
-        while (this.pos.x < 0 + sx){
+        while (this.pos.x < 0 + this.size.x){
           this.pos.x += 1;
         }
       }
