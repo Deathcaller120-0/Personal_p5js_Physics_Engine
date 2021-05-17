@@ -1,12 +1,14 @@
+window.alert("loading detection");
+
 function rectRect(x1, y1, w1, h1, x2, y2, w2, h2){
   if (x1 + w1 >= x2 && x1 <= x2 + w2 && y1 + h1 >= y2 && y1 <= y2 + h2) {
     return true;
   }
   return false;
 }
+window.alert("rectRect loaded");
 
 function circleCircle(c1x, c1y, c1r, c2x, c2y, c2r) {
-
   // get distance between the circle's centers
   // use the Pythagorean Theorem to compute the distance
   let distX = c1x - c2x;
@@ -20,6 +22,7 @@ function circleCircle(c1x, c1y, c1r, c2x, c2y, c2r) {
   }
   return false;
 }
+window.alert("circleCircle loaded");
 
 function circleRect(cx, cy, radius, rx, ry, rw, rh) {
 
@@ -44,6 +47,7 @@ function circleRect(cx, cy, radius, rx, ry, rw, rh) {
   }
   return false;
 }
+window.alert("circleRect loaded");
 
 function pointPoint(x1, y1, x2, y2) {
   // are the two points in the same location?
@@ -52,6 +56,7 @@ function pointPoint(x1, y1, x2, y2) {
   }
   return false;
 }
+window.alert("pointPoint loaded");
 
 function lineLine(x1, y1, x2, y2, x3, y3, x4, y4) {
 
@@ -75,6 +80,7 @@ function lineLine(x1, y1, x2, y2, x3, y3, x4, y4) {
   }
   return false;
 }
+window.alert("lineLine loaded");
 
 function lineRect(x1, y1, x2, y2, rx, ry, rw, rh) {
 
@@ -92,3 +98,4 @@ function lineRect(x1, y1, x2, y2, rx, ry, rw, rh) {
   }
   return false;
 }
+window.alert("lineRect loaded");
