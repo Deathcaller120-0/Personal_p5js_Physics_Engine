@@ -33,11 +33,11 @@ class Shape {
       //window.alert("vars set");
       
       // if it has enough velocity to escape the bounds, don't let it
-      if (y > height - sy || y < 0 + sy){
+      if (this.pos.y + y > height - sy || this.pos.y + y < 0 + sy){
         this.invertVel(0);
       }
       
-      if (x > width - sx || x < 0 + sx){
+      if (this.pos.x + x > width - sx || this.pos.x + x < 0 + sx){
         this.invertVel(1);
       }
       
