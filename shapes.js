@@ -23,7 +23,7 @@ class Shape {
     this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
     
     //window.alert(this.vel.y);
-    if(!rectRect(0, 0, width, height, this.pos.x - this.size.x/2, this.pos.y - this.size.y/2, this.size.x*2, this.size.y*2)){
+    if(!rectRect(0, 0, width, height, this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x*2, this.size.y*2)){
       //window.alert("Out of bounds, Calculating");
       
       // shape is outside the canvas bounds
