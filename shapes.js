@@ -18,12 +18,12 @@ class Shape {
     } catch (err){
       window.alert("Shape Setup | " err.name + ":" + err.message)
     }
-    //window.alert("created shape of type:" + this.type);
+    window.alert("created shape of type:" + this.type);
     //window.alert("pos:" + this.pos.x + ", " + this.pos.y);
   }
   
   subUpdate(){
-    //window.alert("updating shape");
+    window.alert("SUbUpdate Called");
     try { 
     this.vel.y += phys.gravity;
     this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
@@ -37,27 +37,33 @@ class Shape {
       
       // shape is outside the canvas bounds
       
-      //window.alert("Setting x,y to pos.x, pos.y");
+      window.alert("Repositioning and vel inversion for Y");
       
       // direct pos editing
       if (this.pos.y + this.vel.y > height - this.size.y/2){
+        window.alert("Hit Top");
         this.invertVel(0)
         while (this.pos.y > height - this.size.y/2){
           this.pos.y -= 1;
         }
       } else if (this.pos.y + this.vel.y < 0 + this.size.y/2){
+        window.alert("Hit Bottom");
         this.invertVel(0);
         while (this.pos.y < 0 + this.size.y/2){
           this.pos.y += 1;
         }
       }
       
+      window.alert("Repositioning and vel inversion for X");
+      
       if (this.pos.x + this.vel.x > width - this.size.x/2){
+        window.alert("Hit Right");
         this.invertVel(1);
         while (this.pos.x > width - this.size.x/2){
           this.pos.x -= 1;
         }
       } else if (this.pos.x + this.vel.x < 0 + this.size.x/2){
+        window.alert("Hit Left");
         this.invertVel(1);
         while (this.pos.x < 0 + this.size.x/2){
           this.pos.x += 1;
@@ -65,10 +71,12 @@ class Shape {
       }
     //}
     this.pos.add(this.vel);
+    window.alert("Adding Pos");
       
     } catch (err){
       window.alert("SubUpdate | " err.name + ":" + err.message)
     }
+    window.alert("SubUpdate end");
   }
   
   getShapeType(){
@@ -76,7 +84,7 @@ class Shape {
   }
   
   invertVel(isX){
-    //window.alert("inverted vel for: " + (isX ? "x" : "y"));
+    window.alert("inverted vel for: " + (isX ? "x" : "y"));
     try {
     if (isX){
       this.vel.x += (-this.vel.x) * this.bounce;
@@ -112,20 +120,23 @@ class CircleShape extends Shape {
   }
   
   update(){
+    window.alert("Update Called")
     try {
     for (let i = 0; i < physObj.length; i++){
       //if (typeof physObj[i] != Object) {continue;}
       if (physObj[i].getIndex() == this.getIndex()) {continue;}
       
+      window.alert("Got a shape");
+      
       let other = physObj[i];
       let type0 = this.getShapeType();
       let type1 = other.getShapeType();
       
-      
+      window.alert("checking larger collsion");
       if (rectRect(other.pos.x - other.size.x - 10, other.pos.y - other.size.y - 10, other.size.x * 2 + 10, other.size.y * 2 + 10, this.pos.x - this.size.x + 10, this.pos.y - this.size.y + 10, this.size.x * 2 + 10, this.size.y * 2 + 10)){
         if (type0 == "circle" || type1 == "circle"){
           if (type0 == type1) {
-            if (circleCircle(this.pos.x-this.size.x, this.pos.y-this.size.y, this.size.x*2, other.pos.x-other.size.x, other.pos.y-other.size.y, other.size.x*2)){
+            if (circleCircle(this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x * 2, other.pos.x - other.size.x, other.pos.y - other.size.y, other.size.x * 2)){
               other.vel.x += (-other.vel.x) * other.bounce;
               other.vel.y += (-other.vel.y) * other.bounce;
               other.vel.mult(-1);
@@ -158,12 +169,14 @@ class CircleShape extends Shape {
     } catch (err){
       window.alert("Update | " err.name + ":" + err.message)
     }
+    window.alert("exiting update");
   }
   
   render(){
     try {
       
-    //window.alert("circle rendered");
+    window.alert("render called");
+    
     push()
     noStroke();
     rotate(this.rot.x);
