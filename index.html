@@ -16,5 +16,38 @@
   <body>
     <script src="shapes.js"></script>
     <script src="main.js"></script>
+    
+    <span>Spawn X</span>
+    <input id="spawnX" min=0 max=500>
+    <br>
+    
+    <span>Spawn Y</span>
+    <input id="spawnY" min=0 max=500>
+    <br>
+    
+    <span>Size X</span>
+    <input id="spawnSizeX" min=1 max=100>
+    <br>
+    
+    <span>Size Y</span>
+    <input id="spawnSizeY" min=1 max=100>
+    <br>
+    
+    <span>Velocity X</span>
+    <input id="spawnVelX" min=-50 max=50>
+    <br>
+    
+    <span>Velocity Y</span>
+    <input id="spawnVelY" min=-50 max=50>
+    <br>
+    
+    <span>Physics Shape</span>
+    <select id="spawnType">
+      <option value="circle">Circle</option>
+      <option valie="circle">Rect</option>
+    </select>
+    <br>
+    <button onclick="spawn()"></button>
+    <br>
   </body>
 </html>
