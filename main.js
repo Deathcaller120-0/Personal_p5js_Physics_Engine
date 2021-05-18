@@ -1,4 +1,4 @@
-window.alert("loading main");
+//window.alert("loading main");
 
 physObj = [];
 
@@ -12,7 +12,7 @@ phys = {
 };
 
 function setup(){
-  window.alert("setup call");
+  //window.alert("setup call");
   try {
   
   createCanvas(500, 500);
