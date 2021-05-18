@@ -1,3 +1,5 @@
+window.alert("loading main");
+
 physObj = [];
 
 var physTickTimeout = 1000/5;
@@ -10,6 +12,7 @@ phys = {
 };
 
 function setup(){
+  window.alert("setup call");
   try {
   
   createCanvas(500, 500);
@@ -21,7 +24,7 @@ function setup(){
   } catch (err){
     window.alert("Setup | " err.name + ":" + err.message)
   }
-  window.alert("Finished Setup!")
+  window.alert("Finished Setup")
 }
 
 function draw(){
@@ -65,6 +68,7 @@ function physicTick(){
 }
 
 function physPreTick(){
+  window.alert("physPreTick Called");
   try {
   
   let t0 = performance.now();
