@@ -1,3 +1,4 @@
+try {
 class Shape {
   constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="rect", bounceLoss = 0.5, vectors = []){
     this.pos = createVector(x, y);
@@ -149,4 +150,7 @@ class CircleShape extends Shape {
     line(0,0,this.vel.x,this.vel.y);
     pop()
   }
+}
+} catch (error){
+  window.alert(error);
 }
