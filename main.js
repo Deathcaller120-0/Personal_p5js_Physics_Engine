@@ -12,7 +12,7 @@ var stats = {prevTicks:[1]};
 function setup(){
   try {
   
-    createCanvas(500, 500);
+  createCanvas(500, 500);
   
   physObj.push(new CircleShape(width/2, height/2, random(-10, 10), random(-10, 10), 50));
   
@@ -68,11 +68,9 @@ function physPreTick(){
   try {
   
   let t0 = performance.now();
-  try{
-    physicTick();
-  } catch(error){
-    window.alert(error);
-  }
+
+  physicTick();
+  
   let t1 = performance.now();
   
   stats.prevTicks.push(t1-t0);
