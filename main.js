@@ -1,3 +1,4 @@
+try {
 //var physObj = [];
 
 var physTickTimeout = 1000/20;
@@ -98,3 +99,6 @@ function mouseReleased(){
     physObj.push(new Circle(mouseX, mouseY, random(-20, 20), random(-20, 20), random(10, 50)));
    }
 }*/
+} catch (error){
+  window.alert("Main: " + error);
+}
