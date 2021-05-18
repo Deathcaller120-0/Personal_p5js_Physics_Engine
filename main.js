@@ -17,9 +17,9 @@ function setup(){
   
   createCanvas(500, 500);
   
-  physObj.push(new phys_CircleShape(width/2, height/2, random(-10, 10), random(-10, 10), 50));
-  physObj.push(new phys_CircleShape(random(width), random(height), random(-20, 20), random(-20, 20), random(10, 50)));
-  physObj[physObj.length-1].setIndex(1);
+  physObj.push(new phys_Circle(width/2, height/2, random(-10, 10), random(-10, 10), 50));
+  //physObj.push(new phys_CircleShape(random(width), random(height), random(-20, 20), random(-20, 20), random(10, 50)));
+  //physObj[physObj.length-1].setIndex(1);
   
   physPreTick();
   
