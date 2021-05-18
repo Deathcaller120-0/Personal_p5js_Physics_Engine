@@ -1,5 +1,5 @@
 //window.alert("loading shape")
-try {
+//try {
   
 class Shape {
   constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="circle", bounceLoss = 0.5, vectors = []){
@@ -204,6 +204,6 @@ class CircleShape extends Shape {
   }
 }
   
-} catch (e){
-  window.alert("Shapes Main | " + e.name + ": " + e.message);
-}
+//} catch (e){
+//  window.alert("Shapes Main | " + e.name + ": " + e.message);
+//}
