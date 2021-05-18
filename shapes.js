@@ -61,12 +61,12 @@ class Shape {
         this.invertVel(1);
         while (this.pos.x < 0 + this.size.x/2){
           this.pos.x += 1;
-        }
+      }
         
       //}
         
       //window.alert("Exiting collsion checker");
-    }
+    //}
     this.pos.add(this.vel);
       
     } catch (err){
