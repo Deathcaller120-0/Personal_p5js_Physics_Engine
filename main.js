@@ -19,7 +19,7 @@ function setup(){
   
   createCanvas(500, 500);
   
-  physObj.push(new phys_Circle(width / 2, height / 2, random(-10, 10), random(-10, 10), 50));
+  physObj.push(new phys_Circle(width / 2, height / 2, random(-20, 20), random(-20, 20), 50));
   physObj.push(new phys_Circle(random(width), random(height), random(-20, 20), random(-20, 20), random(10, 50)));
   physObj[physObj.length-1].setIndex(1);
   
@@ -113,14 +113,18 @@ function spawn(){
   if (type == "circle"){
     physObj.push(new phys_Circle(x, y, vx, vy, sizeX)));
   }
-  physObj[physObj.length-1].setIndex(physObj.length-1);
+  physObj[physObj.length - 1].setIndex(physObj.length - 1);
 }
 
 document.onload = function(){
+  try {
   document.getElementById("gravityControl").onchange = function(){
     phys.gravity = this.value;
   }
   document.getElementById("dragControl").onchange = function(){
     phys.drag = this.value;
+  }
+  } catch (err){
+    window.alert("onload | " + err.name + ": " + err.message);
   }
 }
