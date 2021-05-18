@@ -47,15 +47,15 @@ class Shape {
         //window.alert("Hit Top");
         this.invertVel(0);
         
-        let diff =  height - (this.pos.y + this.size.y/2);
-        this.pos.y = diff;
+        let diff = height - (this.pos.y + this.size.y/2);
+        this.pos.y -= diff;
         
       } else if (this.pos.y + this.vel.y <= this.size.y / 2){
         //window.alert("Hit Bottom");
         this.invertVel(0);
         
         let diff = this.pos.y - this.size.y/2;
-        this.pos.y = diff;
+        this.pos.y += diff;
       }
       
       //window.alert("Repositioning and vel inversion for X");
@@ -65,14 +65,14 @@ class Shape {
         this.invertVel(1);
         
         let diff = width - (this.pos.x + this.size.x/2);
-        this.pos.x = diff;
+        this.pos.x -= diff;
         
       } else if (this.pos.x + this.vel.x <= this.size.x / 2){
         //window.alert("Hit Left");
         this.invertVel(1);
         
         let diff = this.pos.x - this.size.x/2;
-        this.pos.x = diff;
+        this.pos.x += diff;
       }
     //}
     this.pos.add(this.vel);
