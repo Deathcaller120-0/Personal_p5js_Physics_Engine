@@ -152,5 +152,5 @@ class CircleShape extends Shape {
   }
 }
 } catch (error){
-  window.alert(error);
+  window.alert("Shapes: " + error);
 }
