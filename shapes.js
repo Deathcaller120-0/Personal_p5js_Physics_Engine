@@ -1,5 +1,5 @@
 //window.alert("loading shape")
-//try {
+try {
   
 class Shape {
   constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="circle", bounceLoss = 0.5, vectors = []){
@@ -43,36 +43,36 @@ class Shape {
       //window.alert("Repositioning and vel inversion for Y");
       
       // direct pos editing
-      if (this.pos.y + this.vel.y > height - this.size.y / 2){
+      if (this.pos.y + this.vel.y >= height - this.size.y / 2){
         //window.alert("Hit Top");
         this.invertVel(0);
         
-        let diff = this.pos.y + this.size.y/2) - height;
-        this.pos.y += -diff;
+        let diff =  height - (this.pos.y + this.size.y/2);
+        this.pos.y = diff;
         
-      } else if (this.pos.y + this.vel.y < 0 + this.size.y / 2){
+      } else if (this.pos.y + this.vel.y <= this.size.y / 2){
         //window.alert("Hit Bottom");
         this.invertVel(0);
         
-        let diff = (this.pos.y - this.size.y/2);
-        this.pos.y += -diff;
+        let diff = this.pos.y - this.size.y/2;
+        this.pos.y = diff;
       }
       
       //window.alert("Repositioning and vel inversion for X");
       
-      if (this.pos.x + this.vel.x > width - this.size.x / 2){
+      if (this.pos.x + this.vel.x >= width - this.size.x / 2){
         //window.alert("Hit Right");
         this.invertVel(1);
         
-        let diff = (this.pos.x + this.size.x/2) - width;
-        this.pos.x += -diff;
+        let diff = width - (this.pos.x + this.size.x/2);
+        this.pos.x = diff;
         
-      } else if (this.pos.x + this.vel.x < 0 + this.size.x / 2){
+      } else if (this.pos.x + this.vel.x <= this.size.x / 2){
         //window.alert("Hit Left");
         this.invertVel(1);
         
-        let diff = (this.pos.x - this.size.x/2);
-        this.pos.x += -diff;
+        let diff = this.pos.x - this.size.x/2;
+        this.pos.x = diff;
       }
     //}
     this.pos.add(this.vel);
@@ -204,6 +204,6 @@ class CircleShape extends Shape {
   }
 }
   
-//} catch (e){
-//  window.alert("Shapes Main | " + e.name + ": " + e.message);
-//}
+} catch (e){
+  window.alert("Shapes Main | " + e.name + ": " + e.message);
+}
