@@ -116,6 +116,11 @@ function spawn(){
   physObj[physObj.length-1].setIndex(physObj.length-1);
 }
 
-//} catch (err){
-//  window.alert("Main | " + err.name + ": " + err.message);
-//}
+document.onload = function(){
+  document.getElementById("gravityControl").onchange = function(){
+    phys.gravity = this.value;
+  }
+  document.getElementById("dragControl").onchange = function(){
+    phys.drag = this.value;
+  }
+}
