@@ -1,3 +1,4 @@
+window.alert("loading shape")
 class Shape {
   constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="rect", bounceLoss = 0.5, vectors = []){
     try {
