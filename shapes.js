@@ -54,7 +54,7 @@ class Shape {
         //window.alert("Hit Bottom");
         this.invertVel(0);
         
-        let diff = (this.pos.y + this.size.y/2);
+        let diff = (this.pos.y - this.size.y/2);
         this.pos.y += -diff;
       }
       
@@ -71,7 +71,7 @@ class Shape {
         //window.alert("Hit Left");
         this.invertVel(1);
         
-        let diff = (this.pos.x + this.size.x/2);
+        let diff = (this.pos.x - this.size.x/2);
         this.pos.x += -diff;
       }
     //}
