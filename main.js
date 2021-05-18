@@ -24,7 +24,7 @@ function setup(){
   } catch (err){
     window.alert("Setup | " + err.name + ":" + err.message)
   }
-  window.alert("Finished Setup")
+  //window.alert("Finished Setup")
 }
 
 function draw(){
@@ -64,11 +64,11 @@ function physicTick(){
   } catch (err){
     window.alert("PhysicTick | " + err.name + ":" + err.message)
   }
-  window.alert("physicTick");
+  //window.alert("physicTick");
 }
 
 function physPreTick(){
-  window.alert("physPreTick Called");
+  //window.alert("physPreTick Called");
   try {
   
   let t0 = performance.now();
