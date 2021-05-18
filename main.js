@@ -1,6 +1,6 @@
 //window.alert("loading main");
 
-try {
+//try {
 
 physObj = [];
 
@@ -19,14 +19,14 @@ function setup(){
   
   createCanvas(500, 500);
   
-  physObj.push(new phys_Circle(width/2, height/2, random(-10, 10), random(-10, 10), 50));
-  //physObj.push(new phys_CircleShape(random(width), random(height), random(-20, 20), random(-20, 20), random(10, 50)));
-  //physObj[physObj.length-1].setIndex(1);
+  physObj.push(new phys_Circle(width / 2, height / 2, random(-10, 10), random(-10, 10), 50));
+  physObj.push(new phys_Circle(random(width), random(height), random(-20, 20), random(-20, 20), random(10, 50)));
+  physObj[physObj.length-1].setIndex(1);
   
   physPreTick();
   
   } catch (err){
-    window.alert("Setup | " + err.name + ":" + err.message)
+    window.alert("Setup | " + err.name + ": " + err.message)
   }
   //window.alert("Finished Setup")
 }
@@ -54,7 +54,7 @@ function draw(){
   pop();
   
   } catch (err){
-    window.alert("Draw | " + err.name + ":" + err.message);
+    window.alert("Draw | " + err.name + ": " + err.message);
     noLoop();
   }
 }
@@ -66,7 +66,7 @@ function physicTick(){
   }
   
   } catch (err){
-    window.alert("PhysicTick | " + err.name + ":" + err.message)
+    window.alert("PhysicTick | " + err.name + ": " + err.message)
   }
   //window.alert("physicTick");
 }
@@ -90,7 +90,7 @@ function physPreTick(){
   setTimeout(physPreTick,physTickTimeout);
     
   } catch (err){
-    window.alert("PhysPreTick | " + err.name + ":" + err.message)
+    window.alert("PhysPreTick | " + err.name + ": " + err.message)
   }
 }
 
@@ -101,9 +101,12 @@ function physPreTick(){
 function spawn(){
   let x = document.getElementById("spawnX").value;
   let y = document.getElementById("spawnY").value;
+  
   let type = document.getElementById("spawnType").value;
+  
   let sizeX = document.getElementById("spawnSizeX").value;
   let sizeY = document.getElementById("spawnSizeY").value;
+  
   let vx = document.getElementById("spawnVelX").value;
   let vy = document.getElementById("spawnVelY").value;
   
@@ -113,6 +116,6 @@ function spawn(){
   physObj[physObj.length-1].setIndex(physObj.length-1);
 }
 
-} catch (err){
-  window.alert("Main | " + err.name + ": " + err.message);
-}
+//} catch (err){
+//  window.alert("Main | " + err.name + ": " + err.message);
+//}
