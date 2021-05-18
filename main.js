@@ -37,7 +37,7 @@ function draw(){
   
   push();
   fill(255)
-  text(Math.round(frameRate()) + " Render FPS", 1, 10);
+  text(nf(frameRate(), 2, 3) + " Render FPS", 1, 10);
   
   let avgTick = 0;
   for (let i = 0; i < stats.prevTicks.length; i++){
@@ -46,7 +46,7 @@ function draw(){
   avgTick *= 10;
   avgTick /= stats.prevTicks.length;
   
-  text(Math.round(avgTick) + " Physics Ticks", 1, 22);
+  text(nf(avgTick, 2, 3) + " Time between Physics Tick", 1, 22);
   pop();
   
   } catch (err){
