@@ -94,7 +94,7 @@ function physPreTick(){
 //  return new Promise(resolve => setTimeout(resolve, ms));
 //}
 
-/*
+
 var spawn = {prex:0, prey:0, endx:0, endy:0};
 function mousePressed(){
   if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
@@ -121,4 +121,4 @@ function mouseReleased(){
     physObj.push(new Circle(mouseX, mouseY, random(-20, 20), random(-20, 20), random(10, 50)));
     physObj[physObj.length-1].setIndex(physObj.length-1);
    }
-}*/
+}
