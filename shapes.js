@@ -17,7 +17,7 @@ class Shape {
     this.index = 0;
     
     } catch (err){
-      window.alert("Shape Setup | " err.name + ":" + err.message)
+      window.alert("Shape Setup | " + err.name + ":" + err.message)
     }
     window.alert("created shape of type:" + this.type);
     //window.alert("pos:" + this.pos.x + ", " + this.pos.y);
@@ -75,7 +75,7 @@ class Shape {
     window.alert("Adding Pos");
       
     } catch (err){
-      window.alert("SubUpdate | " err.name + ":" + err.message)
+      window.alert("SubUpdate | " + err.name + ":" + err.message)
     }
     window.alert("SubUpdate end");
   }
@@ -96,7 +96,7 @@ class Shape {
     }
       
     } catch (err){
-      window.alert("InvertVel | " err.name + ":" + err.message)
+      window.alert("InvertVel | " + err.name + ":" + err.message)
     }
   }
   
@@ -118,7 +118,7 @@ class CircleShape extends Shape {
     super(x, y, vx, vy, w, w, _color, "circle", bounceLoss);
     //window.alert("circle created");
     } catch (err){
-      window.alert("Circle Setup | " err.name + ":" + err.message)
+      window.alert("Circle Setup | " + err.name + ":" + err.message)
     }
   }
   
@@ -170,7 +170,7 @@ class CircleShape extends Shape {
     this.subUpdate();
       
     } catch (err){
-      window.alert("Update | " err.name + ":" + err.message)
+      window.alert("Update | " + err.name + ":" + err.message)
     }
     window.alert("exiting update");
   }
@@ -195,7 +195,7 @@ class CircleShape extends Shape {
     pop();
       
     } catch (err){
-      window.alert("Render | " err.name + ":" + err.message)
+      window.alert("Render | " + err.name + ":" + err.message)
     }
   }
 }
