@@ -2,7 +2,7 @@ window.alert("loading main");
 
 physObj = [];
 
-var physTickTimeout = 1000/5;
+var physTickTimeout = 1000/20;
 
 var stats = {prevTicks:[1]};
 
