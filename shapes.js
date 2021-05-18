@@ -110,6 +110,8 @@ class Shape {
   }
 }
 
+window.alert("loading CircleShape");
+
 class CircleShape extends Shape {
   constructor(x, y, vx, vy, w, _color, bounceLoss = 0.9){
     try {
