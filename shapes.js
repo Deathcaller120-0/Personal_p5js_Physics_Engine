@@ -47,14 +47,14 @@ class Shape {
         //window.alert("Hit Top");
         this.invertVel(0);
         
-        let diff = (this.pos.y + this.size.y) - height;
+        let diff = this.pos.y + this.size.y/2) - height;
         this.pos.y += -diff;
         
       } else if (this.pos.y + this.vel.y < 0 + this.size.y / 2){
         //window.alert("Hit Bottom");
         this.invertVel(0);
         
-        let diff = (this.pos.y + this.size.y);
+        let diff = (this.pos.y + this.size.y/2);
         this.pos.y += -diff;
       }
       
@@ -64,14 +64,14 @@ class Shape {
         //window.alert("Hit Right");
         this.invertVel(1);
         
-        let diff = (this.pos.x + this.size.x) - width;
+        let diff = (this.pos.x + this.size.x/2) - width;
         this.pos.x += -diff;
         
       } else if (this.pos.x + this.vel.x < 0 + this.size.x / 2){
         //window.alert("Hit Left");
         this.invertVel(1);
         
-        let diff = (this.pos.x + this.size.x);
+        let diff = (this.pos.x + this.size.x/2);
         this.pos.x += -diff;
       }
     //}
