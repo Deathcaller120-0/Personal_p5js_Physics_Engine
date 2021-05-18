@@ -22,7 +22,7 @@ function setup(){
   physPreTick();
   
   } catch (err){
-    window.alert("Setup | " err.name + ":" + err.message)
+    window.alert("Setup | " + err.name + ":" + err.message)
   }
   window.alert("Finished Setup")
 }
@@ -50,7 +50,7 @@ function draw(){
   pop();
   
   } catch (err){
-    window.alert("Draw | " err.name + ":" + err.message);
+    window.alert("Draw | " + err.name + ":" + err.message);
     noLoop();
   }
 }
@@ -62,7 +62,7 @@ function physicTick(){
   }
   
   } catch (err){
-    window.alert("PhysicTick | " err.name + ":" + err.message)
+    window.alert("PhysicTick | " + err.name + ":" + err.message)
   }
   window.alert("physicTick");
 }
@@ -86,7 +86,7 @@ function physPreTick(){
   setTimeout(physPreTick,physTickTimeout);
     
   } catch (err){
-    window.alert("PhysPreTick | " err.name + ":" + err.message)
+    window.alert("PhysPreTick | " + err.name + ":" + err.message)
   }
 }
 
