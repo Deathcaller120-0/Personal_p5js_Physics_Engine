@@ -116,7 +116,7 @@ class phys_Shape {
 
 //window.alert("loading CircleShape");
 
-class phys_CircleShape extends phys_Shape {
+class phys_Circle extends phys_Shape {
   constructor(x, y, vx, vy, w, _color, bounceLoss = 0.9){
     try {
     super(x, y, vx, vy, w, w, _color, "circle", bounceLoss);
