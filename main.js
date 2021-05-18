@@ -1,13 +1,13 @@
-//var physObj = [];
+physObj = [];
 
-var physTickTimeout = 1000/20;
+var physTickTimeout = 1000/5;
 
 var stats = {prevTicks:[1]};
 
-//var phys = {
-//  gravity:0.1, 
-//  drag:0.05
-//};
+phys = {
+  gravity:0.1, 
+  drag:0.05
+};
 
 function setup(){
   try {
@@ -21,7 +21,7 @@ function setup(){
   } catch (err){
     window.alert("Setup | " err.name + ":" + err.message)
   }
-  //window.alert("Finished Setup!")
+  window.alert("Finished Setup!")
 }
 
 function draw(){
@@ -61,7 +61,7 @@ function physicTick(){
   } catch (err){
     window.alert("PhysicTick | " err.name + ":" + err.message)
   }
-  //window.alert("physicTick");
+  window.alert("physicTick");
 }
 
 function physPreTick(){
