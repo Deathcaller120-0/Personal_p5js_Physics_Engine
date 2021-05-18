@@ -118,6 +118,9 @@ class CircleShape extends Shape {
       if (physObj[i].getIndex() == this.getIndex()) {continue;}
       
       let other = physObj[i];
+      let type0 = this.getShapeType();
+      let type1 = other.getShapeType();
+      
       
       if (rectRect(other.pos.x - other.size.x - 10, other.pos.y - other.size.y - 10, other.size.x * 2 + 10, other.size.y * 2 + 10, this.pos.x - this.size.x + 10, this.pos.y - this.size.y + 10, this.size.x * 2 + 10, this.size.y * 2 + 10)){
         if (type0 == "circle" || type1 == "circle"){
@@ -147,6 +150,7 @@ class CircleShape extends Shape {
             return "rectRect";
           }
         }*/
+        }
       }
     }
     this.subUpdate();
