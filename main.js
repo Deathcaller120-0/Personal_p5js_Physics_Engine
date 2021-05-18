@@ -116,6 +116,7 @@ function spawn(){
   physObj[physObj.length - 1].setIndex(physObj.length - 1);
 }
 
+/*
 document.onload = function(){
   try {
   document.getElementById("gravityControl").onchange = function(){
@@ -128,3 +129,4 @@ document.onload = function(){
     window.alert("onload | " + err.name + ": " + err.message);
   }
 }
+*/
