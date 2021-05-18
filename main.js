@@ -1,5 +1,7 @@
 //window.alert("loading main");
 
+try {
+
 physObj = [];
 
 var physTickTimeout = 1000/20;
@@ -109,4 +111,8 @@ function spawn(){
     physObj.push(new phys_Circle(x, y, vx, vy, sizeX)));
   }
   physObj[physObj.length-1].setIndex(physObj.length-1);
+}
+
+} catch (err){
+  window.alert("Main | " + err.name + ": " + err.message);
 }
