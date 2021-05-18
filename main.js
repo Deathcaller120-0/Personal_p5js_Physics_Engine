@@ -10,16 +10,22 @@ var stats = {prevTicks:[1]};
 //};
 
 function setup(){
-  createCanvas(500, 500);
+  try {
+  
+    createCanvas(500, 500);
   
   physObj.push(new CircleShape(width/2, height/2, random(-10, 10), random(-10, 10), 50));
   
   physPreTick();
   
+  } catch (err){
+    window.alert("Setup | " err.name + ":" + err.message)
+  }
   //window.alert("Finished Setup!")
 }
 
 function draw(){
+  try {
   background(20);
   
   for(let i = 0; i < physObj.length; i++){
@@ -39,17 +45,28 @@ function draw(){
   
   text(Math.round(avgTick) + " Physics Ticks", 1, 22);
   pop();
+  
+  } catch (err){
+    window.alert("Draw | " err.name + ":" + err.message);
+    noLoop();
+  }
 }
 
 function physicTick(){
+  try {
   for (let i = 0; i < physObj.length; i++){
     physObj[i].update();
   }
   
+  } catch (err){
+    window.alert("PhysicTick | " err.name + ":" + err.message)
+  }
   //window.alert("physicTick");
 }
 
 function physPreTick(){
+  try {
+  
   let t0 = performance.now();
   try{
     physicTick();
@@ -65,11 +82,15 @@ function physPreTick(){
   
   //await sleep(physTickTimeout);
   setTimeout(physPreTick,physTickTimeout);
+    
+  } catch (err){
+    window.alert("PhysPreTick | " err.name + ":" + err.message)
+  }
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+//function sleep(ms) {
+//  return new Promise(resolve => setTimeout(resolve, ms));
+//}
 
 /*
 var spawn = {prex:0, prey:0, endx:0, endy:0};
