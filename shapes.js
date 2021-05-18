@@ -61,11 +61,8 @@ class Shape {
         this.invertVel(1);
         while (this.pos.x < 0 + this.size.x/2){
           this.pos.x += 1;
+        }
       }
-        
-      //}
-        
-      //window.alert("Exiting collsion checker");
     //}
     this.pos.add(this.vel);
       
@@ -122,14 +119,7 @@ class CircleShape extends Shape {
       
       let other = physObj[i];
       
-      if (rectRect(other.pos.x - other.size.x - 10, 
-                   other.pos.y-other.size.y - 10, 
-                   other.size.x*2 + 10, 
-                   other.size.y*2 + 10, 
-                   this.pos.x-this.size.x+10, 
-                   this.pos.y-this.size.y+10, 
-                   this.size.x*2+10, 
-                   this.size.y*2+10)){
+      if (rectRect(other.pos.x - other.size.x - 10, other.pos.y - other.size.y - 10, other.size.x * 2 + 10, other.size.y * 2 + 10, this.pos.x - this.size.x + 10, this.pos.y - this.size.y + 10, this.size.x * 2 + 10, this.size.y * 2 + 10)){
         if (type0 == "circle" || type1 == "circle"){
           if (type0 == type1) {
             if (circleCircle(this.pos.x-this.size.x, this.pos.y-this.size.y, this.size.x*2, other.pos.x-other.size.x, other.pos.y-other.size.y, other.size.x*2)){
