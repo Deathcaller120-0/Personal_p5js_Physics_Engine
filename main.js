@@ -1,14 +1,13 @@
-try {
 //var physObj = [];
 
 var physTickTimeout = 1000/20;
 
 var stats = {prevTicks:[1]};
 
-var phys = {
-  gravity:0.1, 
-  drag:0.05
-};
+//var phys = {
+//  gravity:0.1, 
+//  drag:0.05
+//};
 
 function setup(){
   createCanvas(500, 500);
@@ -97,8 +96,6 @@ function mouseDragged(){
 function mouseReleased(){
    if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
     physObj.push(new Circle(mouseX, mouseY, random(-20, 20), random(-20, 20), random(10, 50)));
+    physObj[physObj.length-1].setIndex(physObj.length-1);
    }
 }*/
-} catch (error){
-  window.alert("Main: " + error);
-}
