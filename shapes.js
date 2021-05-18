@@ -1,5 +1,5 @@
-window.alert("loading shape")
-try {
+//window.alert("loading shape")
+//try {
   
 class Shape {
   constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="circle", bounceLoss = 0.5, vectors = []){
@@ -26,7 +26,7 @@ class Shape {
   }
   
   subUpdate(){
-    window.alert("SubUpdate Called");
+    //window.alert("SubUpdate Called");
     try { 
     this.vel.y += phys.gravity;
     this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
@@ -40,35 +40,35 @@ class Shape {
       
       // shape is outside the canvas bounds
       
-      window.alert("Repositioning and vel inversion for Y");
+      //window.alert("Repositioning and vel inversion for Y");
       
       // direct pos editing
       if (this.pos.y + this.vel.y > height - this.size.y / 2){
-        window.alert("Hit Top");
+        //window.alert("Hit Top");
         this.invertVel(0);
         
         let diff = (this.pos.y + this.size.y) - height;
         this.pos.y += -diff;
         
       } else if (this.pos.y + this.vel.y < 0 + this.size.y / 2){
-        window.alert("Hit Bottom");
+        //window.alert("Hit Bottom");
         this.invertVel(0);
         
         let diff = (this.pos.y + this.size.y);
         this.pos.y += -diff;
       }
       
-      window.alert("Repositioning and vel inversion for X");
+      //window.alert("Repositioning and vel inversion for X");
       
       if (this.pos.x + this.vel.x > width - this.size.x / 2){
-        window.alert("Hit Right");
+        //window.alert("Hit Right");
         this.invertVel(1);
         
         let diff = (this.pos.x + this.size.x) - width;
         this.pos.x += -diff;
         
       } else if (this.pos.x + this.vel.x < 0 + this.size.x / 2){
-        window.alert("Hit Left");
+        //window.alert("Hit Left");
         this.invertVel(1);
         
         let diff = (this.pos.x + this.size.x);
@@ -76,12 +76,12 @@ class Shape {
       }
     //}
     this.pos.add(this.vel);
-    window.alert("Adding Pos");
+    //window.alert("Adding Pos");
       
     } catch (err){
-      window.alert("SubUpdate | " + err.name + ":" + err.message)
+      window.alert("SubUpdate | " + err.name + ": " + err.message)
     }
-    window.alert("SubUpdate end");
+    //window.alert("SubUpdate end");
   }
   
   getShapeType(){
@@ -89,7 +89,7 @@ class Shape {
   }
   
   invertVel(isX){
-    window.alert("inverted vel for: " + (isX ? "x" : "y"));
+    //window.alert("inverted vel for: " + (isX ? "x" : "y"));
     try {
     if (isX){
       this.vel.x += (-this.vel.x) * this.bounce;
@@ -100,7 +100,7 @@ class Shape {
     }
       
     } catch (err){
-      window.alert("InvertVel | " + err.name + ":" + err.message)
+      window.alert("InvertVel | " + err.name + ": " + err.message)
     }
   }
   
@@ -122,24 +122,24 @@ class CircleShape extends Shape {
     super(x, y, vx, vy, w, w, _color, "circle", bounceLoss);
     //window.alert("circle created");
     } catch (err){
-      window.alert("Circle Setup | " + err.name + ":" + err.message)
+      window.alert("Circle Setup | " + err.name + ": " + err.message)
     }
   }
   
   update(){
-    window.alert("Update Called")
+    //window.alert("Update Called")
     try {
     for (let i = 0; i < physObj.length; i++){
       //if (typeof physObj[i] != Object) {continue;}
       if (physObj[i].getIndex() == this.getIndex()) {continue;}
       
-      window.alert("Got a shape");
+      //window.alert("Got a shape");
       
       let other = physObj[i];
       let type0 = this.getShapeType();
       let type1 = other.getShapeType();
       
-      window.alert("checking larger collsion");
+      //window.alert("checking larger collsion");
       if (rectRect(other.pos.x - other.size.x - 10, other.pos.y - other.size.y - 10, other.size.x * 2 + 10, other.size.y * 2 + 10, this.pos.x - this.size.x + 10, this.pos.y - this.size.y + 10, this.size.x * 2 + 10, this.size.y * 2 + 10)){
         if (type0 == "circle" || type1 == "circle"){
           if (type0 == type1) {
@@ -174,15 +174,15 @@ class CircleShape extends Shape {
     this.subUpdate();
       
     } catch (err){
-      window.alert("Update | " + err.name + ":" + err.message)
+      window.alert("Update | " + err.name + ": " + err.message)
     }
-    window.alert("exiting update");
+    //window.alert("exiting update");
   }
   
   render(){
     try {
       
-    window.alert("render called");
+    //window.alert("render called");
     
     push()
     noStroke();
@@ -199,11 +199,11 @@ class CircleShape extends Shape {
     pop();
       
     } catch (err){
-      window.alert("Render | " + err.name + ":" + err.message)
+      window.alert("Render | " + err.name + ": " + err.message)
     }
   }
 }
   
-} catch (e){
-  window.alert("Shapes Main | " + e.name + ": " + e.message);
-}
+//} catch (e){
+//  window.alert("Shapes Main | " + e.name + ": " + e.message);
+//}
