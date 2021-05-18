@@ -1,5 +1,6 @@
 class Shape {
   constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="rect", bounceLoss = 0.5, vectors = []){
+    try {
     this.pos = createVector(x, y);
     this.vel = createVector(vx, vy);
     this.size = createVector(w, h);
@@ -14,13 +15,16 @@ class Shape {
     
     this.index = 0;
     
+    } catch (err){
+      window.alert("Shape Setup | " err.name + ":" + err.message)
+    }
     //window.alert("created shape of type:" + this.type);
     //window.alert("pos:" + this.pos.x + ", " + this.pos.y);
   }
   
   subUpdate(){
     //window.alert("updating shape");
-    
+    try { 
     this.vel.y += phys.gravity;
     this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
     
@@ -64,6 +68,10 @@ class Shape {
       //window.alert("Exiting collsion checker");
     }
     this.pos.add(this.vel);
+      
+    } catch (err){
+      window.alert("SubUpdate | " err.name + ":" + err.message)
+    }
   }
   
   getShapeType(){
@@ -72,12 +80,17 @@ class Shape {
   
   invertVel(isX){
     //window.alert("inverted vel for: " + (isX ? "x" : "y"));
+    try {
     if (isX){
       this.vel.x += (-this.vel.x) * this.bounce;
       this.vel.x *= -1;
     } else {
       this.vel.y += (-this.vel.y) * this.bounce;
       this.vel.y *= -1;
+    }
+      
+    } catch (err){
+      window.alert("InvertVel | " err.name + ":" + err.message)
     }
   }
   
@@ -93,11 +106,16 @@ class Shape {
 
 class CircleShape extends Shape {
   constructor(x, y, vx, vy, w, _color, bounceLoss = 0.9){
+    try {
     super(x, y, vx, vy, w, w, _color, "circle", bounceLoss);
     //window.alert("circle created");
+    } catch (err){
+      window.alert("Circle Setup | " err.name + ":" + err.message)
+    }
   }
   
   update(){
+    try {
     for (let i = 0; i < physObj.length; i++){
       //if (typeof physObj[i] != Object) {continue;}
       if (physObj[i].getIndex() == this.getIndex()) {continue;}
@@ -142,9 +160,15 @@ class CircleShape extends Shape {
       }
     }
     this.subUpdate();
+      
+    } catch (err){
+      window.alert("Update | " err.name + ":" + err.message)
+    }
   }
   
   render(){
+    try {
+      
     //window.alert("circle rendered");
     push()
     noStroke();
@@ -158,6 +182,10 @@ class CircleShape extends Shape {
     
     stroke(255,255,0)
     line(0,0,this.vel.x,this.vel.y);
-    pop()
+    pop();
+      
+    } catch (err){
+      window.alert("Render | " err.name + ":" + err.message)
+    }
   }
 }
