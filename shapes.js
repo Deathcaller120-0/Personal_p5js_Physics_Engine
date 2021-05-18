@@ -1,4 +1,3 @@
-try {
 class Shape {
   constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="rect", bounceLoss = 0.5, vectors = []){
     this.pos = createVector(x, y);
@@ -12,6 +11,8 @@ class Shape {
     this.bounce = bounceLoss;
     
     this.type = shapeType;
+    
+    this.index = 0;
     
     //window.alert("created shape of type:" + this.type);
     //window.alert("pos:" + this.pos.x + ", " + this.pos.y);
@@ -79,6 +80,15 @@ class Shape {
       this.vel.y *= -1;
     }
   }
+  
+  getIndex() {
+    return this.index;
+  }
+  
+  setIndex(i) {
+    this.index = i;
+    return this.index;
+  }
 }
 
 class CircleShape extends Shape {
@@ -89,8 +99,8 @@ class CircleShape extends Shape {
   
   update(){
     for (let i = 0; i < physObj.length; i++){
-      if (typeof physObj[i] != Object) {continue;}
-      if (physObj[i] == this) {continue;}
+      //if (typeof physObj[i] != Object) {continue;}
+      if (physObj[i].getIndex() == this.getIndex()) {continue;}
       
       let other = physObj[i];
       
@@ -150,7 +160,4 @@ class CircleShape extends Shape {
     line(0,0,this.vel.x,this.vel.y);
     pop()
   }
-}
-} catch (error){
-  window.alert("Shapes: " + error);
 }
