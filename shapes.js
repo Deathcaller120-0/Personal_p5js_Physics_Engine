@@ -1,6 +1,8 @@
 window.alert("loading shape")
+try {
+  
 class Shape {
-  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="rect", bounceLoss = 0.5, vectors = []){
+  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="circle", bounceLoss = 0.5, vectors = []){
     try {
     this.pos = createVector(x, y);
     this.vel = createVector(vx, vy);
@@ -19,12 +21,12 @@ class Shape {
     } catch (err){
       window.alert("Shape Setup | " + err.name + ":" + err.message)
     }
-    window.alert("created shape of type:" + this.type);
+    //window.alert("created shape of type:" + this.type);
     //window.alert("pos:" + this.pos.x + ", " + this.pos.y);
   }
   
   subUpdate(){
-    window.alert("SUbUpdate Called");
+    window.alert("SubUpdate Called");
     try { 
     this.vel.y += phys.gravity;
     this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
@@ -41,34 +43,36 @@ class Shape {
       window.alert("Repositioning and vel inversion for Y");
       
       // direct pos editing
-      if (this.pos.y + this.vel.y > height - this.size.y/2){
+      if (this.pos.y + this.vel.y > height - this.size.y / 2){
         window.alert("Hit Top");
-        this.invertVel(0)
-        while (this.pos.y > height - this.size.y/2){
-          this.pos.y -= 1;
-        }
-      } else if (this.pos.y + this.vel.y < 0 + this.size.y/2){
+        this.invertVel(0);
+        
+        let diff = (this.pos.y + this.size.y) - height;
+        this.pos.y += -diff;
+        
+      } else if (this.pos.y + this.vel.y < 0 + this.size.y / 2){
         window.alert("Hit Bottom");
         this.invertVel(0);
-        while (this.pos.y < 0 + this.size.y/2){
-          this.pos.y += 1;
-        }
+        
+        let diff = (this.pos.y + this.size.y);
+        this.pos.y += -diff;
       }
       
       window.alert("Repositioning and vel inversion for X");
       
-      if (this.pos.x + this.vel.x > width - this.size.x/2){
+      if (this.pos.x + this.vel.x > width - this.size.x / 2){
         window.alert("Hit Right");
         this.invertVel(1);
-        while (this.pos.x > width - this.size.x/2){
-          this.pos.x -= 1;
-        }
-      } else if (this.pos.x + this.vel.x < 0 + this.size.x/2){
+        
+        let diff = (this.pos.x + this.size.x) - width;
+        this.pos.x += -diff;
+        
+      } else if (this.pos.x + this.vel.x < 0 + this.size.x / 2){
         window.alert("Hit Left");
         this.invertVel(1);
-        while (this.pos.x < 0 + this.size.x/2){
-          this.pos.x += 1;
-        }
+        
+        let diff = (this.pos.x + this.size.x);
+        this.pos.x += -diff;
       }
     //}
     this.pos.add(this.vel);
@@ -198,4 +202,8 @@ class CircleShape extends Shape {
       window.alert("Render | " + err.name + ":" + err.message)
     }
   }
+}
+  
+} catch (e){
+  window.alert("Shapes Main | " + e.name + ": " + e.message);
 }
