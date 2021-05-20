@@ -49,10 +49,9 @@ function draw(){
   for (let i = 0; i < stats.prevTicks.length; i++){
     avgTick += stats.prevTicks[i];
   }
-  avgTick *= 10;
   avgTick /= stats.prevTicks.length;
   
-  text(nf(avgTick, 2, 3) + " Time between Physics Tick", 1, 22);
+  text(nf(avgTick, 2, 3) + " Physics FPS", 1, 22);
   pop();
   
   } catch (err){
@@ -77,13 +76,11 @@ function physPreTick(){
   //window.alert("physPreTick Called");
   try {
   
-  let t0 = performance.now();
+  let time = performance.now();
 
   physicTick();
   
-  let t1 = performance.now();
-  
-  stats.prevTicks.push(t1-t0);
+  stats.prevTicks.push(time);
   if (stats.prevTicks.length > 20){
     stats.prevTicks.shift();
   }
