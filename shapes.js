@@ -17,8 +17,6 @@ class phys_Shape {
     this.type = shapeType;
     
     this.index = 0;
-      
-    this.invertedVectors = [0,0];
     
     } catch (err){
       window.alert("Shape Setup | " + err.name + ":" + err.message)
@@ -96,9 +94,10 @@ class phys_Shape {
             if (polyPoly(this.hitPoints, other.hitPoints)){
               let hits = [];
               for (let i = 0; i < this.hitPoints.length; i++){
-                if(polyPoint(other.hitPoints, this.hitPoints[i].x, this.hitPoints[i].y)) { 
+                if (polyPoint(other.hitPoints, this.hitPoints[i].x, this.hitPoints[i].y)) { 
                   hits.push(this.hitPoints[i].label);
                   this.hitPoints[i].hit = 1;
+                  window.alert("Hit " + this.hitPoints[i].label + " on physObj[" + this.getIndex() + "]");
                 }
               }
             
@@ -111,6 +110,7 @@ class phys_Shape {
                 if ((hits[i] == "top-left" || hits[i] == "mid-left" || hits[i] == "top-right" || hits[i] == "bottom-left" || hits[i] == "bottom-right" || hits[i] == "mid-right") && invX == 0){
                   invX = 1;
                 }
+                if (invX && invY){break;}
               }
             
               if (invX){
@@ -142,7 +142,6 @@ class phys_Shape {
       this.vel.x += phys.drag;
     }
     
-    this.invertedVectors = [0,0];
     this.collsionUpdate();
     this.wallUpdate();
     
@@ -156,20 +155,15 @@ class phys_Shape {
   }
   
   invertVel(isX){
-    
     //window.alert("inverted vel for: " + (isX ? "x" : "y"));
     try {
-    if (this.invertedVectors[isX] == 0){
-      this.invertedVectors[isX] = 1;
-      if (isX){
-        this.vel.x += (-this.vel.x) * this.bounce;
-        this.vel.x *= -1;
-      } else {
-        this.vel.y += (-this.vel.y) * this.bounce;
-        this.vel.y *= -1;
-      }
+    if (isX){
+      this.vel.x += (-this.vel.x) * this.bounce;
+      this.vel.x *= -1;
+    } else {
+      this.vel.y += (-this.vel.y) * this.bounce;
+      this.vel.y *= -1;
     }
-      
     } catch (err){
       window.alert("InvertVel | " + err.name + ": " + err.message)
     }
@@ -182,6 +176,18 @@ class phys_Shape {
   setIndex(i) {
     this.index = i;
     return this.index;
+  }
+  
+  render(){
+    push();
+    noStroke();
+    fill(this.color);
+    beginShape()
+    for (let i = 0; i < this.hitPoints.length; i++){
+      vertex(this.hitPoints[i].x, this.hitPoints[i].y);
+    }
+    endShape(CLOSE);
+    pop();
   }
 }
 
@@ -212,7 +218,7 @@ class phys_Circle extends phys_Shape {
     }
   }
   
-  render(){
+  render = function(){
     try {
       
     //window.alert("render called");
@@ -233,7 +239,7 @@ class phys_Circle extends phys_Shape {
     noStroke();
     colorMode('hsb', this.hitPoints.length, 1, 1, 1);
     for (let i = 0; i < this.hitPoints.length; i++){
-      if (this.hitPoints[i].hit == 1){
+      if (this.hitPoints[i].hit == 0){
         fill(i, 1, 1, 1);
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
         text(this.hitPoints[i].label, -20, -20 + (i * 22));
@@ -246,7 +252,36 @@ class phys_Circle extends phys_Shape {
     }
   }
 }
+
+class phys_Rect extends phys_Shape {
+  constructor(x, y, vx, vy, w, h, bounceLoss, _color){
+    super(x, y, vx, vy, w, h, bounceLoss, "rect", _color)
+    
+    let left = -w/2;
+    let top = -h/2;
+    let right = w/2;
+    let bottom = h/2;
+    
+    this.hitPoints.push({x:left, y:top, label:"top-left", hit:0});
+    this.hitPoints.push({x:left, y:bottom, label:"bottom-left", hit:0});
+    this.hitPoints.push({x:right, y:bottom, label:"bottom-right", hit:0});
+    this.hitPoints.push({x:right, y:top, label:"top-right", hit:0});
+  }
   
-//} catch (e){
-//  window.alert("Shapes Main | " + e.name + ": " + e.message);
-//}
+  render = function(){
+    push();
+    rotate(this.rot.x);
+    translate(this.pos.x, this.pos.y);
+    
+    noStroke();
+    fill(this.color);
+    rect(this.size.x/2, this.size.y/2, this.size.x, this.size.y);
+    
+    stroke(255,255,0);
+    line(0, 0, this.vel.x, this.vel.y);
+    
+    stroke(0)
+    line(0,0,this.size.x, 0);
+    pop();
+  }
+}
