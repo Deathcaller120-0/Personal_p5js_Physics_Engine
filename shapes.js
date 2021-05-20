@@ -197,7 +197,7 @@ class phys_Circle extends phys_Shape {
   
   update(){
     //window.alert("Update Called")
-    
+    this.invertedVectors = [0,0];
     this.collsionUpdate();
     this.wallUpdate();
     
