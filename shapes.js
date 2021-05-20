@@ -30,9 +30,6 @@ class phys_Shape {
   wallUpdate(){
     //window.alert("SubUpdate Called");
     try { 
-    this.vel.y += phys.gravity;
-    this.vel.x += (this.vel.x > 0 ? -phys.drag : phys.drag);
-    
     //window.alert(this.vel.y);
     
     // removed to check performance
@@ -57,7 +54,7 @@ class phys_Shape {
         this.invertVel(0);
         
         let diff = this.pos.y - this.size.y/2;
-        this.pos.y -= diff;
+        this.pos.y += -diff;
       }
       
       //window.alert("Repositioning and vel inversion for X");
@@ -74,12 +71,9 @@ class phys_Shape {
         this.invertVel(1);
         
         let diff = this.pos.x - this.size.x/2;
-        this.pos.x -= diff;
+        this.pos.x += -diff;
       }
     //}
-    this.pos.add(this.vel);
-    //window.alert("Adding Pos");
-      
     } catch (err){
       window.alert("SubUpdate | " + err.name + ": " + err.message)
     }
@@ -138,12 +132,20 @@ class phys_Shape {
     //window.alert("Update Called")
     if (phys.windX != 0 || phys.windY != 0){
       this.vel.add(phys.windX, phys.windY);
-      this.pos.add(this.vel);
+    }
+    
+    this.vel.y += phys.gravity;
+    if (this.vel.x > 0){
+      this.vel.x += -phys.drag;
+    } else {
+      this.vel.x += phys.drag;
     }
     
     this.invertedVectors = [0,0];
     this.collsionUpdate();
     this.wallUpdate();
+    
+    this.pos.add(this.vel);
     
     //window.alert("exiting update");
   }
