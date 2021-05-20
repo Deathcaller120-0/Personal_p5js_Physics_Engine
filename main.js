@@ -61,6 +61,7 @@ function draw(){
   line(mouseX, 0, mouseX, height);
   
   noStroke();
+  fill(255);
   circle(mouseX, mouseY, 5);
   text(mouseX + ", " + mouseY, mouseX+10, mouseY-12);
   pop();
