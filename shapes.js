@@ -102,7 +102,8 @@ class phys_Shape {
               let hits = [];
               for (let i = 0; i < this.hitPoints.length; i++){
                 if(polyPoint(other.hitPoints, this.hitPoints[i].x, this.hitPoints[i].y)) { 
-                  hits.push(this.hitPoints[].label);
+                  hits.push(this.hitPoints[i].label);
+                  this.hitPoints[i].hit = 1;
                 }
               }
             
@@ -141,7 +142,7 @@ class phys_Shape {
     
     //window.alert("inverted vel for: " + (isX ? "x" : "y"));
     try {
-    if (this.invertedVectors[isX] !== 1){
+    if (this.invertedVectors[isX] == 0){
       this.invertedVectors[isX] = 1;
       if (isX){
         this.vel.x += (-this.vel.x) * this.bounce;
