@@ -2,7 +2,7 @@
 //try {
   
 class phys_Shape {
-  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#f00", shapeType="circle", bounceLoss = 0.5, vectors = []){
+  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#FF000080", shapeType="circle", bounceLoss = 0.5, vectors = []){
     try {
     this.pos = createVector(x, y);
     this.vel = createVector(vx, vy);
@@ -25,7 +25,7 @@ class phys_Shape {
     //window.alert("pos:" + this.pos.x + ", " + this.pos.y);
   }
   
-  subUpdate(){
+  wallUpdate(){
     //window.alert("SubUpdate Called");
     try { 
     this.vel.y += phys.gravity;
@@ -82,6 +82,37 @@ class phys_Shape {
       window.alert("SubUpdate | " + err.name + ": " + err.message)
     }
     //window.alert("SubUpdate end");
+  }
+  
+  collsionUpdate(){
+    let type0 = this.getShapeType();
+    let type1 = other.getShapeType();
+    
+    //window.alert("checking larger collsion");
+    if (rectRect(other.pos.x - other.size.x, other.pos.y - other.size.y, other.size.x * 2, other.size.y * 2, this.pos.x - this.size.x/2, this.pos.y - this.size.y, this.size.x * 2, this.size.y * 2)){
+      if (type0 == "circle" || type1 == "circle"){
+        if (type0 == type1) {
+          if (polyPoly(this.hitPoints, other.hitPoints)){
+            let hits = [];
+            for (let i = 0; i < this.hitPoints.length; i++){
+              if(!polyPoint(other.hitPoints, this.hitPoints[i].x, this.hitPoints[i].y)) { continue; }
+              hits.push(this.hitPoints[].label);
+            }
+            
+            let invY = 0;
+            let invX = 0;
+            for (let i = 0; i < hits.length; i++){
+              if (hits[i] == "top-left" || hits[i] == "top-mid" || hits[i] == "top-right" || hits[i] == "bottom-left" || hits[i] == "bottom-mid" || hits[i] == "bottom-right" && invY == 0){
+                invY = 1;
+              }
+              if (hits[i] == "top-left" || hits[i] == "mid-left" || hits[i] == "top-right" || hits[i] == "bottom-left" || hits[i] == "bottom-mid" || hits[i] == "bottom-right" && invY == 0){
+                invX = 1;
+              }
+            }
+          }
+        }
+      }
+    }
   }
   
   getShapeType(){
