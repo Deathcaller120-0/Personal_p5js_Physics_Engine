@@ -134,6 +134,18 @@ class phys_Shape {
     }
   }
   
+  update(){
+    //window.alert("Update Called")
+    this.vel.x += phys.windX;
+    this.vel.y += phys.windY;
+    
+    this.invertedVectors = [0,0];
+    this.collsionUpdate();
+    this.wallUpdate();
+    
+    //window.alert("exiting update");
+  }
+  
   getShapeType(){
     return this.type;
   }
@@ -193,15 +205,6 @@ class phys_Circle extends phys_Shape {
     } catch (err){
       window.alert("Circle Setup | " + err.name + ": " + err.message)
     }
-  }
-  
-  update(){
-    //window.alert("Update Called")
-    this.invertedVectors = [0,0];
-    this.collsionUpdate();
-    this.wallUpdate();
-    
-    //window.alert("exiting update");
   }
   
   render(){
