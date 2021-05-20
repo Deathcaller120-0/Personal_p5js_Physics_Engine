@@ -132,9 +132,6 @@ class phys_Shape {
   
   update(){
     //window.alert("Update Called")
-    if (phys.windX != 0 || phys.windY != 0){
-      this.vel.add(phys.windX, phys.windY);
-    }
     
     for (let i = 0; i < this.hitPoints.length; i++){
       this.hitPoints[i].hit = 0;
@@ -149,6 +146,10 @@ class phys_Shape {
     
     this.collsionUpdate();
     this.wallUpdate();
+    
+    if (phys.windX != 0 || phys.windY != 0){
+      this.vel.add(phys.windX, phys.windY);
+    }
     
     //this.pos.add(this.vel);
     
