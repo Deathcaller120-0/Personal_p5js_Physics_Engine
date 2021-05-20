@@ -1,4 +1,4 @@
-window.alert("loading main");
+//window.alert("loading main");
 
 //try {
 
