@@ -20,24 +20,24 @@
     
     <p>Spawning</p>
     <label>Spawn X</label>
-    <input id="spawnX" min=0 max=500>
+    <input id="spawnX" min=0 max=500 type="number">
     
     <label>Spawn Y</label>
-    <input id="spawnY" min=0 max=500>
+    <input id="spawnY" min=0 max=500 type="number">
     <br>
     
     <lable>Size X</label>
-    <input id="spawnSizeX" min=1 max=100>
+    <input id="spawnSizeX" min=1 max=100 type="number">
     
     <label>Size Y</label>
-    <input id="spawnSizeY" min=1 max=100>
+    <input id="spawnSizeY" min=1 max=100 type="number">
     <br>
     
     <label>Velocity X</label>
-    <input id="spawnVelX" min=-50 max=50>
+    <input id="spawnVelX" min=-50 max=50 type="number">
     
     <label>Velocity Y</label>
-    <input id="spawnVelY" min=-50 max=50>
+    <input id="spawnVelY" min=-50 max=50 type="number">
     <br>
     
     <span>Physics Shape</span>
@@ -52,10 +52,10 @@
     <p>Physics Control</p>
     
     <span>Gravity</span>
-    <input type="range" min=0.05 max=10 value=0.1 step=0.05 id="gravityControl">
+    <input type="number" min=0.05 max=10 value=0.1 step=0.05 id="gravityControl">
     
     <span>Drag</span>
-    <input type="range" min=0.005 max=1 value=0.05 step=0.005 id="dragControl">
+    <input type="number" min=0.005 max=1 value=0.05 step=0.005 id="dragControl">
     
     <script>
   document.getElementById("gravityControl").onchange = function(){
