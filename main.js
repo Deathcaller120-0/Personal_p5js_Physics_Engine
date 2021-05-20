@@ -10,7 +10,9 @@ var stats = {prevTicks:[1]};
 
 phys = {
   gravity:0.1, 
-  drag:0.05
+  drag:0.05,
+  windX: 0,
+  windY: 0
 };
 
 function setup(){
