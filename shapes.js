@@ -2,14 +2,14 @@
 //try {
   
 class phys_Shape {
-  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, _color="#FF000080", shapeType="circle", bounceLoss = 0.5, vectors = []){
+  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, shapeType="circle", bounceLoss = 0.5, _color="#FF000080", vectors = []){
     try {
     this.pos = createVector(x, y);
     this.vel = createVector(vx, vy);
     this.size = createVector(w, h);
-    this.color = _color || color(255, 0, 0, 255/4);
+    this.color = _color;
     
-    this.customVectors = vectors;
+    this.hitPoints = vectors;
     
     this.rot = createVector();
     this.bounce = bounceLoss;
@@ -105,9 +105,19 @@ class phys_Shape {
               if (hits[i] == "top-left" || hits[i] == "top-mid" || hits[i] == "top-right" || hits[i] == "bottom-left" || hits[i] == "bottom-mid" || hits[i] == "bottom-right" && invY == 0){
                 invY = 1;
               }
-              if (hits[i] == "top-left" || hits[i] == "mid-left" || hits[i] == "top-right" || hits[i] == "bottom-left" || hits[i] == "bottom-mid" || hits[i] == "bottom-right" && invY == 0){
+              if (hits[i] == "top-left" || hits[i] == "mid-left" || hits[i] == "top-right" || hits[i] == "bottom-left" || hits[i] == "bottom-right" || hits[i] == "mid-right" && invX == 0){
                 invX = 1;
               }
+            }
+            
+            if (invX){
+              this.invertVel(1);
+            }
+            if (invY){
+              this.invertVel(0);
+            }
+            if (invX || invY){
+              this.pos.add(this.vel);
             }
           }
         }
@@ -150,8 +160,22 @@ class phys_Shape {
 class phys_Circle extends phys_Shape {
   constructor(x, y, vx, vy, w, _color, bounceLoss = 0.9){
     try {
-    super(x, y, vx, vy, w, w, _color, "circle", bounceLoss);
-    //window.alert("circle created");
+    super(x, y, vx, vy, w, w, "circle", bounceLoss, _color);
+    
+    let left = -w/2;
+    let top = -w/2;
+    let right = w/2;
+    let bottom = w/2;
+    
+    this.hitPoints.push({x:left, y:top, label:"top-left", hit:0});
+    this.hitPoints.push({x:left, y:0, label:"mid-left", hit:0});
+    this.hitPoints.push({x:left, y:bottom, label:"bottom-left", hit:0});
+    this.hitPoints.push({x:0, y:bottom, label:"bottom-mid", hit:0});
+    this.hitPoints.push({x:right, y:bottom, label:"bottom-right", hit:0});
+    this.hitPoints.push({x:right, y:0, label:"mid-right", hit:0});
+    this.hitPoints.push({x:right, y:top, label:"top-right", hit:0});
+    this.hitPoints.push({x:0, y:top, label:"top-mid", hit:0});
+    
     } catch (err){
       window.alert("Circle Setup | " + err.name + ": " + err.message)
     }
@@ -159,54 +183,10 @@ class phys_Circle extends phys_Shape {
   
   update(){
     //window.alert("Update Called")
-    try {
-    for (let i = 0; i < physObj.length; i++){
-      //if (typeof physObj[i] != Object) {continue;}
-      if (physObj[i].getIndex() == this.getIndex()) {continue;}
-      
-      //window.alert("Got a shape");
-      
-      let other = physObj[i];
-      let type0 = this.getShapeType();
-      let type1 = other.getShapeType();
-      
-      //window.alert("checking larger collsion");
-      if (rectRect(other.pos.x - other.size.x - 10, other.pos.y - other.size.y - 10, other.size.x * 2 + 10, other.size.y * 2 + 10, this.pos.x - this.size.x + 10, this.pos.y - this.size.y + 10, this.size.x * 2 + 10, this.size.y * 2 + 10)){
-        if (type0 == "circle" || type1 == "circle"){
-          if (type0 == type1) {
-            if (circleCircle(this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x * 2, other.pos.x - other.size.x, other.pos.y - other.size.y, other.size.x * 2)){
-              other.vel.x += (-other.vel.x) * other.bounce;
-              other.vel.y += (-other.vel.y) * other.bounce;
-              other.vel.mult(-1);
-              
-              this.vel.x += (-this.vel.x) * this.bounce;
-              this.vel.y += (-this.vel.y) * this.bounce;
-              this.vel.mult(-1);
-            }
-          }/*
-          if (type0 == "rect" || type1 == "rect"){
-            if (rectCircle()){
-              other.vel.add(-other.vel.mult(other.bounce));
-              this.vel.add(-this.vel.mult(this.bounce));
-              
-              other.vel.mult(-1);
-              this.vel.mult(-1);
-            }
-          }
-        }
-        if (type0 == "rect" || type1 == "rect"){
-          if (type0 == type1){
-            return "rectRect";
-          }
-        }*/
-        }
-      }
-    }
-    this.subUpdate();
-      
-    } catch (err){
-      window.alert("Update | " + err.name + ": " + err.message)
-    }
+    
+    this.collsionUpdate();
+    this.wallUpdate();
+    
     //window.alert("exiting update");
   }
   
@@ -227,6 +207,14 @@ class phys_Circle extends phys_Shape {
     
     stroke(255,255,0)
     line(0,0,this.vel.x,this.vel.y);
+      
+    noStroke();
+    colorMode(HSB, this.hitPoints.length, 1, 1, 1);
+    for (let i = 0; i < this.hitPoints.length; i++){
+      fill(i, 1, 1, 1);
+      circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
+      text(this.hitPoints[i].label, -20, -20+(i*22));
+    }
     pop();
       
     } catch (err){
