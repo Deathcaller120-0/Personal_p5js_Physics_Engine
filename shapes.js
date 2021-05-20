@@ -16,7 +16,7 @@ class phys_Shape {
     
     this.type = shapeType;
     
-    this.index = 0;
+    this.index = physObj.length;
     
     } catch (err){
       window.alert("Shape Setup | " + err.name + ":" + err.message)
