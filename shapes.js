@@ -151,11 +151,11 @@ class phys_Shape {
       this.vel.add(phys.windX, phys.windY);
     }
     
-    if (this.pos.y < 100 && this.pos.x < 100){
-      window.alert("Index: " + this.getIndex());
-      window.alert("Vel: " + this.vel.x + ", " + this.vel.y);
-      window.alert("Pos: " + this.pos.x + ", " + this.pos.y);
-    }
+    //if (this.pos.y < 100 && this.pos.x < 100){
+    //  window.alert("Index: " + this.getIndex());
+    //  window.alert("Vel: " + this.vel.x + ", " + this.vel.y);
+    //  window.alert("Pos: " + this.pos.x + ", " + this.pos.y);
+    //}
     
     //this.pos.add(this.vel);
     
