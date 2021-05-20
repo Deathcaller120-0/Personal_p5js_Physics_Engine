@@ -111,7 +111,7 @@ function lineRect(x1, y1, x2, y2, rx, ry, rw, rh) {
 ||will need to change this||
 \\========================//
 */
-function pointsToScreenCoords(points) {
+function pointsToScreenCoords(points, rotation) {
   let screenPoints = [];   // create output array
   for (let i = 0; i < points.length; i++) {                  // go through all the points
     let x = points[i].x;         // get the screen x coordinate
