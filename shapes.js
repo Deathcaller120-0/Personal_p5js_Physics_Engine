@@ -42,14 +42,18 @@ class phys_Shape {
       // direct pos editing
       if (this.pos.y + this.vel.y >= height - this.size.y / 2){
         //window.alert("Hit Top");
-        this.invertVel(0);
+        if (this.vel.y > 0){
+          this.invertVel(0);
+        }
         
         let diff = height - (this.pos.y + this.size.y/2);
         this.pos.y += diff;
         
       } else if (this.pos.y + this.vel.y <= this.size.y / 2){
         //window.alert("Hit Bottom");
-        this.invertVel(0);
+        if (this.vel.y < 0){
+          this.invertVel(0);
+        }
         
         let diff = this.pos.y - this.size.y/2;
         this.pos.y += -diff;
@@ -59,14 +63,18 @@ class phys_Shape {
       
       if (this.pos.x + this.vel.x >= width - this.size.x / 2){
         //window.alert("Hit Right");
-        this.invertVel(1);
+        if (this.vel.x > 0){
+          this.invertVel(1);
+        }
         
         let diff = width - (this.pos.x + this.size.x/2);
         this.pos.x += diff;
         
       } else if (this.pos.x + this.vel.x <= this.size.x / 2){
         //window.alert("Hit Left");
-        this.invertVel(1);
+        if (this.vel.x < 0){
+          this.invertVel(1);
+        }
         
         let diff = this.pos.x - this.size.x/2;
         this.pos.x += -diff;
@@ -126,6 +134,10 @@ class phys_Shape {
     //window.alert("Update Called")
     if (phys.windX != 0 || phys.windY != 0){
       this.vel.add(phys.windX, phys.windY);
+    }
+    
+    for (let i = 0; i < this.hitPoints.length; i++){
+      this.hitPoints[i].hit = 0;
     }
     
     this.vel.y += phys.gravity;
@@ -273,17 +285,18 @@ class phys_Rect extends phys_Shape {
     fill(this.color);
     rect(this.size.x/2, this.size.y/2, this.size.x, this.size.y);
     
-    stroke(255,255,0);
+    stroke(255, 255, 0);
     line(0, 0, this.vel.x, this.vel.y);
     
     stroke(0)
-    line(0,0,this.size.x, 0);
+    line(0, 0, this.size.x, 0);
     
     noStroke();
     colorMode('hsb', this.hitPoints.length, 1, 1);
     for (let i = 0; i < this.hitPoints.length; i++){
-      if (this.hitPoints[i].hit == 0){
+      if (this.hitPoints[i].hit == 1){
         text(this.hitPoints[i].label, -50, -100 + (i*22));
+        circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
       }
     }
     pop();
