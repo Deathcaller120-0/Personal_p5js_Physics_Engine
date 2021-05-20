@@ -138,7 +138,7 @@ class phys_Shape {
     //window.alert("Update Called")
     if (phys.windX != 0 || phys.windY != 0){
       this.vel.add(phys.windX, phys.windY);
-      this.pos.add(phys.windX, phys.windY);
+      this.pos.add(this.vel);
     }
     
     this.invertedVectors = [0,0];
