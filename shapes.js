@@ -136,7 +136,10 @@ class phys_Shape {
   
   update(){
     //window.alert("Update Called")
-    this.vel.add(createVector(phys.windX, phys.windY).mult(1.5));
+    if (phys.windX != 0 || phys.windY != 0){
+      this.vel.add(phys.windX, phys.windY);
+      this.pos.add(phys.windX, phys.windY);
+    }
     
     this.invertedVectors = [0,0];
     this.collsionUpdate();
