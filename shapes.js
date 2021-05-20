@@ -41,7 +41,7 @@ class phys_Shape {
       
       // direct pos editing
       if (this.pos.y + this.vel.y >= height - this.size.y / 2){
-        //window.alert("Hit Top");
+        window.alert("Hit Top");
         if (this.vel.y > 0){
           this.invertVel(0);
         }
@@ -50,7 +50,7 @@ class phys_Shape {
         this.pos.y += diff;
         
       } else if (this.pos.y + this.vel.y <= this.size.y / 2){
-        //window.alert("Hit Bottom");
+        window.alert("Hit Bottom");
         if (this.vel.y < 0){
           this.invertVel(0);
         }
@@ -62,7 +62,7 @@ class phys_Shape {
       //window.alert("Repositioning and vel inversion for X");
       
       if (this.pos.x + this.vel.x >= width - this.size.x / 2){
-        //window.alert("Hit Right");
+        window.alert("Hit Right");
         if (this.vel.x > 0){
           this.invertVel(1);
         }
@@ -71,7 +71,7 @@ class phys_Shape {
         this.pos.x += diff;
         
       } else if (this.pos.x + this.vel.x <= this.size.x / 2){
-        //window.alert("Hit Left");
+        window.alert("Hit Left");
         if (this.vel.x < 0){
           this.invertVel(1);
         }
@@ -151,6 +151,12 @@ class phys_Shape {
       this.vel.add(phys.windX, phys.windY);
     }
     
+    if (this.pos.y < 100 && this.pos.x < 100){
+      window.alert("Index: " + this.getIndex());
+      window.alert("Vel: " + this.vel.x + ", " + this.vel.y);
+      window.alert("Pos: " + this.pos.x + ", " + this.pos.y);
+    }
+    
     //this.pos.add(this.vel);
     
     //window.alert("exiting update");
@@ -161,7 +167,7 @@ class phys_Shape {
   }
   
   invertVel(isX){
-    //window.alert("inverted vel for: " + (isX ? "x" : "y"));
+    window.alert("inverted vel for: " + (isX ? "x" : "y"));
     try {
     if (isX){
       this.vel.x += (-this.vel.x) * this.bounce;
