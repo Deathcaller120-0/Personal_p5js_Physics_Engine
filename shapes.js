@@ -167,7 +167,7 @@ class phys_Shape {
   }
   
   invertVel(isX){
-    window.alert("inverted vel for: " + (isX ? "x" : "y"));
+    //window.alert("inverted vel for: " + (isX ? "x" : "y"));
     try {
     if (isX){
       this.vel.x += (-this.vel.x) * this.bounce;
