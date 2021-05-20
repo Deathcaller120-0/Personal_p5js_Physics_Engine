@@ -111,7 +111,7 @@ function spawn(){
   let vy = document.getElementById("spawnVelY").value;
   
   if (type == "circle"){
-    physObj.push(new phys_Circle(x, y, vx, vy, sizeX)));
+    physObj.push(new phys_Circle(x, y, vx, vy, sizeX));
   }
   physObj[physObj.length - 1].setIndex(physObj.length - 1);
 }
