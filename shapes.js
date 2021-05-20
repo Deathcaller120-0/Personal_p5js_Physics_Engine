@@ -145,7 +145,7 @@ class phys_Shape {
     this.collsionUpdate();
     this.wallUpdate();
     
-    this.pos.add(this.vel);
+    //this.pos.add(this.vel);
     
     //window.alert("exiting update");
   }
