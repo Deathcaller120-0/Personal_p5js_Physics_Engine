@@ -62,18 +62,16 @@
       
     <script>
   document.getElementById("gravityControl").onchange = function(){
-    phys.gravity = this.value;
+    phys.gravity = Number(this.value);
   }
   document.getElementById("dragControl").onchange = function(){
-    phys.drag = this.value;
+    phys.drag = Number(this.value);
   }
   document.getElementById("windX").onchange = function(){
-    phys.windX = this.value;
-    window.alert(this.value + ", " + typeof this.value);
+    phys.windX = Number(this.value);
   }
   document.getElementById("windY").onchange = function(){
-    phys.windY = this.value;
-    window.alert(this.value + ", " + typeof this.value);
+    phys.windY = Number(this.value);
   }
     </script>
   </body>
