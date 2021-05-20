@@ -74,6 +74,7 @@ class phys_Shape {
         this.pos.x += -diff;
       }
     //}
+    this.pos.add(this.vel);
     } catch (err){
       window.alert("SubUpdate | " + err.name + ": " + err.message)
     }
