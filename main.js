@@ -50,6 +50,7 @@ function draw(){
   for (let i = 0; i < stats.prevTicks.length; i++){
     avgTick += stats.prevTicks[i];
   }
+  avgTick /= performance.now();
   avgTick /= stats.prevTicks.length;
   
   text(nf(avgTick, 2, 3) + " Physics FPS", 1, 22);
