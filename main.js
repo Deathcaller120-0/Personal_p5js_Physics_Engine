@@ -54,6 +54,16 @@ function draw(){
   
   text(nf(avgTick, 2, 3) + " Physics FPS", 1, 22);
   pop();
+    
+  push();
+  stroke(255);
+  line(0, mouseY, width, mouseY);
+  line(mouseX, 0, mouseX, height);
+  
+  noStroke();
+  circle(mouseX, mouseY, 5);
+  text(mouseX + ", " + mouseY, mouseX+10, mouseY-12);
+  pop();
   
   } catch (err){
     window.alert("Draw | " + err.name + ": " + err.message);
