@@ -225,6 +225,9 @@ class phys_Circle extends phys_Shape {
     
     push()
     noStroke();
+    
+    text(this.getIndex(), 100, 100 + (this.getIndex * 22));
+      
     rotate(this.rot.x);
     translate(this.pos.x, this.pos.y);
     fill(this.color);
