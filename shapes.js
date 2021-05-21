@@ -253,8 +253,8 @@ class phys_Circle extends phys_Shape {
     translate(this.pos.x, this.pos.y);
     
     fill(255)
-    text(this.mass, this.size.x*2 + 20, 0);
-    text(this.index, this.size.x*20+20, 15);
+    text(this.mass, this.size.x + 20, 0);
+    text(this.index, this.size.x + 20, 15);
       
     fill(this.color);
     circle(0, 0, this.size.x);
@@ -305,8 +305,8 @@ class phys_Rect extends phys_Shape {
     noStroke();
     
     fill(255);
-    text(this.mass, this.size.x*2+20, 0);
-    text(this.index, this.size.x*20+20, 15);
+    text(this.mass, this.size.x + 20, 0);
+    text(this.index, this.size.x + 20, 15);
     
     fill(this.color);
     rect(-this.size.x/2, -this.size.y/2, this.size.x, this.size.y);
