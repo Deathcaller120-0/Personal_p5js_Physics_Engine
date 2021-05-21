@@ -147,6 +147,7 @@ function spawn(){
   let y = Math.floor(Number(document.getElementById("spawnY").value));
   
   let type = document.getElementById("spawnType").value;
+  window.alert(type);
   
   let sizeX = Math.floor(Number(document.getElementById("spawnSizeX").value));
   let sizeY = Math.floor(Number(document.getElementById("spawnSizeY").value));
