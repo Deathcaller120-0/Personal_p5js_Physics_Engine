@@ -166,9 +166,6 @@ class phys_Shape {
     if (phys.windX != 0 || phys.windY != 0){
       this.vel.add(phys.windX, phys.windY);
     }
-      
-    this.vel.x = Math.floor(this.vel.x);
-    this.vel.y = Math.floor(this.vel.y);
     
     this.pos.x = Math.floor(this.pos.x);
     this.pos.y = Math.floor(this.pos.y);
