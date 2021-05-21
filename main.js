@@ -85,7 +85,7 @@ function draw(){
     fill(255,64);
     
     if (type == "circle"){circle(x,y,sizeX)}
-    else if (type == "rect"){rect(x,y,sizeX,sizeY)}
+    else if (type == "rect"){rect(x-sizeX/2,y-sizeY/2,sizeX,sizeY)}
     
     stroke(255,255,0);
     line(x,y,vx+x,vy+y);
