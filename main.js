@@ -67,6 +67,38 @@ function draw(){
   text(mouseX + ", " + mouseY, mouseX+10, mouseY-12);
   pop();
   
+  if (document.getElementById("SpawnView").checked){
+    let x = Math.floor(Number(document.getElementById("spawnX").value));
+    let y = Math.floor(Number(document.getElementById("spawnY").value));
+  
+    let type = Math.floor(Number(document.getElementById("spawnType").value));
+  
+    let sizeX = Math.floor(Number(document.getElementById("spawnSizeX").value));
+    let sizeY = Math.floor(Number(document.getElementById("spawnSizeY").value));
+  
+    let vx = Math.floor(Number(document.getElementById("spawnVelX").value));
+    let vy = Math.floor(Number(document.getElementById("spawnVelY").value));
+    
+    push();
+    noStroke();
+    text(x + ", " + y, x+sizeX, y-sizeY);
+    fill(255,64);
+    
+    if (type == "circle"){circle(x,y,sizeX)}
+    else if (type == "rect"){rect(x,y,sizeX,sizeY)}
+    
+    stroke(255,255,0);
+    line(x,y,vx+x,vy+y);
+    noStroke();
+    fill(255,255,0);
+    text(vx + ", " + vy, vx+x, vy+y);
+    
+    stroke(255);
+    line(x, 0, x, height);
+    line(0, y, width, y);
+    pop();
+  }  
+  
   } catch (err){
     window.alert("Draw | " + err.name + ": " + err.message);
     noLoop();
@@ -111,16 +143,16 @@ function physPreTick(){
 //}
 
 function spawn(){
-  let x = document.getElementById("spawnX").value;
-  let y = document.getElementById("spawnY").value;
+  let x = Math.floor(Number(document.getElementById("spawnX").value));
+  let y = Math.floor(Number(document.getElementById("spawnY").value));
   
-  let type = document.getElementById("spawnType").value;
+  let type = Math.floor(Number(document.getElementById("spawnType").value));
   
-  let sizeX = document.getElementById("spawnSizeX").value;
-  let sizeY = document.getElementById("spawnSizeY").value;
+  let sizeX = Math.floor(Number(document.getElementById("spawnSizeX").value));
+  let sizeY = Math.floor(Number(document.getElementById("spawnSizeY").value));
   
-  let vx = document.getElementById("spawnVelX").value;
-  let vy = document.getElementById("spawnVelY").value;
+  let vx = Math.floor(Number(document.getElementById("spawnVelX").value));
+  let vy = Math.floor(Number(document.getElementById("spawnVelY").value));
   
   if (type == "circle"){
     physObj.push(new phys_Circle(x, y, vx, vy, sizeX));
