@@ -8,8 +8,6 @@
   </head>
   <body>
     <script src="shapes.js"></script>
-    <script src="main.js"></script>
-    
     
     <p onmouseup="document.getElementById('Spawning').hidden = !document.getElementById('Spawning').hidden">Spawning</p>
     <div id="Spawning" hidden>
@@ -62,7 +60,9 @@
     <input type="number" min=-20 max=20 value=0 step=0.1 id="windY">
     </div>
     <br>
-      
+    
+    <script src="main.js"></script>
+    
     <script>
   document.getElementById("gravityControl").onchange = function(){
     phys.gravity = Number(this.value);
