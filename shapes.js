@@ -100,7 +100,7 @@ class phys_Shape {
               if (polyPoint(other.hitPoints, this.hitPoints[i].x, this.hitPoints[i].y)) { 
                 hits.push(this.hitPoints[i].label);
                 this.hitPoints[i].hit = 1;
-                window.alert("Hit " + this.hitPoints[i].label + " on physObj[" + this.getIndex() + "]");
+                //window.alert("Hit " + this.hitPoints[i].label + " on physObj[" + this.getIndex() + "]");
               }
             }
           
