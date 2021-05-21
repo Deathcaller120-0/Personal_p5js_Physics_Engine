@@ -215,9 +215,9 @@ class phys_Circle extends phys_Shape {
     super(x, y, vx, vy, w, w, "circle", bounceLoss, _color);
     
     let angles = [];
-    for (let i = 0; i < 8; i++){
+    for (let i = 7; i >= 0; i--){
       let rad = ((i/8)*360-(135)) * PI/180;
-      angles.push(findPointOnCircle(0,0, this.size.x/2, rad));
+      angles.push(findPointOnCircle(0, 0, this.size.x/2, rad));
     }
     
     for (let i = 0; i < angles.length; i++){
