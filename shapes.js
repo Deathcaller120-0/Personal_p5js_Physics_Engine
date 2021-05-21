@@ -48,7 +48,7 @@ class phys_Shape {
           this.invertVel(0);
         }
         
-        let diff = height - (this.pos.y + this.size.y/2) - 1;
+        let diff = height - (this.pos.y + this.size.y / 2);
         this.pos.y += diff;
         
       } else if (this.pos.y + this.vel.y <= this.size.y / 2){
@@ -57,7 +57,7 @@ class phys_Shape {
           this.invertVel(0);
         }
         
-        let diff = this.pos.y - this.size.y/2 - 1;
+        let diff = this.pos.y - this.size.y / 2;
         this.pos.y += -diff;
       }
       
@@ -69,7 +69,7 @@ class phys_Shape {
           this.invertVel(1);
         }
         
-        let diff = width - (this.pos.x + this.size.x/2) - 1;
+        let diff = width - (this.pos.x + this.size.x / 2);
         this.pos.x += diff;
         
       } else if (this.pos.x + this.vel.x <= this.size.x / 2){
@@ -78,7 +78,7 @@ class phys_Shape {
           this.invertVel(1);
         }
         
-        let diff = this.pos.x - this.size.x/2 - 1;
+        let diff = this.pos.x - this.size.x / 2;
         this.pos.x += -diff;
       }
     //}
@@ -91,18 +91,31 @@ class phys_Shape {
   
   collsionUpdate(){
     for (let j = 0; j < physObj.length;j++){
-      if (this.getIndex() == physObj[j].getIndex()) {continue;}
+      if (this.index == physObj[j].index) {continue;}
       
       let other = physObj[j];
       //window.alert("checking larger collsion");
-      if (rectRect(other.pos.x - other.size.x, other.pos.y - other.size.y, other.size.x * 2, other.size.y * 2, this.pos.x - this.size.x/2, this.pos.y - this.size.y, this.size.x * 2, this.size.y * 2)){
-          if (polyPoly(this.hitPoints, other.hitPoints)){
+      if (rectRect(other.pos.x - other.size.x, other.pos.y - other.size.y, other.size.x * 2, other.size.y * 2, this.pos.x - this.size.x / 2, this.pos.y - this.size.y / 2, this.size.x * 2, this.size.y * 2)){
+        rect(this.pos.x - this.size.x / 2, this.pos.y - this.size.y / 2, this.size.x, this.size.y);  
+        let mePoints = [];
+        let theyPoints = [];
+        for (let i = 0; i < this.hitPoints.length){
+          mePoints[i] = {x:0, y:0};
+          mePoints[i].x = this.hitPoints[i].x + this.pos.x;
+          mePoints[i].y = this.hitPoints[i].y + this.pos.y;
+        }
+        for (let i = 0; i < other.hitPoints.length){
+          theyPoints[i] = {x:0, y:0};
+          theyPoints[i].x = other.hitPoints[i].x + other.pos.x;
+          theyPoints[i].y = other.hitPoints[i].y + other.pos.y;
+        }
+        if (polyPoly(mePoints, theyPoints)){
             let hits = [];
-            for (let i = 0; i < this.hitPoints.length; i++){
-              if (polyPoint(other.hitPoints, this.hitPoints[i].x, this.hitPoints[i].y)) { 
+            for (let i = 0; i < mePoints; i++){
+              if (polyPoint(theyPoints, mePoints[i].x, mePoints[i].y)) { 
                 hits.push(this.hitPoints[i].label);
                 this.hitPoints[i].hit = 1;
-                //window.alert("Hit " + this.hitPoints[i].label + " on physObj[" + this.getIndex() + "]");
+                //window.alert("Hit " + this.hitPoints[i].label + " on physObj[" + this.index + "]");
               }
             }
           
