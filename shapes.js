@@ -263,7 +263,7 @@ class phys_Circle extends phys_Shape {
     noStroke();
     colorMode('hsb', this.hitPoints.length, 1, 1, 1);
     for (let i = 0; i < this.hitPoints.length; i++){
-      if (this.hitPoints[i].hit == 0){
+      if (this.hitPoints[i].hit == 1){
         fill(i, 1, 1, 1);
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
         text(this.hitPoints[i].label, -this.size.x*2, -this.size.y*4 + (i * 22));
@@ -310,7 +310,7 @@ class phys_Rect extends phys_Shape {
     noStroke();
     colorMode('hsb', this.hitPoints.length, 1, 1);
     for (let i = 0; i < this.hitPoints.length; i++){
-      if (this.hitPoints[i].hit == 0){
+      if (this.hitPoints[i].hit == 1){
         fill(i, 1, 1);
         text(this.hitPoints[i].label, -this.size.x*2, -this.size.y*4 + (i*22));
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
