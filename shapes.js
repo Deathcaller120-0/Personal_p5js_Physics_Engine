@@ -278,7 +278,7 @@ class phys_Circle extends phys_Shape {
 }
 
 class phys_Rect extends phys_Shape {
-  constructor(x, y, vx, vy, w, h, bounceLoss, _color){
+  constructor(x, y, vx, vy, w, h, bounceLoss = 0.9, _color = "#00ff0080"){
     super(x, y, vx, vy, w, h, bounceLoss, "rect", _color)
     
     let left = -w/2;
