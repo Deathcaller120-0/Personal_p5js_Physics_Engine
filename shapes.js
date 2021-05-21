@@ -1,6 +1,3 @@
-//window.alert("loading shape")
-//try {
-  
 class phys_Shape {
   constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, shapeType="circle", bounceLoss = 0.5, _color="#FF000080", vectors = []){
     try {
@@ -30,15 +27,6 @@ class phys_Shape {
   wallUpdate(){
     //window.alert("SubUpdate Called");
     try { 
-    //window.alert(this.vel.y);
-    
-    // removed to check performance
-    //if(!rectRect(0, 0, width, height, this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x*2, this.size.y*2)){
-      
-    //window.alert("Out of bounds, Calculating");
-      
-      // shape is outside the canvas bounds
-      
       //window.alert("Repositioning and vel inversion for Y");
       
       // direct pos editing
@@ -81,8 +69,9 @@ class phys_Shape {
         let diff = this.pos.x - this.size.x / 2;
         this.pos.x += -diff;
       }
-    //}
-    this.pos.add(this.vel);
+      
+      this.pos.add(this.vel);
+      
     } catch (err){
       window.alert("SubUpdate | " + err.name + ": " + err.message)
     }
@@ -90,7 +79,7 @@ class phys_Shape {
   }
   
   collsionUpdate(){
-    for (let j = 0; j < physObj.length;j++){
+    for (let j = 0; j < physObj.length; j++){
       if (this.index == physObj[j].index) {continue;}
       
       let other = physObj[j];
@@ -100,12 +89,12 @@ class phys_Shape {
         let mePoints = [];
         let theyPoints = [];
         for (let i = 0; i < this.hitPoints.length){
-          mePoints[i] = {x:0, y:0};
+          mePoints.push({x:0, y:0});
           mePoints[i].x = this.hitPoints[i].x + this.pos.x;
           mePoints[i].y = this.hitPoints[i].y + this.pos.y;
         }
         for (let i = 0; i < other.hitPoints.length){
-          theyPoints[i] = {x:0, y:0};
+          theyPoints.push({x:0, y:0});
           theyPoints[i].x = other.hitPoints[i].x + other.pos.x;
           theyPoints[i].y = other.hitPoints[i].y + other.pos.y;
         }
@@ -114,8 +103,7 @@ class phys_Shape {
             for (let i = 0; i < mePoints; i++){
               if (polyPoint(theyPoints, mePoints[i].x, mePoints[i].y)) { 
                 hits.push(this.hitPoints[i].label);
-                this.hitPoints[i].hit = 1;
-                //window.alert("Hit " + this.hitPoints[i].label + " on physObj[" + this.index + "]");
+                this.hitPoints[i].hit = true;
               }
             }
           
@@ -150,7 +138,7 @@ class phys_Shape {
     
     try{
     for (let i = 0; i < this.hitPoints.length; i++){
-      this.hitPoints[i].hit = 0;
+      this.hitPoints[i].hit = false;
     }
     
     this.vel.y += phys.gravity;
