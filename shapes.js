@@ -216,7 +216,7 @@ class phys_Circle extends phys_Shape {
     
     let angles = [];
     for (let i = 7; i >= 0; i--){
-      let rad = ((i/8)*360-(135)) * PI/180;
+      let rad = ((i/8)*360-(90)) * PI/180;
       angles.push(findPointOnCircle(0, 0, this.size.x/2, rad));
     }
     
