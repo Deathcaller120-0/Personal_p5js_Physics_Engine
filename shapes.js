@@ -88,10 +88,10 @@ class phys_Shape {
   }
   
   collsionUpdate(){
-    for (let i = 0; i < physObj.length; i++){
-      if (this.getIndex() == physObj[i].getIndex()) {continue;}
+    for (let j = 0; j < physObj.length;j++){
+      if (this.getIndex() == physObj[j].getIndex()) {continue;}
       
-      let other = physObj[i];
+      let other = physObj[j];
       //window.alert("checking larger collsion");
       if (rectRect(other.pos.x - other.size.x, other.pos.y - other.size.y, other.size.x * 2, other.size.y * 2, this.pos.x - this.size.x/2, this.pos.y - this.size.y, this.size.x * 2, this.size.y * 2)){
           if (polyPoly(this.hitPoints, other.hitPoints)){
