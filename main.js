@@ -23,8 +23,8 @@ function setup(){
   
   physObj.push(new phys_Circle(width / 2, height / 2, random(-20, 20), random(-20, 20), 50));
   physObj[0].index = 0;
-  physObj.push(new phys_Circle(random(width), random(height), random(-20, 20), random(-20, 20), random(10, 50)));
-  physObj[1].index = 1;
+  //physObj.push(new phys_Circle(random(width), random(height), random(-20, 20), random(-20, 20), random(10, 50)));
+  //physObj[1].index = 1;
   
   physPreTick();
   
