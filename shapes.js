@@ -48,7 +48,7 @@ class phys_Shape {
           this.invertVel(0);
         }
         
-        let diff = height - (this.pos.y + this.size.y/2) - 2;
+        let diff = height - (this.pos.y + this.size.y/2) - 1;
         this.pos.y += diff;
         
       } else if (this.pos.y + this.vel.y <= this.size.y / 2){
@@ -57,7 +57,7 @@ class phys_Shape {
           this.invertVel(0);
         }
         
-        let diff = this.pos.y - this.size.y/2 - 2;
+        let diff = this.pos.y - this.size.y/2 - 1;
         this.pos.y += -diff;
       }
       
@@ -69,7 +69,7 @@ class phys_Shape {
           this.invertVel(1);
         }
         
-        let diff = width - (this.pos.x + this.size.x/2) - 2;
+        let diff = width - (this.pos.x + this.size.x/2) - 1;
         this.pos.x += diff;
         
       } else if (this.pos.x + this.vel.x <= this.size.x / 2){
@@ -78,7 +78,7 @@ class phys_Shape {
           this.invertVel(1);
         }
         
-        let diff = this.pos.x - this.size.x/2 - 2;
+        let diff = this.pos.x - this.size.x/2 - 1;
         this.pos.x += -diff;
       }
     //}
@@ -153,6 +153,13 @@ class phys_Shape {
     if (phys.windX != 0 || phys.windY != 0){
       this.vel.add(phys.windX, phys.windY);
     }
+      
+    this.vel.x = Math.floor(this.vel.x);
+    this.vel.y = Math.floor(this.vel.y);
+    
+    this.pos.x = Math.floor(this.pos.x);
+    this.pos.y = Math.floor(this.pos.y);
+    
     } catch(err){
       window.alert("Shape Update, " + this.type + ", " + this.index + " | " + err.name + ": " + err.message);
     }
