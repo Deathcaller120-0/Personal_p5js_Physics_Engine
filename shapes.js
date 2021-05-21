@@ -216,8 +216,13 @@ class phys_Circle extends phys_Shape {
     
     let angles = [];
     for (let i = 0; i < 8; i++){
-      let rad = ((i/8)*360-90) * PI/180;
+      let rad = ((i/8)*360-(135)) * PI/180;
       angles.push(findPointOnCircle(0,0, this.size.x/2, rad));
+    }
+    
+    for (let i = 0; i < angles.length; i++){
+      angles[i].x = Math.floor(angles[i].x);
+      angles[i].y = Math.floor(angles[i].y);
     }
     
     this.hitPoints.push({x:angles[0].x, y:angles[0].y, label:"top-left", hit:0});
