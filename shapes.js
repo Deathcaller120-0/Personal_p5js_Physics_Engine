@@ -17,6 +17,8 @@ class phys_Shape {
     this.type = shapeType;
     
     this.index = physObj.length;
+      
+    this.mass = this.size.x * this.size.y;
     
     } catch (err){
       window.alert("Shape Setup | " + err.name + ":" + err.message)
@@ -247,10 +249,13 @@ class phys_Circle extends phys_Shape {
     push()
     noStroke();
     
-    text(this.getIndex(), 100, 100 + (this.getIndex * 22));
-      
     rotate(this.rot.x);
     translate(this.pos.x, this.pos.y);
+    
+    fill(255)
+    text(this.mass, this.size.x*2 + 20, 0);
+    text(this.index, this.size.x*20+20, 15);
+      
     fill(this.color);
     circle(0, 0, this.size.x);
     
@@ -298,6 +303,11 @@ class phys_Rect extends phys_Shape {
     translate(this.pos.x, this.pos.y);
     
     noStroke();
+    
+    fill(255);
+    text(this.mass, this.size.x*2+20, 0);
+    text(this.index, this.size.x*20+20, 15);
+    
     fill(this.color);
     rect(-this.size.x/2, -this.size.y/2, this.size.x, this.size.y);
     
