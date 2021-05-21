@@ -133,6 +133,7 @@ class phys_Shape {
   update(){
     //window.alert("Update Called")
     
+    try{
     for (let i = 0; i < this.hitPoints.length; i++){
       this.hitPoints[i].hit = 0;
     }
@@ -149,6 +150,9 @@ class phys_Shape {
     
     if (phys.windX != 0 || phys.windY != 0){
       this.vel.add(phys.windX, phys.windY);
+    }
+    } catch(err){
+      window.alert("Shape Update, " + this.type + ", " + this.index + " | " + err.name + ": " + err.message);
     }
     
     //if (this.pos.y < 100 && this.pos.x < 100){
@@ -210,20 +214,20 @@ class phys_Circle extends phys_Shape {
     try {
     super(x, y, vx, vy, w, w, "circle", bounceLoss, _color);
     
-    let left = -w/2;
-    let top = -w/2;
-    let right = w/2;
-    let bottom = w/2;
-    let mid = 0
+    let angles = [];
+    for (let i = 0; i < 8; i++){
+      let rad = ((i/8)*360-90) * PI/180;
+      angles.push(findPointOnCircle(0,0, this.size.x, rad));
+    }
     
-    this.hitPoints.push({x:left, y:top, label:"top-left", hit:0});
-    this.hitPoints.push({x:left, y:mid, label:"mid-left", hit:0});
-    this.hitPoints.push({x:left, y:bottom, label:"bottom-left", hit:0});
-    this.hitPoints.push({x:mid, y:bottom, label:"bottom-mid", hit:0});
-    this.hitPoints.push({x:right, y:bottom, label:"bottom-right", hit:0});
-    this.hitPoints.push({x:right, y:mid, label:"mid-right", hit:0});
-    this.hitPoints.push({x:right, y:top, label:"top-right", hit:0});
-    this.hitPoints.push({x:mid, y:top, label:"top-mid", hit:0});
+    this.hitPoints.push({x:angles[0].x, y:angles[0].y, label:"top-left", hit:0});
+    this.hitPoints.push({x:angles[1].x, y:angles[1].y, label:"mid-left", hit:0});
+    this.hitPoints.push({x:angles[2].x, y:angles[2].y, label:"bottom-left", hit:0});
+    this.hitPoints.push({x:angles[3].x, y:angles[3].y, label:"bottom-mid", hit:0});
+    this.hitPoints.push({x:angles[4].x, y:angles[4].y, label:"bottom-right", hit:0});
+    this.hitPoints.push({x:angles[5].x, y:angles[5].y, label:"mid-right", hit:0});
+    this.hitPoints.push({x:angles[6].x, y:angles[6].y, label:"top-right", hit:0});
+    this.hitPoints.push({x:angles[7].x, y:angles[7].y, label:"top-mid", hit:0});
     
     } catch (err){
       window.alert("Circle Setup | " + err.name + ": " + err.message)
@@ -290,7 +294,7 @@ class phys_Rect extends phys_Shape {
     
     noStroke();
     fill(this.color);
-    rect(this.size.x/2, this.size.y/2, this.size.x, this.size.y);
+    rect(-this.size.x/2, -this.size.y/2, this.size.x, this.size.y);
     
     stroke(255, 255, 0);
     line(0, 0, this.vel.x, this.vel.y);
@@ -302,10 +306,16 @@ class phys_Rect extends phys_Shape {
     colorMode('hsb', this.hitPoints.length, 1, 1);
     for (let i = 0; i < this.hitPoints.length; i++){
       if (this.hitPoints[i].hit == 1){
-        text(this.hitPoints[i].label, -50, -100 + (i*22));
+        text(this.hitPoints[i].label, -this.size.x*2, -this.size.y*3 + (i*22));
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
       }
     }
     pop();
   }
+}
+
+function findPointOnCircle(originX, originY, radius, angleRadians) {
+  var newX = radius * Math.cos(angleRadians) + originX
+  var newY = radius * Math.sin(angleRadians) + originY
+  return {"x" : newX, "y" : newY}
 }
