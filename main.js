@@ -53,7 +53,7 @@ function draw(){
   avgTick /= performance.now();
   avgTick /= stats.prevTicks.length;
   
-  text(nf(avgTick, 2, 3) + " Physics FPS", 1, 22);
+  text(nf(avgTick, 2, 3) + " Last Physics Tick Duration", 1, 22);
   pop();
     
   push();
@@ -107,8 +107,8 @@ function draw(){
 
 function physicTick(){
   try {
-  for (let i = 0; i < physObj.length; i++){
-    physObj[i].update();
+  for (let main = 0; main < physObj.length; main++){
+    physObj[main].update();
   }
   
   } catch (err){
