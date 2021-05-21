@@ -71,7 +71,7 @@ function draw(){
     let x = Math.floor(Number(document.getElementById("spawnX").value));
     let y = Math.floor(Number(document.getElementById("spawnY").value));
   
-    let type = Math.floor(Number(document.getElementById("spawnType").value));
+    let type = document.getElementById("spawnType").value;
   
     let sizeX = Math.floor(Number(document.getElementById("spawnSizeX").value));
     let sizeY = Math.floor(Number(document.getElementById("spawnSizeY").value));
@@ -146,7 +146,7 @@ function spawn(){
   let x = Math.floor(Number(document.getElementById("spawnX").value));
   let y = Math.floor(Number(document.getElementById("spawnY").value));
   
-  let type = Math.floor(Number(document.getElementById("spawnType").value));
+  let type = document.getElementById("spawnType").value;
   
   let sizeX = Math.floor(Number(document.getElementById("spawnSizeX").value));
   let sizeY = Math.floor(Number(document.getElementById("spawnSizeY").value));
