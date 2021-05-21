@@ -147,7 +147,6 @@ function spawn(){
   let y = Math.floor(Number(document.getElementById("spawnY").value));
   
   let type = document.getElementById("spawnType").value;
-  window.alert(type);
   
   let sizeX = Math.floor(Number(document.getElementById("spawnSizeX").value));
   let sizeY = Math.floor(Number(document.getElementById("spawnSizeY").value));
@@ -160,5 +159,5 @@ function spawn(){
   } else if (type == "rect"){
     physObj.push(new phys_Rect(x, y, vx, vy, sizeX, sizeY));
   }
-  physObj[physObj.length - 1].setIndex(physObj.length - 1);
+  physObj[physObj.length - 1].index = physObj.length - 1;
 }
