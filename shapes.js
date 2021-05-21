@@ -217,7 +217,7 @@ class phys_Circle extends phys_Shape {
     let angles = [];
     for (let i = 0; i < 8; i++){
       let rad = ((i/8)*360-90) * PI/180;
-      angles.push(findPointOnCircle(0,0, this.size.x, rad));
+      angles.push(findPointOnCircle(0,0, this.size.x/2, rad));
     }
     
     this.hitPoints.push({x:angles[0].x, y:angles[0].y, label:"top-left", hit:0});
@@ -261,7 +261,7 @@ class phys_Circle extends phys_Shape {
       if (this.hitPoints[i].hit == 0){
         fill(i, 1, 1, 1);
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
-        text(this.hitPoints[i].label, -50, -100 + (i * 22));
+        text(this.hitPoints[i].label, -this.size.x*2, -this.size.y*3 + (i * 22));
       }
     }
     pop();
