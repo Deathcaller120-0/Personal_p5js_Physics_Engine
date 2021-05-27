@@ -129,15 +129,11 @@ class phys_Shape {
           
           if (invX){
             this.invertVel(1);
+            this.pos.x += (this.pos.x - this.size.x / 2) - (other.pos.x - other.size.x / 2);
           }
           if (invY){
             this.invertVel(0);
-          }
-          if (invX || invY){
-            //this.pos.add(this.vel);
-            let dx = (this.pos.x - this.size.x / 2) - (other.pos.x - other.size.x / 2);
-            let dy = (this.pos.y - this.size.y / 2) - (other.pos.y - other.size.y / 2);
-            
+            this.pos.y += (this.pos.y - this.size.y / 2) - (other.pos.y - other.size.y / 2);
           }
         }
         
