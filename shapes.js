@@ -210,7 +210,7 @@ class phys_Shape {
   }
   
   gravityWell() {
-    this.vel.y -= phys.gravity;
+    //this.vel.y -= phys.gravity;
     let x = mouseX;
     let y = mouseY;
     
