@@ -154,8 +154,8 @@ class phys_Shape {
     //if (this.vel.y >= this.mass) { this.vel.y = this.mass }
     //else if (this.vel.y < -this.mass) { this.vel.y = -this.mass }
       
-    this.vel.x += -this.vel.x * phys.drag;
-    this.vel.y += -this.vel.y * phys.drag;
+    this.vel.x += -this.vel.x * (phys.drag / this.mass);
+    this.vel.y += -this.vel.y * (phys.drag / this.mass);
     
     this.collsionUpdate();
     this.wallUpdate();
