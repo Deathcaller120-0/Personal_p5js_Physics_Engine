@@ -208,6 +208,18 @@ class phys_Shape {
     endShape(CLOSE);
     pop();
   }
+  
+  gravityWell() {
+    this.vel.y -= phys.gravity;
+    let x = mouseX;
+    let y = mouseY;
+    
+    let dx = x - this.pos.x;
+    let dy = y - this.pos.y;
+    
+    this.vel.x += dx / 4;
+    this.vel.y += dy / 4;
+  }
 }
 
 //window.alert("loading CircleShape");
