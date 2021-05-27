@@ -94,7 +94,7 @@ class phys_Shape {
                    this.size.y * 2)){
         //rect(this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x * 2, this.size.y * 2);  
         
-        /*let mePoints = getScreenPoints(this.hitPoints, this.pos, this.rot);
+        let mePoints = getScreenPoints(this.hitPoints, this.pos, this.rot);
         let theyPoints = getScreenPoints(other.hitPoints, other.pos, other.rot);
         if (polyPoly(mePoints, theyPoints)){
           let hits = [];
@@ -135,10 +135,13 @@ class phys_Shape {
           }
           if (invX || invY){
             //this.pos.add(this.vel);
+            let dx = (this.pos.x - this.size.x / 2) - (other.pos.x - other.size.x / 2);
+            let dy = (this.pos.y - this.size.y / 2) - (other.pos.y - other.size.y / 2);
             
           }
-        }*/
+        }
         
+        /*
         let distanceVect = p5.Vector.sub(other.pos, this.pos);
 
         // Calculate magnitude of the vector separating the balls
@@ -220,7 +223,7 @@ class phys_Shape {
         this.vel.y = (cosine * vFinal[0].y + sine * vFinal[0].x) * this.bounce;
         other.vel.x = (cosine * vFinal[1].x - sine * vFinal[1].y) * other.bounce;
         other.vel.y = (cosine * vFinal[1].y + sine * vFinal[1].x) * other.bounce;
-        }
+        }*/
       }
     }
   }
@@ -425,12 +428,12 @@ function findPointOnCircle(originX, originY, radius, angleRadians) {
   return {"x" : newX, "y" : newY};
 }
 
-function getScreenPoints(points, translation){
+function getScreenPoints(points, trans = {x:100, y:100}, rot = {x:0, y:0}){
   let p = [];
   for (let i = 0; i < points.length; i++){
     p.push({x:0,y:0});
-    p[i].x = points[i].x + translation.x;
-    p[i].y = points[i].y + translation.y;
+    p[i].x = points[i].x + trans.x;
+    p[i].y = points[i].y + trans.y;
   }
   return p;
 }
