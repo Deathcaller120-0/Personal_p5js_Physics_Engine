@@ -84,8 +84,8 @@ class phys_Shape {
       
       let other = physObj[j];
       //window.alert("checking larger collsion");
-      if (rectRect(other.pos.x - other.size.x / 2, 
-                   other.pos.y - other.size.y / 2, 
+      if (rectRect(other.pos.x - other.size.x, 
+                   other.pos.y - other.size.y, 
                    other.size.x * 2, 
                    other.size.y * 2, 
                    this.pos.x - this.size.x, 
@@ -94,8 +94,8 @@ class phys_Shape {
                    this.size.y * 2)){
         rect(this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x * 2, this.size.y * 2);  
         
-        let mePoints = getScreenPoints(this.hitPoints, this.pos);
-        let theyPoints = getScreenPoints(other.hitPoints, other.pos);
+        let mePoints = getScreenPoints(this.hitPoints, this.pos, this.rot);
+        let theyPoints = getScreenPoints(other.hitPoints, other.pos, other.rot);
         if (polyPoly(mePoints, theyPoints)){
             let hits = [];
             for (let i = 0; i < mePoints; i++){
