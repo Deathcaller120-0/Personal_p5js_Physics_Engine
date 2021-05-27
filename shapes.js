@@ -15,7 +15,7 @@ class phys_Shape {
     
     this.index = physObj.length;
       
-    this.mass = this.size.x * this.size.y;
+    this.mass = (this.size.x / 2) * (this.size.y / 2);
     
     } catch (err){
       window.alert("Shape Setup | " + err.name + ":" + err.message)
@@ -151,10 +151,13 @@ class phys_Shape {
     }
     
     this.vel.y += phys.gravity;
+    if (this.vel.y >= this.mass) { this.vel.y = this.mass }
+    else if (this.vel.y < -this.mass) { this.vel.y = -this.mass }
+      
     if (this.vel.x > 0){
-      this.vel.x += -phys.drag;
+      this.vel.x += (-this.vel.x) / phys.drag;
     } else {
-      this.vel.x += phys.drag;
+      this.vel.x += this.vel.x / phys.drag;
     }
     
     this.collsionUpdate();
