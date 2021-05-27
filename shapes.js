@@ -92,7 +92,7 @@ class phys_Shape {
                    this.pos.y - this.size.y, 
                    this.size.x * 2, 
                    this.size.y * 2)){
-        rect(this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x * 2, this.size.y * 2);  
+        //rect(this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x * 2, this.size.y * 2);  
         
         /*let mePoints = getScreenPoints(this.hitPoints, this.pos, this.rot);
         let theyPoints = getScreenPoints(other.hitPoints, other.pos, other.rot);
@@ -147,7 +147,7 @@ class phys_Shape {
         // Minimum distance before they are touching
         let minDistance = this.size.x + other.size.x;
 
-        //if (distanceVectMag < minDistance) {
+        if (distanceVectMag < minDistance) {
         let distanceCorrection = (minDistance - distanceVectMag) / 2.0;
         let d = distanceVect.copy();
         let correctionVector = d.normalize().mult(distanceCorrection);
@@ -216,10 +216,11 @@ class phys_Shape {
         this.pos.add(bFinal[0]);
 
         // update velocities
-        this.vel.x = cosine * vFinal[0].x - sine * vFinal[0].y;
-        this.vel.y = cosine * vFinal[0].y + sine * vFinal[0].x;
-        other.vel.x = cosine * vFinal[1].x - sine * vFinal[1].y;
-        other.vel.y = cosine * vFinal[1].y + sine * vFinal[1].x;
+        this.vel.x = (cosine * vFinal[0].x - sine * vFinal[0].y) * this.bounce;
+        this.vel.y = (cosine * vFinal[0].y + sine * vFinal[0].x) * this.bounce;
+        other.vel.x = (cosine * vFinal[1].x - sine * vFinal[1].y) * other.bounce;
+        other.vel.y = (cosine * vFinal[1].y + sine * vFinal[1].x) * other.bounce;
+        }
       }
     }
   }
