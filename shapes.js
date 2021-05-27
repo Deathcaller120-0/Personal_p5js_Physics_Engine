@@ -210,8 +210,8 @@ class phys_Shape {
   }
   
   gravityWell() {
-    this.vel.x += (mouseX - this.pos.x) / this.mass;
-    this.vel.y += (mouseY - this.pos.y) / this.mass;
+    this.vel.x += (mouseX - this.pos.x) / this.mass * 10;
+    this.vel.y += (mouseY - this.pos.y) / this.mass * 10;
   }
 }
 
