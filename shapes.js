@@ -298,7 +298,7 @@ class phys_Rect extends phys_Shape {
     this.hitPoints.push({x:right, y:top, label:"top-right", hit:0});
   }
   
-  render{
+  render (){
     push();
     rotate(this.rot.x);
     translate(this.pos.x, this.pos.y);
