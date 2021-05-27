@@ -98,7 +98,7 @@ class phys_Shape {
         let theyPoints = getScreenPoints(other.hitPoints, other.pos, other.rot);
         if (polyPoly(mePoints, theyPoints)){
           let hits = [];
-          for (let i = 0; i < mePoints; i++){
+          for (let i = 0; i < mePoints.length; i++){
             if (polyPoint(theyPoints, mePoints[i].x, mePoints[i].y)) { 
               hits.push(this.hitPoints[i].label);
               this.hitPoints[i].hit = true;
