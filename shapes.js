@@ -12,8 +12,6 @@ class phys_Shape {
     this.bounce = bounceLoss;
     
     this.type = shapeType;
-    
-    this.index = physObj.length;
       
     this.mass = (this.size.x / 2) * (this.size.y / 2);
     
@@ -250,7 +248,7 @@ class phys_Shape {
     //this.pos.y = Math.floor(this.pos.y);
     
     } catch(err){
-      window.alert("Shape Update, " + this.type + ", " + this.index + " | " + err.name + ": " + err.message);
+      window.alert("Shape Update, " + this.type + " | " + err.name + ": " + err.message);
     }
     
     //if (this.pos.y < 100 && this.pos.x < 100){
@@ -342,7 +340,6 @@ class phys_Circle extends phys_Shape {
     
     fill(255)
     text(this.mass, this.size.x + 20, 0);
-    text(this.index, this.size.x + 20, 15);
       
     fill(this.color);
     circle(0, 0, this.size.x);
@@ -359,7 +356,7 @@ class phys_Circle extends phys_Shape {
       if (this.hitPoints[i].hit == 1){
         fill(i, 1, 1, 1);
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
-        text(this.hitPoints[i].label, -this.size.x*2, -this.size.y*4 + (i * 22));
+        text(this.hitPoints[i].label, -this.size.x*2, -100 + (i * 22));
       }
     }
     pop();
@@ -394,7 +391,6 @@ class phys_Rect extends phys_Shape {
     
     fill(255);
     text(this.mass, this.size.x + 20, 0);
-    text(this.index, this.size.x + 20, 15);
     
     fill(this.color);
     rect(-this.size.x/2, -this.size.y/2, this.size.x, this.size.y);
@@ -410,7 +406,7 @@ class phys_Rect extends phys_Shape {
     for (let i = 0; i < this.hitPoints.length; i++){
       if (this.hitPoints[i].hit == 1){
         fill(i, 1, 1);
-        text(this.hitPoints[i].label, -this.size.x*2, -this.size.y*4 + (i*22));
+        text(this.hitPoints[i].label, -this.size.x*2, -100 + (i*22));
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
       }
     }
