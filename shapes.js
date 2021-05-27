@@ -349,8 +349,11 @@ class phys_Circle extends phys_Shape {
     
     stroke(255,255,0)
     line(0,0,this.vel.x,this.vel.y);
-      
+    
     noStroke();
+    
+    rect(-this.size.x / 2, -this.size.y/2, this.size.x, this.size.y);
+    
     colorMode('hsb', this.hitPoints.length, 1, 1, 1);
     for (let i = 0; i < this.hitPoints.length; i++){
       if (this.hitPoints[i].hit == 1){
