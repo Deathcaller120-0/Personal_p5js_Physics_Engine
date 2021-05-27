@@ -217,8 +217,8 @@ class phys_Shape {
     let dx = x - this.pos.x;
     let dy = y - this.pos.y;
     
-    this.vel.x += dx / 40;
-    this.vel.y += dy / 40;
+    this.vel.x += (dx / 500) * this.mass;
+    this.vel.y += (dy / 500) * this.mass;
   }
 }
 
