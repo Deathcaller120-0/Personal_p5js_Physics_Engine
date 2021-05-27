@@ -110,7 +110,9 @@ function physicTick(){
   for (let main = 0; main < physObj.length; main++){
     physObj[main].update();
     if (mouseIsPressed){
-      physObj[main].gravityWell();
+      if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+        physObj[main].gravityWell();
+      }
     }
   }
   
