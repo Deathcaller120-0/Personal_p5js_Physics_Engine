@@ -80,24 +80,22 @@ class phys_Shape {
   
   collsionUpdate(){
     for (let j = 0; j < physObj.length; j++){
-      if (this.index == physObj[j].index) {continue;}
+      if (this === physObj[j]) {continue;}
       
       let other = physObj[j];
       //window.alert("checking larger collsion");
-      if (rectRect(other.pos.x - other.size.x, other.pos.y - other.size.y, other.size.x * 2, other.size.y * 2, this.pos.x - this.size.x / 2, this.pos.y - this.size.y / 2, this.size.x * 2, this.size.y * 2)){
+      if (rectRect(other.pos.x - other.size.x / 2, 
+                   other.pos.y - other.size.y / 2, 
+                   other.size.x * 2, 
+                   other.size.y * 2, 
+                   this.pos.x - this.size.x, 
+                   this.pos.y - this.size.y, 
+                   this.size.x * 2, 
+                   this.size.y * 2)){
         rect(this.pos.x - this.size.x / 2, this.pos.y - this.size.y / 2, this.size.x, this.size.y);  
-        let mePoints = [];
-        let theyPoints = [];
-        for (let i = 0; i < this.hitPoints.length){
-          mePoints.push({x:0, y:0});
-          mePoints[i].x = this.hitPoints[i].x + this.pos.x;
-          mePoints[i].y = this.hitPoints[i].y + this.pos.y;
-        }
-        for (let i = 0; i < other.hitPoints.length){
-          theyPoints.push({x:0, y:0});
-          theyPoints[i].x = other.hitPoints[i].x + other.pos.x;
-          theyPoints[i].y = other.hitPoints[i].y + other.pos.y;
-        }
+        
+        let mePoints = getScreenPoints(this.hitPoints, this.pos);
+        let theyPoints = getScreenPoints(other.hitPoints, other.pos);
         if (polyPoly(mePoints, theyPoints)){
             let hits = [];
             for (let i = 0; i < mePoints; i++){
@@ -110,10 +108,20 @@ class phys_Shape {
             let invY = 0;
             let invX = 0;
             for (let i = 0; i < hits.length; i++){
-              if ((hits[i] == "top-left" || hits[i] == "top-mid" || hits[i] == "top-right" || hits[i] == "bottom-left" || hits[i] == "bottom-mid" || hits[i] == "bottom-right") && invY == 0){
+              if ((hits[i] == "top-left" || 
+                   hits[i] == "top-mid" || 
+                   hits[i] == "top-right" || 
+                   hits[i] == "bottom-left" || 
+                   hits[i] == "bottom-mid" || 
+                   hits[i] == "bottom-right") && invY == 0){
                 invY = 1;
               }
-              if ((hits[i] == "top-left" || hits[i] == "mid-left" || hits[i] == "top-right" || hits[i] == "bottom-left" || hits[i] == "bottom-right" || hits[i] == "mid-right") && invX == 0){
+              if ((hits[i] == "top-left" || 
+                   hits[i] == "mid-left" || 
+                   hits[i] == "top-right" || 
+                   hits[i] == "bottom-left" || 
+                   hits[i] == "bottom-right" || 
+                   hits[i] == "mid-right") && invX == 0){
                 invX = 1;
               }
               if (invX && invY){break;}
@@ -126,7 +134,8 @@ class phys_Shape {
               this.invertVel(0);
             }
             if (invX || invY){
-              this.pos.add(this.vel);
+              //this.pos.add(this.vel);
+              
             }
           }
       }
@@ -155,8 +164,8 @@ class phys_Shape {
       this.vel.add(phys.windX, phys.windY);
     }
     
-    this.pos.x = Math.floor(this.pos.x);
-    this.pos.y = Math.floor(this.pos.y);
+    //this.pos.x = Math.floor(this.pos.x);
+    //this.pos.y = Math.floor(this.pos.y);
     
     } catch(err){
       window.alert("Shape Update, " + this.type + ", " + this.index + " | " + err.name + ": " + err.message);
@@ -168,13 +177,9 @@ class phys_Shape {
     //  window.alert("Pos: " + this.pos.x + ", " + this.pos.y);
     //}
     
-    //this.pos.add(this.vel);
+    this.pos.add(this.vel);
     
     //window.alert("exiting update");
-  }
-  
-  getShapeType(){
-    return this.type;
   }
   
   invertVel(isX){
@@ -190,15 +195,6 @@ class phys_Shape {
     } catch (err){
       window.alert("InvertVel | " + err.name + ": " + err.message)
     }
-  }
-  
-  getIndex() {
-    return this.index;
-  }
-  
-  setIndex(i) {
-    this.index = i;
-    return this.index;
   }
   
   render(){
@@ -246,7 +242,7 @@ class phys_Circle extends phys_Shape {
     }
   }
   
-  render = function(){
+  render(){
     try {
       
     //window.alert("render called");
@@ -302,7 +298,7 @@ class phys_Rect extends phys_Shape {
     this.hitPoints.push({x:right, y:top, label:"top-right", hit:0});
   }
   
-  render = function(){
+  render{
     push();
     rotate(this.rot.x);
     translate(this.pos.x, this.pos.y);
@@ -336,7 +332,17 @@ class phys_Rect extends phys_Shape {
 }
 
 function findPointOnCircle(originX, originY, radius, angleRadians) {
-  var newX = radius * Math.cos(angleRadians) + originX
-  var newY = radius * Math.sin(angleRadians) + originY
-  return {"x" : newX, "y" : newY}
+  let newX = radius * Math.cos(angleRadians) + originX;
+  let newY = radius * Math.sin(angleRadians) + originY;
+  return {"x" : newX, "y" : newY};
+}
+
+function getScreenPoints(points, translation){
+  let p = [];
+  for (let i = 0; i < points.length; i++){
+    p.push({x:0,y:0});
+    p[i].x = points[i].x + translation.x;
+    p[i].y = points[i].y + translation.y;
+  }
+  return p;
 }
