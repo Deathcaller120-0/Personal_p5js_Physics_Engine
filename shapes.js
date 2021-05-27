@@ -92,7 +92,7 @@ class phys_Shape {
                    this.pos.y - this.size.y, 
                    this.size.x * 2, 
                    this.size.y * 2)){
-        rect(this.pos.x - this.size.x / 2, this.pos.y - this.size.y / 2, this.size.x, this.size.y);  
+        rect(this.pos.x - this.size.x, this.pos.y - this.size.y, this.size.x * 2, this.size.y * 2);  
         
         let mePoints = getScreenPoints(this.hitPoints, this.pos);
         let theyPoints = getScreenPoints(other.hitPoints, other.pos);
