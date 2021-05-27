@@ -36,7 +36,7 @@ function setup(){
 
 function draw(){
   try {
-  background(20, 15);
+  background(20);
   
   for(let i = 0; i < physObj.length; i++){
     physObj[i].render();
