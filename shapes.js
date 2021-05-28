@@ -316,8 +316,9 @@ class phys_Circle extends phys_Shape {
     super(x, y, vx, vy, w, w, "circle", bounceLoss, _color);
     
     let angles = [];
-    for (let i = 7; i >= 0; i--){
-      let rad = ((i/8)*360-(90)) * PI/180;
+    let accuracy = 15;
+    for (let i = 0; i < accuracy; i++){
+      let rad = (( i / accuracy) * 360) * (PI / 180);
       angles.push(findPointOnCircle(0, 0, this.size.x/2, rad));
     }
     
@@ -326,14 +327,9 @@ class phys_Circle extends phys_Shape {
       angles[i].y = Math.floor(angles[i].y);
     }
     
-    this.hitPoints.push({x:angles[0].x, y:angles[0].y, label:"top-left", hit:0});
-    this.hitPoints.push({x:angles[1].x, y:angles[1].y, label:"mid-left", hit:0});
-    this.hitPoints.push({x:angles[2].x, y:angles[2].y, label:"bottom-left", hit:0});
-    this.hitPoints.push({x:angles[3].x, y:angles[3].y, label:"bottom-mid", hit:0});
-    this.hitPoints.push({x:angles[4].x, y:angles[4].y, label:"bottom-right", hit:0});
-    this.hitPoints.push({x:angles[5].x, y:angles[5].y, label:"mid-right", hit:0});
-    this.hitPoints.push({x:angles[6].x, y:angles[6].y, label:"top-right", hit:0});
-    this.hitPoints.push({x:angles[7].x, y:angles[7].y, label:"top-mid", hit:0});
+    for (let i = 0; i < angles.length; i++){
+      this.hitPoints.push({x:angles[i].x, y:angles[i].y, hit:0});
+    }
     
     } catch (err){
       window.alert("Circle Setup | " + err.name + ": " + err.message)
@@ -372,7 +368,7 @@ class phys_Circle extends phys_Shape {
       if (this.hitPoints[i].hit == 1){
         fill(i, 1, 1, 1);
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
-        text(this.hitPoints[i].label, -this.size.x*2, -100 + (i * 22));
+        //text(this.hitPoints[i].label, -this.size.x*2, -100 + (i * 22));
       }
     }
     pop();
@@ -392,10 +388,10 @@ class phys_Rect extends phys_Shape {
     let right = w/2;
     let bottom = h/2;
     
-    this.hitPoints.push({x:left, y:top, label:"top-left", hit:0});
-    this.hitPoints.push({x:left, y:bottom, label:"bottom-left", hit:0});
-    this.hitPoints.push({x:right, y:bottom, label:"bottom-right", hit:0});
-    this.hitPoints.push({x:right, y:top, label:"top-right", hit:0});
+    this.hitPoints.push({x:left, y:top, hit:0});
+    this.hitPoints.push({x:left, y:bottom, hit:0});
+    this.hitPoints.push({x:right, y:bottom, hit:0});
+    this.hitPoints.push({x:right, y:top, hit:0});
   }
   
   render (){
@@ -422,7 +418,7 @@ class phys_Rect extends phys_Shape {
     for (let i = 0; i < this.hitPoints.length; i++){
       if (this.hitPoints[i].hit == 1){
         fill(i, 1, 1);
-        text(this.hitPoints[i].label, -this.size.x*2, -100 + (i*22));
+        //text(this.hitPoints[i].label, -this.size.x*2, -100 + (i*22));
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
       }
     }
