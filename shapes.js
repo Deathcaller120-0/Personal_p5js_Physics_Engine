@@ -106,10 +106,10 @@ class phys_Shape {
           let invY = 0;
           let invX = 0;
           for (let i = 0; i < hits.length; i++){
-            if ((hits[i].y > 0 || hits[i].y < 0) && invY == 0){
+            if ((hits[i].y > this.size.y / 4 || hits[i].y < -this.size.y / 4) && invY == 0){
               invY = 1;
             }
-            if ((hits[i].x > 0 || hits[i].x < 0) && invX == 0){
+            if ((hits[i].x > this.size.x / 4 || hits[i].x < -this.size.x / 4) && invX == 0){
               invX = 1;
             }
             if (invX && invY){break;}
