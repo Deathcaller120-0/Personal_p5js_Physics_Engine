@@ -127,11 +127,23 @@ class phys_Shape {
           
           if (invX){
             this.invertVel(1);
-            this.pos.x += (this.pos.x - this.size.x / 2) - (other.pos.x - other.size.x / 2);
+            let left = (this.pos.x - this.size.x / 2) - (other.pos.x - other.size.x / 2);
+            let right = (this.pos.y + this.size.x) - (other.pos.x + other.size.x);
+            if (left > 0 && right < 0){
+              this.pos.x += right;
+            } else {
+              this.pos.x += left;
+            }
           }
           if (invY){
             this.invertVel(0);
-            this.pos.y += (this.pos.y - this.size.y / 2) - (other.pos.y - other.size.y / 2);
+            let top = (this.pos.y - this.size.y / 2) - (other.pos.y - other.size.y / 2);
+            let bottom = (this.pos.y + this.size.x) - (other.pos.x + other.size.x);
+            if (top > 0 && bottom < 0){
+              this.pos.x += bottom;
+            } else {
+              this.pos.x += top;
+            }
           }
         }
         
