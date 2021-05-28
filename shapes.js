@@ -307,11 +307,8 @@ class phys_Shape {
     
     colorMode('hsb', this.hitPoints.length, 1, 1, 1);
     for (let i = 0; i < this.hitPoints.length; i++){
-      if (this.hitPoints[i].hit == 1){
-        fill(i, 1, 1, 1);
-        circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
-        //text(this.hitPoints[i].label, -this.size.x*2, -100 + (i * 22));
-      }
+      fill(i, 1, 1, 1);
+      circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
     }
     
     pop();
