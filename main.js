@@ -43,7 +43,11 @@ function draw(){
   background(20);
   
   for(let i = 0; i < physObj.length; i++){
-    physObj[i].render();
+    if (!mouseIsPressed) {
+      physObj[i].render();
+    } else {
+      physObj[i].vectorRender();
+    }
   }
   
   push();
