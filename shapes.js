@@ -253,7 +253,7 @@ class phys_Circle extends phys_Shape {
     super(x, y, vx, vy, w, w, "circle", bounceLoss, _color);
     
     let angles = [];
-    let complexity = Math.floor(this.size.x/4);
+    let complexity = Math.floor(this.size.x/3);
     for (let i = 0; i < complexity; i++){
       let rad = (( i / complexity) * 360) * (PI / 180);
       angles.push(findPointOnCircle(0, 0, this.size.x/2, rad));
