@@ -129,7 +129,7 @@ function physicTick(){
     //  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
     //    physObj[main].gravityWell();
     //  }
-    }
+    //}
   }
   
   } catch (err){
