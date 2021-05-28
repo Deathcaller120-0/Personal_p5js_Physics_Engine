@@ -310,15 +310,15 @@ class phys_Shape {
     
     if (dy < this.size.y + phys.gravityWellSize && dx < this.size.x + phys.gravityWellSize) {
       if (mouseX - this.pos.x > 0){
-        this.vel.x += this.mass / (Math.abs(mouseX - this.pos.x + 0.001) * phys.gravityWellSize);
+        this.vel.x += this.mass / (Math.abs(mouseX - this.pos.x + 1) * phys.gravityWellSize);
       } else {
-        this.vel.x += this.mass / (Math.abs(mouseX - this.pos.x + 0.001) * phys.gravityWellSize) * -1;
+        this.vel.x += this.mass / (Math.abs(mouseX - this.pos.x + 1) * phys.gravityWellSize) * -1;
       }
       
       if (mouseY - this.pos.t > 0){
-        this.vel.y += this.mass / (Math.abs(mouseY - this.pos.y + 0.001) * phys.gravityWellSize);
+        this.vel.y += this.mass / (Math.abs(mouseY - this.pos.y + 1) * phys.gravityWellSize);
       } else {
-        this.vel.y += this.mass / (Math.abs(mouseY - this.pos.y + 0.001) * phys.gravityWellSize) * -1;
+        this.vel.y += this.mass / (Math.abs(mouseY - this.pos.y + 1) * phys.gravityWellSize) * -1;
       }
     }
   }
