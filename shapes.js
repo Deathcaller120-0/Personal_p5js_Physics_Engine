@@ -28,35 +28,32 @@ class phys_Shape {
       //window.alert("Repositioning and vel inversion for Y");
       
       // direct pos editing
-      if (this.pos.y + this.vel.y >= height - this.size.y / 2){
+      if (this.pos.y >= height - this.size.y / 2){
         //window.alert("Hit BOttom");
         if (this.vel.y > 0){
           this.invertVel(0);
         }
         
-        let diff = height - (this.pos.y + this.size.y / 2);
-        this.pos.y += diff;
+        this.pos.y = height - (this.pos.y + this.size.y / 2);
         
-      } else if (this.pos.y + this.vel.y <= this.size.y / 2){
+      } else if (this.pos.y <= this.size.y / 2){
         //window.alert("Hit Top");
         if (this.vel.y < 0){
           this.invertVel(0);
         }
         
-        let diff = this.pos.y - this.size.y / 2;
-        this.pos.y += -diff;
+        this.pos.y = this.pos.y - this.size.y / 2;
       }
       
       //window.alert("Repositioning and vel inversion for X");
       
-      if (this.pos.x + this.vel.x >= width - this.size.x / 2){
+      if (this.pos.x >= width - this.size.x / 2){
         //window.alert("Hit Right");
         if (this.vel.x > 0){
           this.invertVel(1);
         }
         
-        let diff = width - (this.pos.x + this.size.x / 2);
-        this.pos.x += diff;
+        this.pos.x = width - (this.pos.x + this.size.x / 2);
         
       } else if (this.pos.x + this.vel.x <= this.size.x / 2){
         //window.alert("Hit Left");
@@ -64,8 +61,7 @@ class phys_Shape {
           this.invertVel(1);
         }
         
-        let diff = this.pos.x - this.size.x / 2;
-        this.pos.x += -diff;
+        this.pos.x = this.pos.x - this.size.x / 2;
       }
       
       this.pos.add(this.vel);
