@@ -34,7 +34,7 @@ class phys_Shape {
           this.invertVel(0);
         }
         
-        this.pos.y = height - (this.pos.y + this.size.y / 2);
+        this.pos.y = height - (this.size.y / 2);
         
       } else if (this.pos.y <= this.size.y / 2){
         //window.alert("Hit Top");
@@ -42,7 +42,7 @@ class phys_Shape {
           this.invertVel(0);
         }
         
-        this.pos.y = this.pos.y - this.size.y / 2;
+        this.pos.y = this.size.y / 2;
       }
       
       //window.alert("Repositioning and vel inversion for X");
@@ -53,7 +53,7 @@ class phys_Shape {
           this.invertVel(1);
         }
         
-        this.pos.x = width - (this.pos.x + this.size.x / 2);
+        this.pos.x = width - (this.size.x / 2);
         
       } else if (this.pos.x <= this.size.x / 2){
         //window.alert("Hit Left");
@@ -61,7 +61,7 @@ class phys_Shape {
           this.invertVel(1);
         }
         
-        this.pos.x = this.pos.x - this.size.x / 2;
+        this.pos.x = this.size.x / 2;
       }
       
       this.pos.add(this.vel);
