@@ -13,7 +13,7 @@ class phys_Shape {
     
     this.type = shapeType;
       
-    this.mass = (this.size.x / 2) * (this.size.y / 2);
+    this.mass = (this.size.x / 2) * (this.size.y / 2) / 10;
     
     } catch (err){
       window.alert("Shape Setup | " + err.name + ":" + err.message)
