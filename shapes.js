@@ -287,6 +287,9 @@ class phys_Shape {
   vectorRender(){
     push();
     
+    rotate(this.rot.x);
+    translate(this.pos.x, this.pos.y);
+    
     stroke(0);
     line(0,0,this.size.x/2,0);
     
@@ -295,7 +298,8 @@ class phys_Shape {
     
     noStroke();
     fill(this.color);
-    beginShape()
+    
+    beginShape();
     for (let i = 0; i < this.hitPoints.length; i++){
       vertex(this.hitPoints[i].x, this.hitPoints[i].y);
     }
