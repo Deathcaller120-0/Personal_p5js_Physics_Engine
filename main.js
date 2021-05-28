@@ -71,12 +71,14 @@ function draw(){
   text(mouseX + ", " + mouseY, mouseX+10, mouseY-12);
   
   // if making a gravity well then render circles in size of well
-  if (mouseIsPressed){
-    fill(255, 1);
-    for (let i = 0; i < phys.gravityWellSize + 1; i++){
-      circle(mouseX, mouseY, i * 10);
-    }
-  }
+    
+  // doesnt work right now
+  //if (mouseIsPressed){
+  //  fill(255, 1);
+  //  for (let i = 0; i < phys.gravityWellSize + 1; i++){
+  //    circle(mouseX, mouseY, i * 10);
+  //  }
+  //}
   pop();
   
   if (document.getElementById("SpawnView").checked){
@@ -121,10 +123,12 @@ function physicTick(){
   try {
   for (let main = 0; main < physObj.length; main++){
     physObj[main].update();
-    if (mouseIsPressed){
-      if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
-        physObj[main].gravityWell();
-      }
+    
+    // doesnt work how i want it to right now
+    //if (mouseIsPressed){
+    //  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+    //    physObj[main].gravityWell();
+    //  }
     }
   }
   
