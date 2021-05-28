@@ -302,17 +302,17 @@ class phys_Shape {
   }
   
   gravityWell() {
-    let dx = mouseX - this.pos.x;
-    let dy = mouseY - this.pos.y;
+    //let dx = mouseX - this.pos.x;
+    //let dy = mouseY - this.pos.y;
     
-    dx = dx > 0 ? dx : -dx;
-    dy = dy > 0 ? dy : -dy;
+    //dx = dx > 0 ? dx : -dx;
+    //dy = dy > 0 ? dy : -dy;
     
-    if (dy < this.size.y + phys.gravityWellSize && dx < this.size.x + phys.gravityWellSize) {
+    //if (dy < this.size.y + phys.gravityWellSize && dx < this.size.x + phys.gravityWellSize) {
       let g = this.mass;
       this.vel.x += g / (mouseX - this.pos.x + 1);
       this.vel.y += g / (mouseY - this.pos.y + 1);
-    }
+    //}
   }
 }
 
