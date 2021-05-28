@@ -72,7 +72,7 @@ function draw(){
   
   // if making a gravity well then render circles in size of well
   if (mouseIsPressed){
-    fill(255, 10);
+    fill(255, 1);
     for (let i = 0; i < phys.gravityWellSize + 1; i++){
       circle(mouseX, mouseY, i * 10);
     }
