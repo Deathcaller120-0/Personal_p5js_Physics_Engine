@@ -58,6 +58,13 @@
     
     <span>Wind Top(-) to Bottom(+)</span>
     <input type="number" min=-20 max=20 value=0 step=0.1 id="windY">
+    <br>
+    
+    <span>Phys Timeout</span>
+    <input type="number" min=1 max=999 value=20 step=1 id="timeDiv">
+    
+    <span>Gravity Well Size</span>
+    <input type="number" min=1 max=500 value=50 step=1 id="gravityWell">
     </div>
     <br>
     
@@ -75,6 +82,13 @@
   }
   document.getElementById("windY").onchange = function(){
     phys.windY = Number(this.value);
+  }
+  document.getElementById("timeDiv").onchange = function(){
+    phys.timeDiv = Number(this.value);
+    physTickTimeout = 1000 / phys.timeDiv;
+  }
+  document.getElementById("gravityWell").onchange = function(){
+    phys.gravityWellSize = Number(this.value);
   }
     </script>
   </body>
