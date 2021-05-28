@@ -98,7 +98,7 @@ class phys_Shape {
           let hits = [];
           for (let i = 0; i < mePoints.length; i++){
             if (polyPoint(theyPoints, mePoints[i].x, mePoints[i].y)) { 
-              hits.push(this.hitPoints[i].label);
+              hits.push(this.hitPoints[i]);
               this.hitPoints[i].hit = true;
             }
           }
@@ -106,20 +106,10 @@ class phys_Shape {
           let invY = 0;
           let invX = 0;
           for (let i = 0; i < hits.length; i++){
-            if ((hits[i] == "top-left" || 
-                 hits[i] == "top-mid" || 
-                 hits[i] == "top-right" || 
-                 hits[i] == "bottom-left" || 
-                 hits[i] == "bottom-mid" || 
-                 hits[i] == "bottom-right") && invY == 0){
+            if ((hits[i].y > 0 || hits[i].y < 0) && invY == 0){
               invY = 1;
             }
-            if ((hits[i] == "top-left" || 
-                 hits[i] == "mid-left" || 
-                 hits[i] == "top-right" || 
-                 hits[i] == "bottom-left" || 
-                 hits[i] == "bottom-right" || 
-                 hits[i] == "mid-right") && invX == 0){
+            if ((hits[i].x > 0 || hits[i].x < 0) && invX == 0){
               invX = 1;
             }
             if (invX && invY){break;}
@@ -127,22 +117,24 @@ class phys_Shape {
           
           if (invX){
             this.invertVel(1);
+            
             let left = (this.pos.x - this.size.x / 2) - (other.pos.x - other.size.x / 2);
             let right = (this.pos.x + this.size.x) - (other.pos.x + other.size.x);
             if (left > 0 && right < 0){
-              this.pos.x += right/2;
+              this.pos.x += right/4;
             } else {
-              this.pos.x += left/2;
+              this.pos.x += left/4;
             }
           }
           if (invY){
             this.invertVel(0);
+            
             let top = (this.pos.y - this.size.y / 2) - (other.pos.y - other.size.y / 2);
             let bottom = (this.pos.y + this.size.y) - (other.pos.y + other.size.y);
             if (top > 0 && bottom < 0){
-              this.pos.y += bottom/2;
+              this.pos.y += bottom/4;
             } else {
-              this.pos.y += top/2;
+              this.pos.y += top/4;
             }
           }
         }
