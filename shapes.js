@@ -309,9 +309,9 @@ class phys_Shape {
     dy = dy > 0 ? dy : -dy;
     
     if (dy < this.size.y + phys.gravityWellSize && dx < this.size.x + phys.gravityWellSize) {
-      let g = (this.mass * phys.gravityWellSize) / 100;
-      this.vel.x += g / (mouseX - this.pos.x + 0.001);
-      this.vel.y += g / (mouseY - this.pos.y + 0.001);
+      let g = (this.mass * phys.gravityWellSize);
+      this.vel.x += g / ((mouseX - this.pos.x + 0.001) / phys.gravityWellSize);
+      this.vel.y += g / ((mouseY - this.pos.y + 0.001) / phys.gravityWellSize);
     }
   }
 }
