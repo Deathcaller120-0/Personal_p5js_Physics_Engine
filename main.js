@@ -74,7 +74,7 @@ function draw(){
   if (mouseIsPressed){
     fill(255, 10);
     for (let i = 0; i < phys.gravityWellSize + 1; i += 5){
-      circle(mouseX, mouseY, i);
+      circle(mouseX, mouseY, i * 2);
     }
   }
   pop();
