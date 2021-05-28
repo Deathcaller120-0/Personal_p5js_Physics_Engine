@@ -13,6 +13,8 @@ var phys = {
   timeDiv:20
 };
 
+var viewVectors = false;
+
 var physTickTimeout = 1000 / phys.timeDiv;
 
 var stats = {prevTicks:[1]};
@@ -43,7 +45,7 @@ function draw(){
   background(20);
   
   for(let i = 0; i < physObj.length; i++){
-    if (!mouseIsPressed) {
+    if (!viewVectors) {
       physObj[i].render();
     } else {
       physObj[i].vectorRender();
