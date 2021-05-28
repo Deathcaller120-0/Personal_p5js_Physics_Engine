@@ -305,6 +305,8 @@ class phys_Shape {
     stroke(255,255,0)
     line(0,0,this.vel.x,this.vel.y);
     
+    noStroke();
+    
     colorMode('hsb', this.hitPoints.length, 1, 1, 1);
     for (let i = 0; i < this.hitPoints.length; i++){
       fill(i, 1, 1, 1);
