@@ -224,7 +224,7 @@ class phys_Shape {
     for (let i = 0; i < this.hitPoints.length; i++){
       fill(i, 1, 1, 1);
       circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
-      text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, -this.size.x * 2, -100 + (i * 22));
+      text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, -this.size.x * 2, -200 + (i * 13));
     }
     
     pop();
@@ -305,7 +305,7 @@ class phys_Circle extends phys_Shape {
       if (this.hitPoints[i].hit == 1){
         fill(i, 1, 1, 1);
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
-        text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, -this.size.x * 2, -100 + (i * 22));
+        //text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, -this.size.x * 2, -100 + (i * 22));
       }
     }
     pop();
@@ -355,7 +355,7 @@ class phys_Rect extends phys_Shape {
     for (let i = 0; i < this.hitPoints.length; i++){
       if (this.hitPoints[i].hit == 1){
         fill(i, 1, 1);
-        text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, -this.size.x * 2, -100 + (i * 22));
+        //text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, -this.size.x * 2, -100 + (i * 22));
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
       }
     }
