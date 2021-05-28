@@ -302,8 +302,16 @@ class phys_Shape {
   }
   
   gravityWell() {
-    this.vel.x += (mouseX - this.pos.x) / this.mass * 10;
-    this.vel.y += (mouseY - this.pos.y) / this.mass * 10;
+    let dx = mouseX - this.pos.x;
+    let dy = mouseY - this.pos.y;
+    
+    dx = dx > 0 ? dx : -dx;
+    dy = dy > 0 ? dy : -dy;
+    
+    if (dy < this.size.y + 50 && dx < this.size.x + 50) {
+      this.vel.x += map((mouseX - this.pos.x) / this.mass * 10, 0, 100, 100, 0);
+      this.vel.y += map((mouseY - this.pos.y) / this.mass * 10, 0, 100, 100, 0);
+    }
   }
 }
 
