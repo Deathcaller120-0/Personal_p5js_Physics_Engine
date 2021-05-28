@@ -68,6 +68,9 @@
     </div>
     <br>
     
+    <span>View Shape Vectors</span>
+    <input type="checkbox" id="viewVectors">
+    
     <script src="main.js"></script>
     
     <script>
@@ -89,6 +92,9 @@
   }
   document.getElementById("gravityWell").onchange = function(){
     phys.gravityWellSize = Number(this.value);
+  }
+  document.getElementById("viewVectors").onchange = function(){
+    viewVectors = this.value;
   }
     </script>
   </body>
