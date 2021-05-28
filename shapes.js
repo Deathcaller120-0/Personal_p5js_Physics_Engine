@@ -372,7 +372,7 @@ class phys_Circle extends phys_Shape {
     
     noStroke();
     
-    rect(-this.size.x / 2, -this.size.y/2, this.size.x, this.size.y);
+    //rect(-this.size.x / 2, -this.size.y/2, this.size.x, this.size.y);
     
     colorMode('hsb', this.hitPoints.length, 1, 1, 1);
     for (let i = 0; i < this.hitPoints.length; i++){
