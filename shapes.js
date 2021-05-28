@@ -1,5 +1,5 @@
 class phys_Shape {
-  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, shapeType="circle", bounceLoss = 0.5, _color="#FF000080", vectors = []){
+  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, shapeType="circle", bounceLoss = 0.5, _color="#FFFF0080", vectors = []){
     try {
     this.pos = createVector(x, y);
     this.vel = createVector(vx, vy);
@@ -55,7 +55,7 @@ class phys_Shape {
         
         this.pos.x = width - (this.pos.x + this.size.x / 2);
         
-      } else if (this.pos.x + this.vel.x <= this.size.x / 2){
+      } else if (this.pos.x <= this.size.x / 2){
         //window.alert("Hit Left");
         if (this.vel.x < 0){
           this.invertVel(1);
