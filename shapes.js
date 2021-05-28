@@ -244,7 +244,7 @@ class phys_Shape {
 //window.alert("loading CircleShape");
 
 class phys_Circle extends phys_Shape {
-  constructor(x, y, vx, vy, w, _color, bounceLoss = 0.9){
+  constructor(x, y, vx, vy, w, _color = "#FF000080", bounceLoss = 0.9){
     try {
     super(x, y, vx, vy, w, w, "circle", bounceLoss, _color);
     
