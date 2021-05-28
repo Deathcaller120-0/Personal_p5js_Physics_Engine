@@ -2,18 +2,20 @@
 
 //try {
 
-physObj = [];
+var physObj = [];
 
-var physTickTimeout = 1000/20;
-
-var stats = {prevTicks:[1]};
-
-phys = {
+var phys = {
   gravity:0.1, 
   drag:0.05,
   windX: 0,
-  windY: 0
+  windY: 0,
+  gravityWellSize: 50,
+  timeDiv:20
 };
+
+var physTickTimeout = 1000 / phys.timeDiv;
+
+var stats = {prevTicks:[1]};
 
 function setup(){
   //window.alert("setup call");
@@ -25,6 +27,8 @@ function setup(){
   physObj[0].index = 0;
   //physObj.push(new phys_Circle(random(width), random(height), random(-20, 20), random(-20, 20), random(10, 50)));
   //physObj[1].index = 1;
+    
+  noCursor();
   
   physPreTick();
   
@@ -57,14 +61,22 @@ function draw(){
   pop();
     
   push();
-  stroke(255);
-  line(0, mouseY, width, mouseY);
-  line(mouseX, 0, mouseX, height);
+  //stroke(255);
+  //line(0, mouseY, width, mouseY);
+  //line(mouseX, 0, mouseX, height);
   
   noStroke();
   fill(255);
   circle(mouseX, mouseY, 5);
   text(mouseX + ", " + mouseY, mouseX+10, mouseY-12);
+  
+  // if making a gravity well then render circles in size of well
+  if (mouseIsPressed){
+    fill(255, 10);
+    for (let i = 0; i < phys.gravityWellSize + 1; i += 5){
+      circle(mouseX, mouseY, i);
+    }
+  }
   pop();
   
   if (document.getElementById("SpawnView").checked){
@@ -81,7 +93,7 @@ function draw(){
     
     push();
     noStroke();
-    text(x + ", " + y, x+sizeX, y-sizeY);
+    text(x + ", " + y, x + sizeX, y - sizeY);
     fill(255,64);
     
     if (type == "circle"){circle(x,y,sizeX)}
@@ -164,5 +176,4 @@ function spawn(){
   } else if (type == "rect"){
     physObj.push(new phys_Rect(x, y, vx, vy, sizeX, sizeY));
   }
-  physObj[physObj.length - 1].index = physObj.length - 1;
 }
