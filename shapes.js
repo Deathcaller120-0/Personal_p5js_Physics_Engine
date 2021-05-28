@@ -94,7 +94,7 @@ class phys_Shape {
         
         let mePoints = getScreenPoints(this.hitPoints, this.pos, this.rot);
         let theyPoints = getScreenPoints(other.hitPoints, other.pos, other.rot);
-        if (polyPoly(mePoints, theyPoints)){
+        while (polyPoly(mePoints, theyPoints)){
           let hits = [];
           for (let i = 0; i < mePoints.length; i++){
             if (polyPoint(theyPoints, mePoints[i].x, mePoints[i].y)) { 
@@ -121,9 +121,9 @@ class phys_Shape {
             let left = (this.pos.x - this.size.x / 2) - (other.pos.x - other.size.x / 2);
             let right = (this.pos.x + this.size.x) - (other.pos.x + other.size.x);
             if (left > 0 && right < 0){
-              this.pos.x += right/4;
+              this.pos.x += right/10;
             } else {
-              this.pos.x += left/4;
+              this.pos.x += left/10;
             }
           }
           if (invY){
@@ -132,11 +132,14 @@ class phys_Shape {
             let top = (this.pos.y - this.size.y / 2) - (other.pos.y - other.size.y / 2);
             let bottom = (this.pos.y + this.size.y) - (other.pos.y + other.size.y);
             if (top > 0 && bottom < 0){
-              this.pos.y += bottom/4;
+              this.pos.y += bottom/10;
             } else {
-              this.pos.y += top/4;
+              this.pos.y += top/10;
             }
           }
+          
+          mePoints = getScreenPoints(this.hitPoints, this.pos, this.rot);
+          theyPoints = getScreenPoints(other.hitPoints, other.pos, other.rot);
         }
         
         /*
@@ -281,8 +284,15 @@ class phys_Shape {
     }
   }
   
-  render(){
+  vectorRender(){
     push();
+    
+    stroke(0);
+    line(0,0,this.size.x/2,0);
+    
+    stroke(255,255,0)
+    line(0,0,this.vel.x,this.vel.y);
+    
     noStroke();
     fill(this.color);
     beginShape()
@@ -347,8 +357,8 @@ class phys_Circle extends phys_Shape {
     rotate(this.rot.x);
     translate(this.pos.x, this.pos.y);
     
-    fill(255)
-    text(this.mass, this.size.x + 20, 0);
+    //fill(255)
+    //text(this.mass, this.size.x + 20, 0);
       
     fill(this.color);
     circle(0, 0, this.size.x);
