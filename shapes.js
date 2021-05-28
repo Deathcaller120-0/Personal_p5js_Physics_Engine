@@ -290,12 +290,6 @@ class phys_Shape {
     rotate(this.rot.x);
     translate(this.pos.x, this.pos.y);
     
-    stroke(0);
-    line(0,0,this.size.x/2,0);
-    
-    stroke(255,255,0)
-    line(0,0,this.vel.x,this.vel.y);
-    
     noStroke();
     fill(this.color);
     
@@ -304,6 +298,22 @@ class phys_Shape {
       vertex(this.hitPoints[i].x, this.hitPoints[i].y);
     }
     endShape(CLOSE);
+    
+    stroke(0);
+    line(0,0,this.size.x/2,0);
+    
+    stroke(255,255,0)
+    line(0,0,this.vel.x,this.vel.y);
+    
+    colorMode('hsb', this.hitPoints.length, 1, 1, 1);
+    for (let i = 0; i < this.hitPoints.length; i++){
+      if (this.hitPoints[i].hit == 1){
+        fill(i, 1, 1, 1);
+        circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
+        //text(this.hitPoints[i].label, -this.size.x*2, -100 + (i * 22));
+      }
+    }
+    
     pop();
   }
   
