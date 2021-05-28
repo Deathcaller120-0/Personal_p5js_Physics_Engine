@@ -309,8 +309,8 @@ class phys_Shape {
     dy = dy > 0 ? dy : -dy;
     
     if (dy < this.size.y + 50 && dx < this.size.x + 50) {
-      this.vel.x += map((mouseX - this.pos.x) / this.mass * 10, 0, 100, 100, 0);
-      this.vel.y += map((mouseY - this.pos.y) / this.mass * 10, 0, 100, 100, 0);
+      this.vel.x += map((mouseX - this.pos.x) / this.mass * 10, -100, 100, 100, -100);
+      this.vel.y += map((mouseY - this.pos.y) / this.mass * 10, -100, 100, 100, -100);
     }
   }
 }
