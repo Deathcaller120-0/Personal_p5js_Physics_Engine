@@ -94,7 +94,7 @@ class phys_Shape {
         
         let mePoints = getScreenPoints(this.hitPoints, this.pos, this.rot);
         let theyPoints = getScreenPoints(other.hitPoints, other.pos, other.rot);
-        while (polyPoly(mePoints, theyPoints)){
+        if (polyPoly(mePoints, theyPoints)){
           let hits = [];
           for (let i = 0; i < mePoints.length; i++){
             if (polyPoint(theyPoints, mePoints[i].x, mePoints[i].y)) { 
@@ -132,99 +132,12 @@ class phys_Shape {
             let top = (this.pos.y - this.size.y / 2) - (other.pos.y - other.size.y / 2);
             let bottom = (this.pos.y + this.size.y) - (other.pos.y + other.size.y);
             if (top > 0 && bottom < 0){
-              this.pos.y += bottom/10;
+              this.pos.y += bottom / 10;
             } else {
-              this.pos.y += top/10;
+              this.pos.y += top / 10;
             }
           }
-          
-          mePoints = getScreenPoints(this.hitPoints, this.pos, this.rot);
-          theyPoints = getScreenPoints(other.hitPoints, other.pos, other.rot);
         }
-        
-        /*
-        let distanceVect = p5.Vector.sub(other.pos, this.pos);
-
-        // Calculate magnitude of the vector separating the balls
-        let distanceVectMag = distanceVect.mag();
-
-        // Minimum distance before they are touching
-        let minDistance = this.size.x + other.size.x;
-
-        if (distanceVectMag < minDistance) {
-        let distanceCorrection = (minDistance - distanceVectMag) / 2.0;
-        let d = distanceVect.copy();
-        let correctionVector = d.normalize().mult(distanceCorrection);
-        other.pos.add(correctionVector);
-        this.pos.sub(correctionVector);
-
-        // get angle of distanceVect
-        let theta = distanceVect.heading();
-        // precalculate trig values
-        let sine = sin(theta);
-        let cosine = cos(theta);
-  
-        // bTemp will hold rotated ball this.positions. You 
-        // just need to worry about bTemp[1] this.position
-        let bTemp = [new p5.Vector(), new p5.Vector()];
-
-        // this ball's this.position is relative to the other
-        // so you can use the vector between them (bVect) as the 
-        // reference point in the rotation expressions.
-        // bTemp[0].this.position.x and bTemp[0].this.position.y will initialize
-        // automatically to 0.0, which is what you want
-        // since b[1] will rotate around b[0]
-        bTemp[1].x = cosine * distanceVect.x + sine * distanceVect.y;
-        bTemp[1].y = cosine * distanceVect.y - sine * distanceVect.x;
-
-        // rotate Temporary velocities
-        let vTemp = [new p5.Vector(), new p5.Vector()];
-
-        vTemp[0].x = cosine * this.vel.x + sine * this.vel.y;
-        vTemp[0].y = cosine * this.vel.y - sine * this.vel.x;
-        vTemp[1].x = cosine * other.vel.x + sine * other.vel.y;
-        vTemp[1].y = cosine * other.vel.y - sine * other.vel.x;
-
-        // Now that velocities are rotated, you can use 1D
-        // conservation of momentum equations to calculate 
-        // the final this.vel along the x-axis. 
-        let vFinal = [new p5.Vector(), new p5.Vector()];
-
-        // final rotated this.vel for b[0]
-        vFinal[0].x = ((this.mass - other.mass) * vTemp[0].x + 2 * other.mass * vTemp[1].x) / (this.mass + other.mass);
-        vFinal[0].y = vTemp[0].y;
-
-        // final rotated this.vel for b[0]
-        vFinal[1].x = ((other.mass - this.mass) * vTemp[1].x + 2 * this.mass * vTemp[0].x) / (this.mass + other.mass);
-        vFinal[1].y = vTemp[1].y;
-
-        // hack to avoid clumping
-        bTemp[0].x += vFinal[0].x;
-        bTemp[1].x += vFinal[1].x;
-
-        // Rotate ball this.positions and velocities back
-        // Reverse signs in trig expressions to rotate 
-        // in the opposite direction 
-        // rotate balls
-        let bFinal = [new p5.Vector(), new p5.Vector()];
-
-        bFinal[0].x = cosine * bTemp[0].x - sine * bTemp[0].y;
-        bFinal[0].y = cosine * bTemp[0].y + sine * bTemp[0].x;
-        bFinal[1].x = cosine * bTemp[1].x - sine * bTemp[1].y;
-        bFinal[1].y = cosine * bTemp[1].y + sine * bTemp[1].x;
-
-        // update balls to screen this.position
-        other.pos.x = this.pos.x + bFinal[1].x;
-        other.pos.y = this.pos.y + bFinal[1].y;
-
-        this.pos.add(bFinal[0]);
-
-        // update velocities
-        this.vel.x = (cosine * vFinal[0].x - sine * vFinal[0].y) * this.bounce;
-        this.vel.y = (cosine * vFinal[0].y + sine * vFinal[0].x) * this.bounce;
-        other.vel.x = (cosine * vFinal[1].x - sine * vFinal[1].y) * other.bounce;
-        other.vel.y = (cosine * vFinal[1].y + sine * vFinal[1].x) * other.bounce;
-        }*/
       }
     }
   }
@@ -391,7 +304,7 @@ class phys_Circle extends phys_Shape {
       if (this.hitPoints[i].hit == 1){
         fill(i, 1, 1, 1);
         circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
-        //text(this.hitPoints[i].label, -this.size.x*2, -100 + (i * 22));
+        text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, -this.size.x * 2, -100 + (i * 22));
       }
     }
     pop();
