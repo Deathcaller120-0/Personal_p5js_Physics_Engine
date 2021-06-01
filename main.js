@@ -193,22 +193,10 @@ function mousePressed(){
     let textarea = document.getElementById("textareaOut");
     textarea.innerHTML = "";
     
-    let indexes = [];
-    for (let i = 0; i < physObj.length; i++){
-      let x1 = physObj[i].pos.x;
-      let y1 = physObj[i].pos.y;
-      let d = Math.hypot(x1-mouseX, y1-mouseY);
-      if (d < physObj[i].size.x + physObj[i].size.y){
-        indexes.push(i);
-      }
-    }
+    window.alert(textarea);
     
-    if (indexes.length == 0){
-      return false;
-    }
-    
-    for (let i = 0; i < indexes.length; i++){
-      let p = physObj[indexes[i]];
+    for (let i = 0; i < physObj.length; i++){      
+      let p = physObj[i];
       textarea.innerHTML += indexes[i] + " : {\nX: " + p.pos.x + ", Y: " + p.pos.y + "\nSizeX: " + p.size.x + ", SizeY: " + p.size.y + "\nVelX: " + p.vel.x + ", VelY: " + p.vel.y + "}\n";
     }
   }
