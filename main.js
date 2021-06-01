@@ -202,7 +202,7 @@ function mousePressed(){
       let size = "SizeX: " + p.size.x + ", SizeY:" + p.size.y + ",\n";
       let vel = "VelX: " + p.vel.x + ", VelY: " + p.vel.y + "\n";
       
-      textarea.value += i + " : {\n" + pos + size + vel + "}\n";
+      textarea.value += i + " : " + p.shapeType + " {\n" + pos + size + vel + "}\n";
     }
   }
 }
