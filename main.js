@@ -197,7 +197,12 @@ function mousePressed(){
     
     for (let i = 0; i < physObj.length; i++){      
       let p = physObj[i];
-      textarea.value += indexes[i] + " : {\nX: " + p.pos.x + ", Y: " + p.pos.y + "\nSizeX: " + p.size.x + ", SizeY: " + p.size.y + "\nVelX: " + p.vel.x + ", VelY: " + p.vel.y + "}\n";
+      
+      let pos = "X: " + p.pos.x + ", Y: " + p.pos.y + ",\n";
+      let size = "SizeX: " + p.size.x + ", SizeY:" + p.size.y + ",\n";
+      let vel = "VelX: " + p.vel.x + ", VelY: " + p.vel.y + "\n";
+      
+      textarea.value += i + " : {\n" + pos + size + vel + "}\n";
     }
   }
 }
