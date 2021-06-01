@@ -171,10 +171,10 @@ class phys_Shape {
       window.alert("Shape Update : " + this.type + " | " + err.name + ": " + err.message);
     }
     
-    if (this.vel.x.isNaN()){
+    if (Number.isNaN(this.vel.x)){
       this.vel.x = 0.001;
     }
-    if (this.vel.y.isNaN()){
+    if (Number.isNaN(this.vel.y)){
       this.vel.y = 0.001;
     }
     
