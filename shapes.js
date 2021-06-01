@@ -116,7 +116,7 @@ class phys_Shape {
             
             let left = (this.pos.x - this.size.x / 2) - (other.pos.x - other.size.x / 2);
             let right = (this.pos.x + this.size.x) - (other.pos.x + other.size.x);
-            if (left > 0 && right < 0){
+            if (left > 1 && right < -1){
               this.pos.x += right/10;
             } else {
               this.pos.x += left/10;
@@ -127,7 +127,7 @@ class phys_Shape {
             
             let top = (this.pos.y - this.size.y / 2) - (other.pos.y - other.size.y / 2);
             let bottom = (this.pos.y + this.size.y) - (other.pos.y + other.size.y);
-            if (top > 0 && bottom < 0){
+            if (top > 1 && bottom < -1){
               this.pos.y += bottom / 10;
             } else {
               this.pos.y += top / 10;
