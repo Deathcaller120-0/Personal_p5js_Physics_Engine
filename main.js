@@ -74,7 +74,7 @@ function draw(){
   noStroke();
   fill(255);
   circle(mouseX, mouseY, 5);
-  text(mouseX + ", " + mouseY, mouseX+10, mouseY-12);
+  text(mouseX + ", " + mouseY, mouseX + 10 * (mouseX > width/2 ? -1 : 1), mouseY + 12 * (mouseY > height/2 ? -1 : 1));
   
   // if making a gravity well then render circles in size of well
     
