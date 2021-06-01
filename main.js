@@ -187,3 +187,29 @@ function spawn(){
     physObj.push(new phys_Rect(x, y, vx, vy, sizeX, sizeY));
   }
 }
+
+function mousePressed(){
+  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+    let textarea = document.getElementById("textareaOut");
+    textarea.innerHTML = "";
+    
+    let indexes = [];
+    for (let i = 0; i < physObj.length; i++){
+      let x1 = physObj[i].pos.x;
+      let y1 = physObj[i].pos.y;
+      let d = Math.hypot(x1-mouseX, y1-mouseY);
+      if (d < physObj[i].size.x + physObj[i].size.y){
+        indexes.push(i);
+      }
+    }
+    
+    if (indexes.length == 0){
+      return false;
+    }
+    
+    for (let i = 0; i < indexes.length; i++){
+      let p = physObj[indexes[i]];
+      textarea.innerHTML += indexes[i] + " : {\nX: " + p.pos.x + ", Y: " + p.pos.y + "\nSizeX: " + p.size.x + ", SizeY: " + p.size.y + "\nVelX: " + p.vel.x + ", VelY: " + p.vel.y + "}\n";
+    }
+  }
+}
