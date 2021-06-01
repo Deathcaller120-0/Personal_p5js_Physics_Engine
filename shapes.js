@@ -145,7 +145,7 @@ class phys_Shape {
   update(){
     //window.alert("Update Called")
     
-    try{
+    try {
     for (let i = 0; i < this.hitPoints.length; i++){
       this.hitPoints[i].hit = false;
     }
@@ -168,20 +168,14 @@ class phys_Shape {
     //this.pos.y = Math.floor(this.pos.y);
     
     } catch(err){
-      window.alert("Shape Update, " + this.type + " | " + err.name + ": " + err.message);
+      window.alert("Shape Update : " + this.type + " | " + err.name + ": " + err.message);
     }
-    
-    //if (this.pos.y < 100 && this.pos.x < 100){
-    //  window.alert("Index: " + this.getIndex());
-    //  window.alert("Vel: " + this.vel.x + ", " + this.vel.y);
-    //  window.alert("Pos: " + this.pos.x + ", " + this.pos.y);
-    //}
     
     if (this.vel.x.isNaN()){
-      this.vel.x = 0;
+      this.vel.x = 0.001;
     }
     if (this.vel.y.isNaN()){
-      this.vel.y = 0;
+      this.vel.y = 0.001;
     }
     
     this.pos.add(this.vel);
