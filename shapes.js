@@ -256,8 +256,8 @@ class phys_Circle extends phys_Shape {
     }
     
     for (let i = 0; i < angles.length; i++){
-      angles[i].x = Math.floor(angles[i].x);
-      angles[i].y = Math.floor(angles[i].y);
+      angles[i].x = Math.round(angles[i].x);
+      angles[i].y = Math.round(angles[i].y);
     }
     
     for (let i = 0; i < angles.length; i++){
