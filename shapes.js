@@ -220,7 +220,7 @@ class phys_Shape {
     for (let i = 0; i < this.hitPoints.length; i++){
       fill(i, 1, 1, 1);
       circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
-      text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, (this.pos.x > width / 2 ? -this.size.x * 2 : this.size.x), -(this.hitPoints.length * 12) + (i * 13));
+      text(Math.round(this.hitPoints[i].x) + ", " + Math.round(this.hitPoints[i].y), (this.pos.x > width / 2 ? -this.size.x * 2 : this.size.x), -(this.hitPoints.length * 12) + (i * 13));
     }
     
     pop();
@@ -255,10 +255,10 @@ class phys_Circle extends phys_Shape {
       angles.push(findPointOnCircle(0, 0, this.size.x/2, rad));
     }
     
-    for (let i = 0; i < angles.length; i++){
-      angles[i].x = Math.floor(angles[i].x);
-      angles[i].y = Math.floor(angles[i].y);
-    }
+    //for (let i = 0; i < angles.length; i++){
+    //  angles[i].x = Math.floor(angles[i].x);
+    //  angles[i].y = Math.floor(angles[i].y);
+    //}
     
     for (let i = 0; i < angles.length; i++){
       this.hitPoints.push({x:angles[i].x, y:angles[i].y, hit:0});
