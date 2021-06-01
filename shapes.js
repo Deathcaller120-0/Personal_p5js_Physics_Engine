@@ -99,6 +99,10 @@ class phys_Shape {
             }
           }
           
+          if (hits.length == 0){
+            return false;
+          }
+          
           let invY = 0;
           let invX = 0;
           for (let i = 0; i < hits.length; i++){
@@ -172,6 +176,13 @@ class phys_Shape {
     //  window.alert("Vel: " + this.vel.x + ", " + this.vel.y);
     //  window.alert("Pos: " + this.pos.x + ", " + this.pos.y);
     //}
+    
+    if (this.vel.x.isNaN()){
+      this.vel.x = 0;
+    }
+    if (this.vel.y.isNaN()){
+      this.vel.y = 0;
+    }
     
     this.pos.add(this.vel);
     
@@ -249,10 +260,10 @@ class phys_Circle extends phys_Shape {
     super(x, y, vx, vy, w, w, "circle", bounceLoss, _color);
     
     let angles = [];
-    let complexity = Math.round(this.size.x/3);
+    let complexity = Math.round(this.size.x / 3);
     for (let i = 0; i < complexity; i++){
       let rad = (( i / complexity) * 360) * (PI / 180);
-      angles.push(findPointOnCircle(0, 0, this.size.x/2, rad));
+      angles.push(findPointOnCircle(this.size.x / 2, rad));
     }
     
     for (let i = 0; i < angles.length; i++){
@@ -316,10 +327,10 @@ class phys_Rect extends phys_Shape {
   constructor(x, y, vx, vy, w, h, bounceLoss = 0.9, _color = "#FFFF0080"){
     super(x, y, vx, vy, w, h, bounceLoss, "rect", _color)
     
-    let left = -w/2;
-    let top = -h/2;
-    let right = w/2;
-    let bottom = h/2;
+    let left = -this.size.x / 2;
+    let top = -this.size.y / 2;
+    let right = this.size.x / 2;
+    let bottom = this.size.y / 2;
     
     this.hitPoints.push({x:left, y:top, hit:0}); // left top
     
@@ -370,9 +381,9 @@ class phys_Rect extends phys_Shape {
   }
 }
 
-function findPointOnCircle(originX, originY, radius, angleRadians) {
-  let newX = radius * Math.cos(angleRadians) + originX;
-  let newY = radius * Math.sin(angleRadians) + originY;
+function findPointOnCircle(radius, angleRadians) {
+  let newX = radius * Math.cos(angleRadians);
+  let newY = radius * Math.sin(angleRadians);
   return {"x" : newX, "y" : newY};
 }
 
