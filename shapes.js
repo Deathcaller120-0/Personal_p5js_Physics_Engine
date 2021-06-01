@@ -220,7 +220,7 @@ class phys_Shape {
     for (let i = 0; i < this.hitPoints.length; i++){
       fill(i, 1, 1, 1);
       circle(this.hitPoints[i].x, this.hitPoints[i].y, 3);
-      text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, (this.pos.x > width / 2 ? -this.size.x * 2 : this.size.x * 2), -(this.hitPoints.length * 12) + (i * 13));
+      text(this.hitPoints[i].x + ", " + this.hitPoints[i].y, (this.pos.x > width / 2 ? -this.size.x * 2 : this.size.x), -(this.hitPoints.length * 12) + (i * 13));
     }
     
     pop();
