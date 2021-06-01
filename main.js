@@ -191,13 +191,13 @@ function spawn(){
 function mousePressed(){
   if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
     let textarea = document.getElementById("textareaOut");
-    textarea.innerHTML = "";
+    textarea.value = "";
     
-    window.alert(textarea);
+    //window.alert(textarea);
     
     for (let i = 0; i < physObj.length; i++){      
       let p = physObj[i];
-      textarea.innerHTML += indexes[i] + " : {\nX: " + p.pos.x + ", Y: " + p.pos.y + "\nSizeX: " + p.size.x + ", SizeY: " + p.size.y + "\nVelX: " + p.vel.x + ", VelY: " + p.vel.y + "}\n";
+      textarea.value += indexes[i] + " : {\nX: " + p.pos.x + ", Y: " + p.pos.y + "\nSizeX: " + p.size.x + ", SizeY: " + p.size.y + "\nVelX: " + p.vel.x + ", VelY: " + p.vel.y + "}\n";
     }
   }
 }
