@@ -321,15 +321,21 @@ class phys_Rect extends phys_Shape {
     let right = w/2;
     let bottom = h/2;
     
-    this.hitPoints.push({x:left, y:top, hit:0});
-    this.hitPoints.push({x:left, y:bottom, hit:0});
-    this.hitPoints.push({x:right, y:bottom, hit:0});
-    this.hitPoints.push({x:right, y:top, hit:0});
+    this.hitPoints.push({x:left, y:top, hit:0}); // left top
     
-    this.hitPoints.push({x:left, y:0, hit:0});
-    this.hitPoints.push({x:0, y:bottom, hit:0});
-    this.hitPoints.push({x:right, y:0, hit:0});
-    this.hitPoints.push({x:0, y:top, hit:0});
+    this.hitPoints.push({x:left, y:0, hit:0}); // left mid
+    
+    this.hitPoints.push({x:left, y:bottom, hit:0}); // left bottom
+    
+    this.hitPoints.push({x:0, y:bottom, hit:0}); // mid bottom
+    
+    this.hitPoints.push({x:right, y:bottom, hit:0}); // right bottom
+    
+    this.hitPoints.push({x:right, y:0, hit:0}); // right mid
+    
+    this.hitPoints.push({x:right, y:top, hit:0}); // right top
+    
+    this.hitPoints.push({x:0, y:top, hit:0}); // mid top
   }
   
   render (){
