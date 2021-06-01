@@ -313,7 +313,7 @@ class phys_Circle extends phys_Shape {
 }
 
 class phys_Rect extends phys_Shape {
-  constructor(x, y, vx, vy, w, h, bounceLoss = 0.9, _color = "#00ff0080"){
+  constructor(x, y, vx, vy, w, h, bounceLoss = 0.9, _color = "#FFFF0080"){
     super(x, y, vx, vy, w, h, bounceLoss, "rect", _color)
     
     let left = -w/2;
@@ -325,6 +325,11 @@ class phys_Rect extends phys_Shape {
     this.hitPoints.push({x:left, y:bottom, hit:0});
     this.hitPoints.push({x:right, y:bottom, hit:0});
     this.hitPoints.push({x:right, y:top, hit:0});
+    
+    this.hitPoints.push({x:left, y:0, hit:0});
+    this.hitPoints.push({x:0, y:bottom, hit:0});
+    this.hitPoints.push({x:right, y:0, hit:0});
+    this.hitPoints.push({x:0, y:top, hit:0});
   }
   
   render (){
