@@ -1,5 +1,5 @@
 class phys_Shape {
-  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, shapeType="circle", bounceLoss = 0.5, _color="#FFFF0080", vectors = []){
+  constructor(x=50, y=50, vx=0, vy=0, w=10, h=10, shapeType="circle", bounceLoss = 0.5, _color="#00FF00E0", vectors = []){
     try {
     this.pos = createVector(x, y);
     this.vel = createVector(vx, vy);
@@ -249,7 +249,7 @@ class phys_Shape {
 //window.alert("loading CircleShape");
 
 class phys_Circle extends phys_Shape {
-  constructor(x, y, vx, vy, w, _color = "#FF000080", bounceLoss = 0.9){
+  constructor(x, y, vx, vy, w, _color = "#FF0000E0", bounceLoss = 0.9){
     try {
     super(x, y, vx, vy, w, w, "circle", bounceLoss, _color);
     
@@ -318,7 +318,7 @@ class phys_Circle extends phys_Shape {
 }
 
 class phys_Rect extends phys_Shape {
-  constructor(x, y, vx, vy, w, h, bounceLoss = 0.9, _color = "#FFFF0080"){
+  constructor(x, y, vx, vy, w, h, bounceLoss = 0.9, _color = "#FFFF00E0"){
     super(x, y, vx, vy, w, h, "rect", bounceLoss, _color)
     
     let left = -this.size.x / 2;
@@ -349,10 +349,6 @@ class phys_Rect extends phys_Shape {
     translate(this.pos.x, this.pos.y);
     
     noStroke();
-    
-    fill(255);
-    text(this.mass, this.size.x + 20, 0);
-    
     fill(this.color);
     rect(-this.size.x/2, -this.size.y/2, this.size.x, this.size.y);
     
