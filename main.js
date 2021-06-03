@@ -181,10 +181,12 @@ function spawn(){
   let vx = Math.floor(Number(document.getElementById("spawnVelX").value));
   let vy = Math.floor(Number(document.getElementById("spawnVelY").value));
   
+  let c = document.getElementById("spawnColor").value;
+  
   if (type == "circle"){
-    physObj.push(new phys_Circle(x, y, vx, vy, sizeX));
+    physObj.push(new phys_Circle(x, y, vx, vy, sizeX, c));
   } else if (type == "rect"){
-    physObj.push(new phys_Rect(x, y, vx, vy, sizeX, sizeY));
+    physObj.push(new phys_Rect(x, y, vx, vy, sizeX, sizeY, c));
   }
 }
 
