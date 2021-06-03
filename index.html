@@ -9,74 +9,79 @@
   <body>
     <script src="shapes.js"></script>
     
-    <p onmouseup="document.getElementById('Spawning').hidden = !document.getElementById('Spawning').hidden">Spawning</p>
-    <div id="Spawning" hidden>
-    <label>Spawn X</label>
-    <input id="spawnX" min=0 max=500 type="number" value=250>
+    <p onmouseup="document.getElementById('Extras').hidden = !document.getElementById('Extras').hidden">Extra Info</p>
+    <div id="Extras" hidden>
+      
+      <p onmouseup="document.getElementById('Spawning').hidden = !document.getElementById('Spawning').hidden">Spawning</p>
+      <div id="Spawning" class="inner" hidden>
+        <label>Spawn X</label>
+        <input id="spawnX" min=0 max=500 type="number" value=250>
     
-    <label>Spawn Y</label>
-    <input id="spawnY" min=0 max=500 type="number" value=250>
-    <br>
+        <label>Spawn Y</label>
+        <input id="spawnY" min=0 max=500 type="number" value=250>
+        <br>
     
-    <lable>Size X</label>
-    <input id="spawnSizeX" min=10 max=100 type="number" value=20>
+        <label>Size X</label>
+        <input id="spawnSizeX" min=10 max=100 type="number" value=20>
     
-    <label>Size Y</label>
-    <input id="spawnSizeY" min=10 max=100 type="number" value=20>
-    <br>
+        <label>Size Y</label>
+        <input id="spawnSizeY" min=10 max=100 type="number" value=20>
+        <br>
     
-    <label>Velocity X</label>
-    <input id="spawnVelX" min=-50 max=50 type="number" value=0>
+        <label>Velocity X</label>
+        <input id="spawnVelX" min=-50 max=50 type="number" value=0>
     
-    <label>Velocity Y</label>
-    <input id="spawnVelY" min=-50 max=50 type="number" value=0>
-    <br>
+        <label>Velocity Y</label>
+        <input id="spawnVelY" min=-50 max=50 type="number" value=0>
+        <br>
      
-    <label>Color</label>
-    <input id="spawnColor" type="color" value="#0000FFE0">
-    <br>
+        <label>Color</label>
+        <input id="spawnColor" type="color" value="#0000FFE0">
+        <br>
     
-    <span>Physics Shape</span>
-    <select id="spawnType">
-      <option value="circle">Circle</option>
-      <option value="rect">Rect</option>
-    </select>
-    <br>
-    <button onclick="spawn()">Spawn Shape</button>
+        <span>Physics Shape</span>
+        <select id="spawnType">
+          <option value="circle">Circle</option>
+          <option value="rect">Rect</option>
+        </select>
+        <br>
+        
+        <button onclick="spawn()">Spawn Shape</button>
     
-    <label>Visualization</label>
-    <input id="SpawnView" type="checkbox">
+        <label>Visualization</label>
+        <input id="SpawnView" type="checkbox">
+      </div>
+    
+      <p onmouseup="document.getElementById('PhysicsControl').hidden = !document.getElementById('PhysicsControl').hidden">Physics Control</p>
+      <div id="PhysicsControl" class="inner" hidden>
+        <label>Gravity</label>
+        <input type="number" min=0.05 max=10 value=0.1 step=0.05 id="gravityControl">
+    
+        <label>Drag</label>
+        <input type="number" min=0.005 max=1 value=0.05 step=0.005 id="dragControl">
+        <br>
+    
+        <label>Wind Left(-) to Right(+)</label>
+        <input type="number" min=-20 max=20 value=0 step=0.1 id="windX">
+    
+        <label>Wind Top(-) to Bottom(+)</label>
+        <input type="number" min=-20 max=20 value=0 step=0.1 id="windY">
+        <br>
+    
+        <label>Phys Timeout</label>
+        <input type="number" min=1 max=999 value=20 step=1 id="timeDiv">
+    
+        <label>Gravity Well Size</label>
+        <input type="number" min=1 max=500 value=50 step=1 id="gravityWell">
+      </div>
+      <br>
+    
+      <label>View Shape Vectors</label>
+      <input type="checkbox" id="viewVectors">
+      <br>
+    
+      <textarea id="textareaOut"></textarea>
     </div>
-    
-    <p onmouseup="document.getElementById('PhysicsControl').hidden = !document.getElementById('PhysicsControl').hidden">Physics Control</p>
-    <div id="PhysicsControl" hidden>
-    <span>Gravity</span>
-    <input type="number" min=0.05 max=10 value=0.1 step=0.05 id="gravityControl">
-    
-    <span>Drag</span>
-    <input type="number" min=0.005 max=1 value=0.05 step=0.005 id="dragControl">
-    <br>
-    
-    <span>Wind Left(-) to Right(+)</span>
-    <input type="number" min=-20 max=20 value=0 step=0.1 id="windX">
-    
-    <span>Wind Top(-) to Bottom(+)</span>
-    <input type="number" min=-20 max=20 value=0 step=0.1 id="windY">
-    <br>
-    
-    <span>Phys Timeout</span>
-    <input type="number" min=1 max=999 value=20 step=1 id="timeDiv">
-    
-    <span>Gravity Well Size</span>
-    <input type="number" min=1 max=500 value=50 step=1 id="gravityWell">
-    </div>
-    <br>
-    
-    <span>View Shape Vectors</span>
-    <input type="checkbox" id="viewVectors">
-    <br>
-    
-    <textarea id="textareaOut"></textarea>
     
     <script src="main.js"></script>
     
