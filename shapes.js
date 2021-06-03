@@ -169,7 +169,7 @@ class phys_Shape {
     this.wallUpdate();
     
     if (phys.windX != 0 || phys.windY != 0){
-      this.vel.add(phys.windX, phys.windY);
+      this.vel.add(phys.windX / this.mass, phys.windY / this.mass);
     }
     
     //this.pos.x = Math.floor(this.pos.x);
@@ -180,10 +180,17 @@ class phys_Shape {
     }
     
     if (Number.isNaN(this.vel.x)){
-      this.vel.x = 0.001;
+      this.vel.x = 1e-11;
     }
     if (Number.isNaN(this.vel.y)){
-      this.vel.y = 0.001;
+      this.vel.y = -1e-11;
+    }
+    
+    if (Number.isNaN(this.pos.x)){
+      this.pos.x = 200;
+    }
+    if (Number.isNaN(this.pos.y)){
+      this.pos.y = 200;
     }
     
     this.pos.add(this.vel);
