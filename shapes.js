@@ -153,9 +153,13 @@ class phys_Shape {
     this.vel.y += phys.gravity;
     //if (this.vel.y >= this.mass) { this.vel.y = this.mass }
     //else if (this.vel.y < -this.mass) { this.vel.y = -this.mass }
-      
-    this.vel.x += -this.vel.x * phys.drag;
-    this.vel.y += -this.vel.y * phys.drag;
+    
+    if (this.vel.x > 1e-10){
+      this.vel.x += -this.vel.x * phys.drag;
+    }
+    if (this.vel.y > 1e-10){
+      this.vel.y += -this.vel.y * phys.drag;
+    }
     
     this.collsionUpdate();
     this.wallUpdate();
