@@ -154,11 +154,15 @@ class phys_Shape {
     //if (this.vel.y >= this.mass) { this.vel.y = this.mass }
     //else if (this.vel.y < -this.mass) { this.vel.y = -this.mass }
     
-    if (this.vel.x > 1e-10){
+    if (Math.abs(this.vel.x) > 1e-10){
       this.vel.x += -this.vel.x * phys.drag;
+    } else if (Math.abs(this.vel.x) < 1e-10) {
+      this.vel.x = 0;
     }
-    if (this.vel.y > 1e-10){
+    if (Math.abs(this.vel.y) > 1e-10){
       this.vel.y += -this.vel.y * phys.drag;
+    } else if (Math.abs(this.vel.y) < 1e-10){
+      this.vel.y = 0;
     }
     
     this.collsionUpdate();
