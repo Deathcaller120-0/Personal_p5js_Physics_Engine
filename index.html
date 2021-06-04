@@ -22,10 +22,10 @@
         <br>
     
         <label>Size X</label>
-        <input id="spawnSizeX" min=10 max=100 type="number" value=20>
+        <input id="spawnSizeX" min=10 max=200 type="number" value=20>
     
         <label>Size Y</label>
-        <input id="spawnSizeY" min=10 max=100 type="number" value=20>
+        <input id="spawnSizeY" min=10 max=200 type="number" value=20>
         <br>
     
         <label>Velocity X</label>
@@ -87,6 +87,7 @@
     <script src="main.js"></script>
     
     <script>
+      // Physics
   document.getElementById("gravityControl").onchange = function(){
     phys.gravity = Number(this.value);
   }
@@ -109,6 +110,20 @@
   document.getElementById("viewVectors").onchange = function(){
     viewVectors = this.checked;
   }
+      
+  // Spawning
+  
+  let elems = ["spawnX", "spawnY", "spawnSizeX", "spawnSizeY", "spawnVelX", "spawnVelY"];
+  for (let i = 0; i < elems.length; i++){
+    document.getElementById(elems[i]).onchange = function(){
+      if (this.value > this.max){
+        this.value = this.max;
+      } else if (this.value < this.min){
+        this.value = this.min;
+      }
+    }
+  }
+  
     </script>
   </body>
 </html>
