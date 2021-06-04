@@ -88,26 +88,26 @@
     
     <script>
       // Physics
-  document.getElementById("gravityControl").onchange = function(){
+  document.getElementById("gravityControl").oninput = function(){
     phys.gravity = Number(this.value);
   }
-  document.getElementById("dragControl").onchange = function(){
+  document.getElementById("dragControl").oninput = function(){
     phys.drag = Number(this.value);
   }
-  document.getElementById("windX").onchange = function(){
+  document.getElementById("windX").oninput = function(){
     phys.windX = Number(this.value);
   }
-  document.getElementById("windY").onchange = function(){
+  document.getElementById("windY").oninput = function(){
     phys.windY = Number(this.value);
   }
-  document.getElementById("timeDiv").onchange = function(){
+  document.getElementById("timeDiv").oninput = function(){
     phys.timeDiv = Number(this.value);
     physTickTimeout = 1000 / phys.timeDiv;
   }
-  document.getElementById("gravityWell").onchange = function(){
+  document.getElementById("gravityWell").oninput = function(){
     phys.gravityWellSize = Number(this.value);
   }
-  document.getElementById("viewVectors").onchange = function(){
+  document.getElementById("viewVectors").oninput = function(){
     viewVectors = this.checked;
   }
       
@@ -115,7 +115,7 @@
   
   let elems = ["spawnX", "spawnY", "spawnSizeX", "spawnSizeY", "spawnVelX", "spawnVelY"];
   for (let i = 0; i < elems.length; i++){
-    document.getElementById(elems[i]).onchange = function(){
+    document.getElementById(elems[i]).oninput = function(){
       if (this.value > this.max){
         this.value = this.max;
       } else if (this.value < this.min){
