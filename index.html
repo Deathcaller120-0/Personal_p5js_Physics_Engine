@@ -116,10 +116,13 @@
   let elems = ["spawnX", "spawnY", "spawnSizeX", "spawnSizeY", "spawnVelX", "spawnVelY"];
   for (let i = 0; i < elems.length; i++){
     document.getElementById(elems[i]).oninput = function(){
-      if (this.value > this.max){
-        this.value = this.max;
-      } else if (this.value < this.min){
-        this.value = this.min;
+      let v = Number(this.value);
+      let max = Number(this.max);
+      let min = Number(this.min);
+      if (v > max){
+        this.value = max;
+      } else if (v < min){
+        this.value = min;
       }
     }
   }
