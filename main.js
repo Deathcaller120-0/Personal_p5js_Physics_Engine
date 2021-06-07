@@ -117,8 +117,26 @@ function draw(){
     line(x, 0, x, height);
     line(0, y, width, y);
     pop();
-  }  
-  
+  }
+    
+  // wind control
+  if (keyIsDown(38)){
+    phys.windY--;
+  } else if (keyIsDown(40)){
+    phys.windY++;
+  }
+    
+  if (keyIsDown(37)){
+    phys.windX--;
+  } else if (keyIsDown(39)){
+    phys.windX++;
+  }
+    
+  push();
+  translate(width/2, height/2);
+  line(0,0,phys.windX, phys.windY);
+  pop();
+    
   } catch (err){
     window.alert("Draw | " + err.name + ": " + err.message);
     noLoop();
