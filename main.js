@@ -143,8 +143,8 @@ function draw(){
     noStroke();
     fill(255,255,0);
     
-    circle(0,0,2);
-    circle(phys.windX, phys.windY,2);
+    circle(0,0,4);
+    circle(phys.windX, phys.windY,4);
     pop();
   }
     
