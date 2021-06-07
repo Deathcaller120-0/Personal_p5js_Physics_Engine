@@ -120,16 +120,18 @@ function draw(){
   }
     
   // wind control
-  if (keyIsDown(38)){
-    phys.windY--;
-  } else if (keyIsDown(40)){
-    phys.windY++;
-  }
+  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+    if (keyIsDown(38)){
+      phys.windY--;
+    } else if (keyIsDown(40)){
+      phys.windY++;
+    }
     
-  if (keyIsDown(37)){
-    phys.windX--;
-  } else if (keyIsDown(39)){
-    phys.windX++;
+    if (keyIsDown(37)){
+      phys.windX--;
+    } else if (keyIsDown(39)){
+      phys.windX++;
+    }
   }
   
   if (phys.windX || phys.windY){
