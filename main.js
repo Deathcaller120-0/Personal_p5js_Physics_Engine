@@ -131,11 +131,22 @@ function draw(){
   } else if (keyIsDown(39)){
     phys.windX++;
   }
+  
+  if (phys.windX || phys.windY){
+    push();
+    translate(width/2, height/2);
+    stroke(255,128);
+    strokeWeight(2);
     
-  push();
-  translate(width/2, height/2);
-  line(0,0,phys.windX, phys.windY);
-  pop();
+    line(0,0,phys.windX, phys.windY);
+    
+    noStroke();
+    fill(255,255,0);
+    
+    circle(0,0,2);
+    circle(phys.windX, phys.windY,2);
+    pop();
+  }
     
   } catch (err){
     window.alert("Draw | " + err.name + ": " + err.message);
