@@ -2,6 +2,7 @@ var data = [];
 var index0 = 0;
 var index1 = 1;
 var len = 100;
+var w = 0;
 
 var cycles = 0;
 var compar = 0;
@@ -35,11 +36,22 @@ function setup() {
   //index0 = floor(data.length/2);
   //index1 = index0 + 1;
   
-  var w = width / len;
+  w = width / len;
 }
 
 function draw() {
   background(0, 32);
+  
+  fill(128);
+  beginShape();
+  vertex(0, height);
+  for (let i = 0; i < data.length; i++){
+    let h = map(data[i], 0, len, 0, height);
+    vertex(i*w, h);
+  }
+  vertex(width, 0);
+  vertex(width, height);
+  endShape(CLOSE);
   
   push();
   stroke(0, 255, 0);
@@ -54,17 +66,6 @@ function draw() {
   circle(index1*w, h, 10);
   line(0, h, width, h);
   pop();
-  
-  fill(128);
-  beginShape();
-  vertex(0, height);
-  for (let i = 0; i < data.length; i++){
-    let h = map(data[i], 0, len, 0, height);
-    vertex(i*w, h);
-  }
-  vertex(width, 0);
-  vertex(width, height);
-  endShape(CLOSE);
   
   //insertSort(); // 100 len, comparisons 5050, swaps 2566
   //bubbleSort(); // 100 len, comparisons 8400, swaps 2566
@@ -123,7 +124,7 @@ function bubbleSort(){
     index0 = 0;
     cycles++;
     
-    if (!changed){
+    if (checkSolve()){
       sorted = true;
       noLoop();
     }
@@ -167,7 +168,7 @@ function cocktailSort(){
     
     dir *= -1;
     
-    if (!changed){
+    if (checkSolve()){
       sorted = true;
       noLoop();
     }
@@ -176,15 +177,16 @@ function cocktailSort(){
 }
 
 function checkSolve(){
+  let f = true;
   for (let i = 1; i < data.length; i++){
     if (data[i] == undefined){
       return true;
     }
-    if (data[i] < data[i-1]){
-      return false;
+    if (data[i-1] < data[i]){
+      f = false;
     }
   }
-  return true;
+  return f;
 }
 
 function swap(i, j, d){
