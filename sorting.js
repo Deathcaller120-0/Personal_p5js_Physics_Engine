@@ -1,7 +1,7 @@
 var data = [];
 var index0 = 0;
 var index1 = 1;
-var len = 255;
+var len = 100;
 
 var cycles = 0;
 var compar = 0;
@@ -12,7 +12,7 @@ var changed = false;
 var sorted = false;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(500, 400);
   
   randomSeed(0);
   
@@ -36,22 +36,35 @@ function setup() {
 function draw() {
   background(0, 32);
   
-  let w = width / len;  
+  let w = width / len;
+  fill(128);
+  beginShape();
+  vertex(0, height);
   for (let i = 0; i < data.length; i++){
-    if (index0 == i){
-      fill("#00ff00");
-    } else if (index1 == i){
-      fill("#ff0000");
-    } else {
-      fill(255, 16);
-    }
-    let h = round(map(data[i], 0, len, -height, 0));
-    rect(i*w, height, w, h);
+    let h = map(data[i], 0, len, 0, height);
+    vertex(i*w, h);
   }
+  vertex(width, 0);
+  vertex(width, height);
+  endShape(CLOSE);
+  
+  push();
+  stroke(0, 255, 0);
+  fill(0, 255, 0);
+  let h = map(data[index0], 0, len, 0, height);
+  circle(index0*w, h, 10);
+  line(0, h, width, h);
+  
+  stroke(255, 0, 0);
+  fill(255, 0, 0);
+  h = map(data[index1], 0, len, 0, height)
+  circle(index1*w, h, 10);
+  line(0, h, width, h);
+  pop();
   
   //insertSort(); // 100 len, comparisons 5050, swaps 2566
   //bubbleSort(); // 100 len, comparisons 8400, swaps 2566
-  gnomeSort(); // 100 len, comparisons ~5200, swaps 2566
+  //gnomeSort(); // 100 len, comparisons ~5200, swaps 2566
   //cocktailSort(); // 100 len, comparisons 5840, swaps 2566
   
   push();
