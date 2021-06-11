@@ -173,6 +173,9 @@ function cocktailSort(){
 
 function checkSolve(){
   for (let i = 1; i < data.length; i++){
+    if (data[i] == undefined){
+      return true;
+    }
     if (data[i] < data[i-1]){
       return false;
     }
