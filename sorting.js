@@ -52,7 +52,7 @@ function draw() {
   //insertSort(); // 100 len, comparisons 5050, swaps 2566
   //bubbleSort(); // 100 len, comparisons 8400, swaps 2566
   //gnomeSort(); // 100 len, comparisons ~5200, swaps 2566
-  cocktailSort(); // 100 len, comparisons , swaps
+  //cocktailSort(); // 100 len, comparisons 5840, swaps 2566
   
   push();
   fill(255, 128);
@@ -134,10 +134,7 @@ function gnomeSort(){
 }
 
 function cocktailSort(){
-  if (data[index0] < data[index1] && dir == 1){
-    swap(index0, index1, data);
-    changed = true;
-  } else if (data[index0] > data[index1]){
+  if (data[index0] < data[index1]){
     swap(index0, index1, data);
     changed = true;
   }
@@ -145,9 +142,9 @@ function cocktailSort(){
   compar++;
   
   index1 += dir;
-  index0 = index1 - dir;
+  index0 = index1-1;
   
-  if (index0 >= len || index0 == 0){
+  if (index1 >= len || index1 == 1){
     cycles++;
     
     dir *= -1;
