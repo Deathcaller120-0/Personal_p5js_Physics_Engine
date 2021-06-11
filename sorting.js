@@ -12,7 +12,7 @@ var changed = false;
 var sorted = false;
 
 function setup() {
-  createCanvas(500, 400);
+  createCanvas(500, 350);
   
   randomSeed(0);
   
@@ -31,22 +31,15 @@ function setup() {
   }
   
   noStroke();
+  
+  //index0 = floor(data.length/2);
+  //index1 = index0 + 1;
+  
+  var w = width / len;
 }
 
 function draw() {
   background(0, 32);
-  
-  let w = width / len;
-  fill(128);
-  beginShape();
-  vertex(0, height);
-  for (let i = 0; i < data.length; i++){
-    let h = map(data[i], 0, len, 0, height);
-    vertex(i*w, h);
-  }
-  vertex(width, 0);
-  vertex(width, height);
-  endShape(CLOSE);
   
   push();
   stroke(0, 255, 0);
@@ -62,9 +55,20 @@ function draw() {
   line(0, h, width, h);
   pop();
   
+  fill(128);
+  beginShape();
+  vertex(0, height);
+  for (let i = 0; i < data.length; i++){
+    let h = map(data[i], 0, len, 0, height);
+    vertex(i*w, h);
+  }
+  vertex(width, 0);
+  vertex(width, height);
+  endShape(CLOSE);
+  
   //insertSort(); // 100 len, comparisons 5050, swaps 2566
   //bubbleSort(); // 100 len, comparisons 8400, swaps 2566
-  //gnomeSort(); // 100 len, comparisons ~5200, swaps 2566
+  gnomeSort(); // 100 len, comparisons ~5200, swaps 2566
   //cocktailSort(); // 100 len, comparisons 5840, swaps 2566
   
   push();
