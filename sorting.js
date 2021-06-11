@@ -1,7 +1,7 @@
 var data = [];
 var index0 = 0;
 var index1 = 1;
-var len = 100;
+var len = 255;
 
 var cycles = 0;
 var compar = 0;
@@ -51,7 +51,7 @@ function draw() {
   
   //insertSort(); // 100 len, comparisons 5050, swaps 2566
   //bubbleSort(); // 100 len, comparisons 8400, swaps 2566
-  //gnomeSort(); // 100 len, comparisons ~5200, swaps 2566
+  gnomeSort(); // 100 len, comparisons ~5200, swaps 2566
   //cocktailSort(); // 100 len, comparisons 5840, swaps 2566
   
   push();
@@ -121,13 +121,14 @@ function gnomeSort(){
     index0++;
     //cycles++;
     index1 = index0;
-    
-    if (index0 > len) {noLoop();}
+    if (checkSolve()){
+      noLoop();
+    }
   } else {
     let s = swap(index0, index0-1, data);
     index0--;
     
-    if (index < 0){
+    if (checkSolve()){
       noLoop();
     }
   }
@@ -155,6 +156,15 @@ function cocktailSort(){
     }
     changed = false;
   }
+}
+
+function checkSolve(){
+  for (let i = 1; i < data.length; i++){
+    if (data[i] < data[i-1]){
+      return false;
+    }
+  }
+  return true;
 }
 
 function swap(i, j, d){
